@@ -11,6 +11,23 @@
 6. **Syarat & Ketentuan** — isi dari `04-rules-syarat-ketentuan.md`.
 7. **FAQ**, **Kontak**, **Kebijakan Privasi**.
 
+## Sitemap lengkap (target, ala joinbareng — detail di `09-benchmark-joinbareng.md`)
+```
+/                         beranda: hero, kartu 4 pilar, kategori, ticker pembelian nyata, produk (tab Terlaris/Termurah/Terbaru/Rating),
+                          papan permintaan, 4 langkah belanja aman, badge kepercayaan, ulasan, metode bayar, blog, FAQ, newsletter
+/patungan                 katalog slot + filter kategori, badge "Slot Terakhir"/"Populer"
+/patungan/<slug>          detail layanan, durasi, harga + fee, sisa slot, aturan
+/jasa-bayar               daftar layanan luar negeri + form order
+/jual-beli                marketplace; /jual-beli/kategori/<slug>; /jual-beli/<slug>-i.<seller>.<item>
+/toko/<slug>              profil seller, rating, listing
+/permintaan/beli          papan permintaan; /penawaran/jual papan penawaran
+/jadi-penjual             onboarding seller
+/cart, /checkout          keranjang & bayar
+/dashboard                saldo, pesanan saya, patungan aktif, jasa bayar, toko (seller), payout
+/login, /sign-up          akun (email + OTP WA)
+/perlindungan-pembeli, /help, /contact-us, /terms-and-conditions, /privacy-policy, /legalitas, /blog
+```
+
 ## Navigasi
 `Beranda | Katalog | Cara Kerja | FAQ | Cek Pesanan | Hubungi Kami`
 

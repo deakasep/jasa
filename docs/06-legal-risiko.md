@@ -11,6 +11,14 @@
 3. Sebar risiko: jangan taruh semua pelanggan di satu akun induk.
 4. Siapkan dana cadangan garansi (±10% omzet).
 
+## Risiko pilar baru
+- **Akun AI pribadi** (Claude Pro/Max/Code, ChatGPT Plus): ketentuan penyedia melarang berbagi akun/kredensial. Jangan dijual
+  sebagai patungan. Alternatif sah: seat Team/Business, atau **Jasa Bayar** atas akun pembeli sendiri.
+- **Saldo & escrow**: menahan dana pengguna. Saldo tertutup (hanya untuk belanja di platform) lebih aman; konsultasikan ke
+  konsultan hukum/payment gateway sebelum memegang dana besar (aturan uang elektronik BI).
+- **Jasa Bayar**: risiko carding/penipuan → batas transaksi pembeli baru, tolak kategori berisiko.
+- **KYC seller**: data pribadi wajib dilindungi (UU PDP No. 27/2022): enkripsi, akses terbatas, hapus jika akun ditutup.
+
 ## Legalitas usaha (Indonesia)
 - Daftar **NIB** via OSS (oss.go.id) — KBLI perdagangan eceran via internet / jasa terkait.
 - Pajak: UMKM PPh Final 0,5% (cek aturan terbaru).

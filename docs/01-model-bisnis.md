@@ -8,6 +8,16 @@ kita dapat margin dari selisih harga + biaya layanan.
 Model marketplace (seperti joinbareng): pembayaran otomatis (QRIS), slot aktif setelah bayar,
 garansi + refund jika ada masalah.
 
+## 4 sumber pendapatan (meniru struktur joinbareng, lihat `09-benchmark-joinbareng.md`)
+| Pilar | Dokumen | Pendapatan |
+|---|---|---|
+| Patungan (slot langganan) | dokumen ini + `03-workflow-order.md` | margin slot / fee layanan 10% + Rp8.000 (bulanan), 20% + Rp6.500 (tahunan) |
+| Jasa Bayar | `11-jasa-bayar.md` | fee jasa + selisih kurs |
+| Marketplace escrow | `10-marketplace-escrow.md` | fee seller ±5% per transaksi selesai |
+| Papan Permintaan | `12-papan-permintaan.md` | pendorong transaksi marketplace |
+
+Urutan jalan: **Patungan → Jasa Bayar → Marketplace** (marketplace butuh website + gateway + KYC).
+
 ## Kategori produk
 | Kategori | Contoh | Skema |
 |---|---|---|

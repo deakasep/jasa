@@ -17,9 +17,15 @@ rules (syarat & ketentuan), SOP admin, template pesan, skill Claude, dan landing
 | `docs/06-legal-risiko.md` | Risiko ToS, legalitas, mitigasi |
 | `docs/07-marketing.md` | Strategi promosi & konten |
 | `docs/08-clickup.md` | Struktur ClickUp untuk pengingat |
+| `docs/09-benchmark-joinbareng.md` | Bedah lengkap joinbareng: 5 pilar, sitemap, fee, perlindungan pembeli, S&K, harga |
+| `docs/10-marketplace-escrow.md` | Marketplace multi-seller, status & timer escrow, saldo, ulasan |
+| `docs/11-jasa-bayar.md` | Jasa bayar layanan luar negeri: kurs, fee, alur, aturan |
+| `docs/12-papan-permintaan.md` | Papan permintaan & penawaran |
+| `docs/13-seller-kyc-payout.md` | Daftar seller, KYC, level, payout, sanksi |
+| `docs/14-arsitektur-teknis.md` | Stack, model data, keamanan, roadmap tahap 0–5 |
 | `site/` | Landing page statis (`index.html` + `produk.json`) |
 | `templates/pesan-whatsapp.md` | Template balasan WA / DM |
-| `.claude/skills/` | Skill Claude: proses order, update katalog, cek renewal, komplain garansi |
+| `.claude/skills/` | Skill Claude: proses order, update katalog, cek renewal, komplain garansi, proses jasa bayar, onboarding seller, mediasi sengketa, riset kompetitor |
 
 ## Mulai cepat
 

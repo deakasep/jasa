@@ -7,6 +7,10 @@
 - [ ] Lepas slot yang lewat H+1 tanpa perpanjangan.
 - [ ] Cek komplain terbuka (list **Komplain**), selesaikan ≤ 24 jam.
 
+- [ ] Jasa Bayar: proses order DIBAYAR (list **Jasa Bayar**), update kurs harian (skill `proses-jasa-bayar`).
+- [ ] Marketplace (jika sudah jalan): putus sengketa ≤ 24 jam (skill `mediasi-sengketa`), cek pesanan lewat batas kirim, cairkan payout 17.00.
+- [ ] Moderasi listing & permintaan baru; tinjau KYC seller (skill `onboarding-seller`).
+
 ## Mingguan (Senin)
 - [ ] Rekap pemasukan & pengeluaran mingguan.
 - [ ] Audit akun induk: login, profil asing, perangkat aneh, ganti password jika perlu.
