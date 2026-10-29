@@ -1,0 +1,15 @@
+{
+  "_catatan": "Harga CONTOH — sesuaikan dengan harga resmi terbaru & modal kamu sebelum dipakai.",
+  "diskon_durasi": { "1": 0, "3": 0.05, "6": 0.10, "12": 0.15 },
+  "produk": [
+    { "id": "netflix", "nama": "Netflix Premium", "kategori": "Hiburan", "harga_bulan": 39000, "harga_resmi": 186000, "slot_total": 5, "slot_tersedia": 5, "akses": "profil + PIN", "catatan": "1 perangkat per slot" },
+    { "id": "disney", "nama": "Disney+ Hotstar", "kategori": "Hiburan", "harga_bulan": 25000, "harga_resmi": 79000, "slot_total": 4, "slot_tersedia": 4, "akses": "profil", "catatan": "1 perangkat" },
+    { "id": "spotify", "nama": "Spotify Premium Family", "kategori": "Musik", "harga_bulan": 20000, "harga_resmi": 86900, "slot_total": 6, "slot_tersedia": 6, "akses": "undangan family", "catatan": "pakai akun Spotify sendiri" },
+    { "id": "youtube", "nama": "YouTube Premium Family", "kategori": "Musik", "harga_bulan": 22000, "harga_resmi": 99000, "slot_total": 5, "slot_tersedia": 5, "akses": "undangan family", "catatan": "pakai akun Google sendiri" },
+    { "id": "canva", "nama": "Canva Pro (Teams)", "kategori": "Desain", "harga_bulan": 15000, "harga_resmi": 95000, "slot_total": 10, "slot_tersedia": 10, "akses": "undangan tim", "catatan": "pakai email sendiri" },
+    { "id": "capcut", "nama": "CapCut Pro", "kategori": "Desain", "harga_bulan": 30000, "harga_resmi": 99000, "slot_total": 3, "slot_tersedia": 3, "akses": "login bersama", "catatan": "jangan logout perangkat lain" },
+    { "id": "m365", "nama": "Microsoft 365 Family", "kategori": "Produktivitas", "harga_bulan": 18000, "harga_resmi": 135000, "slot_total": 6, "slot_tersedia": 6, "akses": "undangan family", "catatan": "1TB OneDrive per anggota" },
+    { "id": "chatgpt", "nama": "ChatGPT Business (seat)", "kategori": "AI", "harga_bulan": 99000, "harga_resmi": 450000, "slot_total": 5, "slot_tersedia": 5, "akses": "seat workspace", "catatan": "pakai email sendiri" },
+    { "id": "claude", "nama": "Claude Team (seat)", "kategori": "AI", "harga_bulan": 129000, "harga_resmi": 450000, "slot_total": 5, "slot_tersedia": 5, "akses": "seat workspace", "catatan": "pakai email sendiri" }
+  ]
+}
