@@ -1,0 +1,35 @@
+{
+  "_sumber": "Disamakan dengan joinbareng.com (riset 2026-10-30). Ubah di sini saja; catat di docs/CHANGELOG.md.",
+  "patungan": {
+    "bulanan": { "persen": 0.10, "tetap": 8000 },
+    "tahunan": { "persen": 0.20, "tetap": 6500 }
+  },
+  "jasa_bayar": {
+    "tier": [
+      { "maks_usd": 70, "tipe": "flat", "nilai": 50000 },
+      { "maks_usd": 500, "tipe": "persen", "nilai": 0.04 },
+      { "maks_usd": null, "tipe": "persen", "nilai": 0.035 }
+    ],
+    "spread_kurs": 0.015,
+    "kunci_kurs_menit": 30
+  },
+  "marketplace": {
+    "fee_seller_persen": 0.05,
+    "fee_seller_min": 1000,
+    "_catatan_fee_seller": "Sementara. joinbareng tidak mempublikasikan persen fee seller.",
+    "payout_min": 50000,
+    "payout_sla_jam_kerja": 24
+  },
+  "timer": {
+    "bayar_qris_menit": 30,
+    "bayar_va_jam": 24,
+    "seller_respon_jam": 1,
+    "batas_kirim_maks_jam": 24,
+    "masa_cek_hari": 3,
+    "masa_cek_bergaransi_hari": 7,
+    "putusan_sengketa_jam": 24,
+    "klaim_patungan_hari_kerja": 3,
+    "mediasi_hari_kerja": 3,
+    "reminder_renewal_hari": 3
+  }
+}

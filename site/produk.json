@@ -1,15 +1,56 @@
 {
-  "_catatan": "Harga CONTOH — sesuaikan dengan harga resmi terbaru & modal kamu sebelum dipakai.",
-  "diskon_durasi": { "1": 0, "3": 0.05, "6": 0.10, "12": 0.15 },
+  "_catatan": "Harga plan resmi = CONTOH, wajib dicek ke harga resmi terbaru sebelum dipakai. harga_per_slot = ceil(harga_plan_resmi / slot, ribuan). Fee dihitung dari config/fee.json. Hanya plan yang ToS-nya mengizinkan multi-user (docs/06-legal-risiko.md).",
   "produk": [
-    { "id": "netflix", "nama": "Netflix Premium", "kategori": "Hiburan", "harga_bulan": 39000, "harga_resmi": 186000, "slot_total": 5, "slot_tersedia": 5, "akses": "profil + PIN", "catatan": "1 perangkat per slot" },
-    { "id": "disney", "nama": "Disney+ Hotstar", "kategori": "Hiburan", "harga_bulan": 25000, "harga_resmi": 79000, "slot_total": 4, "slot_tersedia": 4, "akses": "profil", "catatan": "1 perangkat" },
-    { "id": "spotify", "nama": "Spotify Premium Family", "kategori": "Musik", "harga_bulan": 20000, "harga_resmi": 86900, "slot_total": 6, "slot_tersedia": 6, "akses": "undangan family", "catatan": "pakai akun Spotify sendiri" },
-    { "id": "youtube", "nama": "YouTube Premium Family", "kategori": "Musik", "harga_bulan": 22000, "harga_resmi": 99000, "slot_total": 5, "slot_tersedia": 5, "akses": "undangan family", "catatan": "pakai akun Google sendiri" },
-    { "id": "canva", "nama": "Canva Pro (Teams)", "kategori": "Desain", "harga_bulan": 15000, "harga_resmi": 95000, "slot_total": 10, "slot_tersedia": 10, "akses": "undangan tim", "catatan": "pakai email sendiri" },
-    { "id": "capcut", "nama": "CapCut Pro", "kategori": "Desain", "harga_bulan": 30000, "harga_resmi": 99000, "slot_total": 3, "slot_tersedia": 3, "akses": "login bersama", "catatan": "jangan logout perangkat lain" },
-    { "id": "m365", "nama": "Microsoft 365 Family", "kategori": "Produktivitas", "harga_bulan": 18000, "harga_resmi": 135000, "slot_total": 6, "slot_tersedia": 6, "akses": "undangan family", "catatan": "1TB OneDrive per anggota" },
-    { "id": "chatgpt", "nama": "ChatGPT Business (seat)", "kategori": "AI", "harga_bulan": 99000, "harga_resmi": 450000, "slot_total": 5, "slot_tersedia": 5, "akses": "seat workspace", "catatan": "pakai email sendiri" },
-    { "id": "claude", "nama": "Claude Team (seat)", "kategori": "AI", "harga_bulan": 129000, "harga_resmi": 450000, "slot_total": 5, "slot_tersedia": 5, "akses": "seat workspace", "catatan": "pakai email sendiri" }
-  ]
+    {
+      "id": "netflix", "nama": "Netflix Premium", "kategori": "SVOD", "akses": "akun bersama, 1 profil + PIN per slot",
+      "aturan": ["1 perangkat per slot", "dilarang ubah email/password/pengaturan", "jangan pakai profil orang lain"],
+      "paket": [
+        { "kode": "NFX-4", "slot": 4, "periode": "bulanan", "harga_plan_resmi": 186000, "harga_per_slot": 47000, "slot_tersedia": 4 },
+        { "kode": "NFX-5", "slot": 5, "periode": "bulanan", "harga_plan_resmi": 186000, "harga_per_slot": 38000, "slot_tersedia": 5 }
+      ]
+    },
+    {
+      "id": "spotify", "nama": "Spotify Premium Family", "kategori": "Musik", "akses": "undangan family ke akun Spotify sendiri",
+      "aturan": ["pakai akun Spotify milik pembeli", "jangan keluar-masuk family berulang"],
+      "paket": [
+        { "kode": "SPT-6", "slot": 6, "periode": "bulanan", "harga_plan_resmi": 86900, "harga_per_slot": 15000, "slot_tersedia": 6 }
+      ]
+    },
+    {
+      "id": "youtube", "nama": "YouTube Premium Family", "kategori": "Musik", "akses": "undangan family ke akun Google sendiri",
+      "aturan": ["pakai akun Google milik pembeli", "1 akun hanya bisa ganti family 1x per 12 bulan (aturan Google)"],
+      "paket": [
+        { "kode": "YTB-6", "slot": 6, "periode": "bulanan", "harga_plan_resmi": 99000, "harga_per_slot": 17000, "slot_tersedia": 6 }
+      ]
+    },
+    {
+      "id": "m365", "nama": "Microsoft 365 Family", "kategori": "Software", "akses": "undangan family ke akun Microsoft sendiri",
+      "aturan": ["1TB OneDrive per anggota", "jangan ubah pengaturan family"],
+      "paket": [
+        { "kode": "M365-6", "slot": 6, "periode": "tahunan", "harga_plan_resmi": 1349000, "harga_per_slot": 225000, "slot_tersedia": 6 }
+      ]
+    },
+    {
+      "id": "apple-one", "nama": "Apple One Family", "kategori": "Musik", "akses": "Family Sharing ke Apple ID sendiri",
+      "aturan": ["pakai Apple ID milik pembeli"],
+      "paket": [
+        { "kode": "AP1-6", "slot": 6, "periode": "bulanan", "harga_plan_resmi": 149000, "harga_per_slot": 25000, "slot_tersedia": 6 }
+      ]
+    },
+    {
+      "id": "disney", "nama": "Disney+ Hotstar Premium", "kategori": "SVOD", "akses": "akun bersama, 1 profil per slot",
+      "aturan": ["1 perangkat per slot", "dilarang ubah email/password"],
+      "paket": [
+        { "kode": "DSN-4", "slot": 4, "periode": "bulanan", "harga_plan_resmi": 79000, "harga_per_slot": 20000, "slot_tersedia": 4 }
+      ]
+    },
+    {
+      "id": "canva", "nama": "Canva Teams", "kategori": "Software", "akses": "undangan tim ke email sendiri",
+      "aturan": ["pakai email milik pembeli", "jangan hapus anggota lain"],
+      "paket": [
+        { "kode": "CNV-10", "slot": 10, "periode": "bulanan", "harga_plan_resmi": 150000, "harga_per_slot": 15000, "slot_tersedia": 10 }
+      ]
+    }
+  ],
+  "dialihkan_ke_jasa_bayar": ["claude", "chatgpt", "cursor", "perplexity", "gemini", "midjourney", "github-copilot"]
 }

@@ -1,64 +1,96 @@
-# 09 — Benchmark: joinbareng.com
+# 09 — Benchmark: joinbareng.com (acuan utama, ditiru penuh kecuali tampilan)
 
-Hasil riset 2026-10-30 (dibaca via WebFetch + Chrome). Dipakai sebagai acuan struktur, **bukan untuk
-disalin** (teks, logo, desain tetap milik mereka). Ulangi riset dengan skill `riset-kompetitor`.
+Riset 2026-10-30 lewat WebFetch + Claude in Chrome (halaman publik saja). Keputusan pemilik: **tiru semua struktur,
+mekanisme, aturan, dan fee joinbareng**; tampilan web dibuat sendiri di akhir. Semua teks ditulis ulang dengan kata kita.
+Ulangi riset dengan skill `riset-kompetitor`.
 
-## Identitas
-- Badan usaha: PT (Garut, Jawa Barat). CS via WhatsApp + email + Instagram.
-- Positioning: "marketplace patungan akun premium murah" — hemat sampai 80%, aman, bergaransi.
-- Klaim kepercayaan: rating 4,9/5, 12.000+ joiner aktif, 1.000+ listing, seller terverifikasi (KYC).
+## 1. Identitas & operasional
+- PT berbadan hukum + NIB tercantum di halaman kontak. Kita: daftar NIB dulu (task ClickUp "Daftar NIB di OSS").
+- Kanal: WhatsApp CS, email, Instagram, LinkedIn, siaran pers, blog. Chat dalam aplikasi untuk pesanan.
+- Jam layanan mereka: CS chat Senin–Jumat 10.00–18.00, WhatsApp 08.00–16.00 WIB; tim jasa bayar 09.00–22.00 WIB.
+  Kita tetapkan di `05-sop-admin.md` §Jam layanan.
+- Payment gateway masuk: **Tripay** (mitra PJP berizin BI). Invoice jasa bayar & pencairan seller: **Xendit**. Platform tidak menyimpan data kartu.
+- Klaim kepercayaan: rating 4,9/5, 12.000+ joiner, 1.000+ listing, 10.000+ transaksi jasa bayar, "zero permanent ban".
 
-## 5 pilar bisnis
-| Pilar | URL | Inti | Sumber uang |
-|---|---|---|---|
-| Marketplace (Jual-Beli) | `/jual-beli` | Banyak seller jual akun/item/voucher/joki/top-up; dana ditahan escrow | Fee transaksi dari seller |
-| Patungan | `/patungan` | Host punya langganan, joiner beli slot per bulan/tahun | Fee layanan dari joiner |
-| Jasa Bayar | `/jasa-bayar` | Bayarkan layanan luar negeri (Steam, Apple, Midjourney, Claude, ChatGPT), pembeli bayar Rupiah | Fee jasa (mulai ±Rp50rb) + selisih kurs |
-| Papan Permintaan & Penawaran | `/permintaan/beli`, `/penawaran/jual` | Pembeli posting kebutuhan + budget; seller menawar (bisa nego) | Mendorong transaksi marketplace |
-| Jadi Penjual | `/jadi-penjual` | Onboarding seller: daftar gratis, verifikasi, listing langsung tayang | — |
+## 2. Lima pilar
+| Pilar | URL | Dokumen kita |
+|---|---|---|
+| Patungan (batch plan resmi + grup host) | `/patungan`, `/patungan/<layanan>` | `15-patungan-batch.md`, `03-workflow-order.md` |
+| Jasa Bayar | `/jasa-bayar`, `/jasa-bayar/<layanan>` | `11-jasa-bayar.md` |
+| Marketplace escrow | `/jual-beli`, `/jual-beli/<slug>-i.<seller>.<item>` | `10-marketplace-escrow.md` |
+| Papan Permintaan & Penawaran | `/permintaan/beli`, `/penawaran/jual` | `12-papan-permintaan.md` |
+| Jadi Penjual | `/jadi-penjual` | `13-seller-kyc-payout.md` |
 
-## Sitemap
-- Header: Logo · Akun · Keranjang · **Mulai Jualan** · menu (Marketplace, Patungan, Jasa Bayar, Permintaan) · bahasa
-- Beranda: hero + 4 kartu pilar + kartu "Jadi Penjual" · CTA daftar · grid kategori (±20) · **ticker "baru saja beli"** (nama disensor) · tab produk (Rekomendasi/Terlaris/Termurah/Terbaru/Rating) · rak per kategori · papan permintaan & penawaran · **4 langkah belanja aman** · 4 badge kepercayaan · upsell Patungan & Jasa Bayar · ulasan asli · logo metode bayar · blog · FAQ · newsletter · footer
-- Footer: Belanja · Perusahaan (Legalitas, Blog, Siaran Pers, Temukan Kami) · Bantuan (Pusat Bantuan, Perlindungan Pembeli, Hubungi Kami, Privasi, S&K) · Akun (Masuk, Daftar, Dasbor, Pesanan Saya)
-- URL produk: `/jual-beli/<slug>-i.<sellerId>.<itemId>` · kategori `/jual-beli/kategori/<slug>`
+## 3. Fee (DISAMAKAN untuk kita)
+| Layanan | Fee joinbareng = fee kita |
+|---|---|
+| Patungan bulanan | 10% harga per orang + Rp8.000 |
+| Patungan tahunan | 20% harga per orang + Rp6.500 |
+| Jasa Bayar < US$70 | Rp50.000 flat |
+| Jasa Bayar US$70–500 | 4% |
+| Jasa Bayar > US$500 | 3,5% |
+| Kurs Jasa Bayar | mid-market + spread 1,5%, terkunci jika invoice dibayar ≤ 30 menit |
+| Seller marketplace | "fee transaksi kecil" saat terjual, tanpa biaya bulanan/posting (persen tidak dipublikasi → kita pakai 5% sementara, cek ulang saat daftar seller di sana) |
+| Payout seller | ke rekening ≤ 1×24 jam kerja setelah diminta |
+Sumber angka terpusat: `config/fee.json`.
 
-## Kategori marketplace
-Item, Akun, Roblox Games, Aplikasi & Software, Joki, Voucher, Streaming, Top Up Game, Jasa Freelance & Digital,
-Pulsa & Utilitas, Koin Game, Server/Hosting/Domain, Top Up Login, Lisensi Software & Cloud, Source Code & Tools,
-Aset & Template Kreatif, Game Key, Bahan Konten Siap Upload, Course & Edukasi Digital.
-Kategori patungan: SVOD, Musik, Game, Software, eLearning, AI Coding, AI Video, AI Assistant, AI Productivity.
+## 4. Patungan — cara kerja mereka
+- **Batch "Resmi"**: platform membeli plan multi-user resmi atas nama sendiri, buka batch preorder, pembeli bayar bagiannya,
+  dana ditahan sampai batch penuh & diaktivasi, lalu akses dikirim otomatis ke email + dashboard. Bulan berikutnya ditagih via invoice otomatis.
+  Layanan AI tertentu memakai **auto-provision** (aktif langsung tanpa menunggu penuh).
+- **Grup host komunitas**: pengguna lain menjadi host (harga lebih murah, contoh Netflix 4 slot Rp27.500), joiner bisa chat host;
+  kendala tidak selesai → eskalasi ke platform. (Halaman legalitas mereka justru menyatakan tidak menjadi perantara P2P —
+  kita jalankan host komunitas hanya setelah verifikasi host, lihat `15-patungan-batch.md`.)
+- Halaman layanan: rating & jumlah ulasan, harga "mulai", jumlah user per paket, tipe akses, info produk, benefit, pilihan paket
+  (mis. 4 user Rp64.000 / 5 user Rp52.000), sisa slot, **kode promo**, tombol gabung grup WhatsApp, daftar grup Tersedia/Aktif
+  dengan nama anggota disensor + "butuh N orang lagi", produk serupa, FAQ per layanan.
+- Aturan per layanan (contoh Netflix): maks 4 anggota, 1 perangkat per joiner, kredensial tampil di dashboard setelah bayar,
+  dilarang ubah email/password/pengaturan → dicabut permanen tanpa refund.
+- Klaim akun bermasalah: refund penuh atau slot pengganti, diproses 1–3 hari kerja lewat dashboard.
 
-## Perlindungan pembeli (aturan sistem)
-1. Dana ditahan; diteruskan ke seller saat pembeli tekan "Sudah bisa dipakai" **atau otomatis** saat masa cek habis tanpa laporan.
-2. Setiap listing punya batas kirim (maks 24 jam). Seller diam 1 jam atau lewat batas → pembeli boleh batal, dana kembali penuh.
-3. Masa cek minimal 3 hari, sampai 7 hari untuk listing bergaransi. Garansi > 7 hari = garansi toko.
-4. Laporan ditinjau tim ≤ 1×24 jam → kirim ulang / refund sebagian / refund penuh. **Refund masuk saldo**, tidak bisa ditarik ke rekening.
-5. Perlindungan hanya di dalam platform; chat otomatis menolak ajakan pindah ke WA/Telegram.
-6. Notifikasi + email di tiap langkah: bayar diterima, dikirim, mendekati akhir masa cek, refund.
-7. Tombol pembeli: "Ingatkan seller", "Batalkan & refund", "Ada masalah?" (kategori + screenshot).
+## 5. Jasa Bayar — cara kerja mereka
+Form: estimasi harga produk (USD, sebelum pajak), email akun produk, nama, WhatsApp, email bukti bayar, catatan →
+WhatsApp terbuka dengan pesan terisi → admin konfirmasi harga final 1–3 menit → invoice (QRIS/VA/e-wallet), bayar ≤ 30 menit
+untuk kunci kurs → diproses 1–5 menit → bukti/konfirmasi via WhatsApp & email. Akun tetap milik pembeli; kredensial hanya
+dipakai saat proses dan tidak disimpan. H-3 sebelum perpanjangan dikonfirmasi lanjut/upgrade/stop. Upgrade tengah periode tanpa fee
+tambahan. Refund 100% bila penyedia menolak. Akun JoinBareng dibuat otomatis untuk pembeli baru. Ticker "transaksi terbaru".
+Setiap layanan punya halaman panjang (apa itu, kenapa butuh jasa bayar, alur, tips pilih paket, lama proses, testimoni, FAQ, artikel blog).
 
-## Biaya (dari S&K mereka)
-- Patungan bulanan: 10% harga per orang + Rp8.000. Tahunan: 20% + Rp6.500. (Rp50.000 → fee Rp13.000.)
-- Seller marketplace: hanya fee transaksi saat laku; tanpa biaya bulanan/listing (persen tidak dipublikasi).
-- Jasa bayar: fee mulai Rp50.000; banyak produk "cek tarif".
+## 6. Marketplace — cara kerja mereka
+- Halaman listing: kode produk (`JB-<id>`), harga, rating, terjual, jumlah, keranjang/beli sekarang, kartu seller (rating, chat, toko),
+  badge perlindungan (escrow, refund saldo, garansi 7 hari, seller terverifikasi), statistik (dilihat, dalam antrian, % order sukses,
+  waktu respon, terakhir diperbarui), jaminan penjual (garansi seller mis. 30 hari, batas kirim maks 24 jam), tab deskripsi/FAQ/ulasan.
+- Perlindungan pembeli: dana ditahan sampai "Sudah bisa dipakai" atau masa cek habis · seller diam 1 jam / lewat batas kirim → batal, refund penuh ·
+  masa cek ≥ 3 hari, 7 hari bila bergaransi (> 7 hari = garansi toko) · laporan diputus ≤ 1×24 jam (kirim ulang / refund sebagian / penuh) ·
+  refund ke saldo, tidak bisa ditarik · hanya transaksi di platform · chat menolak ajakan pindah aplikasi · notifikasi + email tiap tahap.
+- Seller: daftar gratis (email + WA, verifikasi singkat), listing langsung tayang & masuk pencarian tanpa iklan, boleh jual akun premium,
+  voucher, slot patungan, jasa digital; produk fisik & ilegal dilarang.
 
-## Poin S&K penting
-Data akun wajib benar; < 18 th perlu izin wali · host wajib akun aktif & legal · dilarang berbagi di luar platform,
-jual ulang tanpa izin, memberi akses ke non-anggota · pembayaran final kecuali kesalahan platform · berhenti kapan
-saja tanpa refund periode berjalan · sengketa: mediasi ≤ 3 hari kerja, putusan platform mengikat, lalu hukum RI ·
-sanksi bertingkat: peringatan → suspend → bekukan → ban + lapor · platform tidak bertanggung jawab atas blokir penyedia.
-Catatan: S&K mereka tidak konsisten soal pemberitahuan perubahan — kita tulis satu aturan yang jelas.
+## 7. Halaman wajib (sitemap)
+Beranda · Marketplace · Patungan · Jasa Bayar · Permintaan · Penawaran · Jadi Penjual · Keranjang · Dashboard (Pesanan Saya, saldo) ·
+Masuk/Daftar · Legalitas · Blog · Siaran Pers · Temukan Kami · Pusat Bantuan · Perlindungan Pembeli · Hubungi Kami · Kebijakan Privasi ·
+S&K · newsletter. Detail di `02-struktur-website.md`.
 
-## Pembayaran
-Payment gateway: QRIS, VA (BNI, BSI, BRI, Mandiri, Permata, Sahabat Sampoerna, BJB, CIMB), kartu kredit, Indomaret.
+## 8. Legalitas & privasi mereka (ditiru → `06-legal-risiko.md`, `17-kebijakan-privasi.md`)
+- Posisi: pengelola plan resmi multi-user, bukan reseller akun bajakan; hanya plan yang ToS-nya mengizinkan multi-user
+  (Spotify Family/Duo, YouTube Family, Apple One Family, M365 Family, Netflix multi-screen); plan single-user ketat tidak disediakan;
+  tidak memakai akun OG/kartu curian/cracking; pengguna tetap wajib patuh ToS layanan.
+- Mengacu UU 8/1999 Perlindungan Konsumen, UU 27/2022 PDP, UU ITE.
+- Privasi: data yang dikumpulkan, cara, tujuan, pihak ketiga (pembayaran, aparat), keamanan, retensi, hak pengguna (akses, koreksi,
+  hapus, tarik persetujuan), email promo maks 1/hari + berhenti langganan, cookie, tidak untuk anak < 13 th.
 
-## Contoh harga patungan (per bulan, Okt 2026)
-Netflix 52rb · Spotify 91rb · YouTube Premium 85rb · ChatGPT Plus 91rb · Microsoft 365 48rb · Perplexity 74rb ·
-Cursor Pro 137rb · Gemini 86rb · Apple Music 32rb · Prime Video 33rb · CapCut Pro 643rb/th · Duolingo 243rb/th.
-Marketplace: Netflix 1 bln 13rb, Canva invite 3rb, Google AI Pro 1 th 50rb, GetContact 10–12rb.
+## 9. S&K mereka (ditiru → `04-rules-syarat-ketentuan.md`)
+Data benar; < 18 th izin wali · anggota grup dianggap satu rumah tangga · host wajib akun aktif & legal · dilarang berbagi di luar
+platform, jual ulang tanpa izin, akses untuk non-anggota · pembayaran final kecuali kesalahan platform · berhenti kapan saja tanpa refund
+periode berjalan · mediasi ≤ 3 hari kerja, putusan platform mengikat, lalu hukum RI · sanksi bertingkat sampai ban + lapor · tidak
+bertanggung jawab atas blokir penyedia · kompensasi diskresi untuk error sistem.
 
-## Yang TIDAK kita tiru
-- Patungan/“credential” akun yang ToS-nya melarang berbagi (mis. Claude Pro/Max, Claude Code, ChatGPT Plus pribadi): risiko blokir tinggi dan melanggar ketentuan penyedia. Pakai skema seat resmi (lihat `06-legal-risiko.md`).
-- Listing jual akun keuangan ber-KYC (mis. akun Airwallex/e-wallet terverifikasi), akun "old Gmail" massal, data pribadi — dilarang.
-- Ulasan/ticker palsu. Ticker "baru saja beli" hanya dari order nyata.
+## 10. Yang tetap TIDAK kita tiru (alasan: bertentangan dengan halaman legalitas mereka sendiri / ToS penyedia / hukum)
+- Patungan **akun AI pribadi** dengan berbagi email+password (mereka menjual "Claude Pro sharing account", "Development Mode (Credential)").
+  Ini plan single-user — ToS Anthropic/OpenAI melarang berbagi, riwayat chat antar anggota saling terlihat, akun rawan diblokir.
+  Ganti dengan: **Jasa Bayar** ke akun pembeli sendiri (diizinkan) atau seat Team/Business resmi.
+- Jasa bayar layanan konten dewasa (OnlyFans, Fansly), akun keuangan ber-KYC (Airwallex dll.), akun "Gmail old" massal.
+- Testimoni "representatif" yang bukan pembeli nyata → kita hanya pakai ulasan asli.
+
+## 11. Contoh harga pembanding (Okt 2026)
+Lihat `data/harga-pembanding.json`.

@@ -1,35 +1,40 @@
-# JASA — Patungan Akun Premium
+# JASA — Patungan, Jasa Bayar & Marketplace Digital
 
-Repo ini berisi **seluruh struktur bisnis** jualan patungan / langganan premium bersama
-(terinspirasi model marketplace seperti joinbareng.com): model bisnis, workflow order,
-rules (syarat & ketentuan), SOP admin, template pesan, skill Claude, dan landing page.
+Repo ini berisi **seluruh struktur bisnis** yang meniru penuh joinbareng.com (struktur, mekanisme, aturan, fee), ditulis ulang
+dengan kata sendiri. Tampilan web dibuat terakhir. Panduan kerja Claude: `CLAUDE.md`.
 
 ## Struktur
 
 | Path | Isi |
 |---|---|
-| `CLAUDE.md` | Aturan kerja untuk Claude saat membantu bisnis ini |
-| `docs/01-model-bisnis.md` | Konsep, kategori produk, hitungan margin |
-| `docs/02-struktur-website.md` | Halaman & section website |
-| `docs/03-workflow-order.md` | Alur order dari chat sampai renewal |
-| `docs/04-rules-syarat-ketentuan.md` | Syarat & ketentuan untuk pembeli (garansi, larangan, refund) |
-| `docs/05-sop-admin.md` | SOP harian/mingguan/bulanan admin |
-| `docs/06-legal-risiko.md` | Risiko ToS, legalitas, mitigasi |
-| `docs/07-marketing.md` | Strategi promosi & konten |
-| `docs/08-clickup.md` | Struktur ClickUp untuk pengingat |
-| `docs/09-benchmark-joinbareng.md` | Bedah lengkap joinbareng: 5 pilar, sitemap, fee, perlindungan pembeli, S&K, harga |
-| `docs/10-marketplace-escrow.md` | Marketplace multi-seller, status & timer escrow, saldo, ulasan |
-| `docs/11-jasa-bayar.md` | Jasa bayar layanan luar negeri: kurs, fee, alur, aturan |
+| `docs/01-model-bisnis.md` | 5 pilar, sumber pendapatan, rumus harga slot + fee |
+| `docs/02-struktur-website.md` | Sitemap & halaman |
+| `docs/03-workflow-order.md` | Alur order patungan (batch) |
+| `docs/04-rules-syarat-ketentuan.md` | S&K semua pengguna: akun, larangan, garansi, refund, sanksi, barang terlarang |
+| `docs/05-sop-admin.md` | SOP harian/mingguan/bulanan, jam layanan |
+| `docs/06-legal-risiko.md` | Pernyataan legalitas, plan yang diizinkan, risiko |
+| `docs/07-marketing.md` | Kanal, konten SEO, promo, retensi |
+| `docs/08-clickup.md` | Struktur & ID list ClickUp |
+| `docs/09-benchmark-joinbareng.md` | Bedah lengkap joinbareng (acuan utama) |
+| `docs/10-marketplace-escrow.md` | Marketplace, status & timer escrow, halaman listing |
+| `docs/11-jasa-bayar.md` | Jasa bayar: fee bertingkat, kurs, form, alur |
 | `docs/12-papan-permintaan.md` | Papan permintaan & penawaran |
-| `docs/13-seller-kyc-payout.md` | Daftar seller, KYC, level, payout, sanksi |
-| `docs/14-arsitektur-teknis.md` | Stack, model data, keamanan, roadmap tahap 0–5 |
-| `site/` | Landing page statis (`index.html` + `produk.json`) |
+| `docs/13-seller-kyc-payout.md` | Seller, KYC, level, payout, sanksi |
+| `docs/14-arsitektur-teknis.md` | Stack, model data, roadmap tahap 0–5 |
+| `docs/15-patungan-batch.md` | Sistem batch, grup host, kode promo |
+| `docs/16-qa-qc.md` | QA otomatis & manual, QC harian/mingguan, KPI, tindakan korektif |
+| `docs/17-kebijakan-privasi.md` | Draf kebijakan privasi (UU PDP) |
+| `docs/18-faq.md` | FAQ pembeli, joiner, seller |
+| `config/fee.json` | Semua fee & timer (sama dengan joinbareng) |
+| `data/harga-pembanding.json` | Harga publik joinbareng untuk pembanding |
+| `scripts/hitung.py` | Kalkulator fee patungan / jasa bayar / seller |
+| `scripts/qa_check.py` | Cek otomatis (dijalankan GitHub Actions `QA`) |
+| `site/` | Landing statis sementara (`index.html` + `produk.json`) |
 | `templates/pesan-whatsapp.md` | Template balasan WA / DM |
-| `.claude/skills/` | Skill Claude: proses order, update katalog, cek renewal, komplain garansi, proses jasa bayar, onboarding seller, mediasi sengketa, riset kompetitor |
+| `.claude/skills/` | 11 skill: order, renewal, komplain, katalog, jasa bayar, seller, sengketa, riset, QC harian, QA alur, QC listing/host |
 
 ## Mulai cepat
-
-1. Isi harga & stok di `site/produk.json` (lihat skill `update-katalog`).
-2. Ganti nomor WA di `site/index.html` (cari `62XXXXXXXXXX`).
-3. Deploy folder `site/` ke GitHub Pages / Netlify / Vercel.
-4. Jalankan SOP harian di `docs/05-sop-admin.md`; pengingat ada di ClickUp.
+1. `python3 scripts/qa_check.py` → harus "SEMUA CEK LULUS".
+2. Cek harga plan resmi di `site/produk.json` (skill `update-katalog`).
+3. Hitung harga: `python3 scripts/hitung.py patungan 50000 bulanan` · `python3 scripts/hitung.py jasa-bayar 20 16500`.
+4. Jalankan SOP `docs/05-sop-admin.md`; pengingat ada di ClickUp folder **JASA – Patungan Premium**.

@@ -1,5 +1,12 @@
 # 05 — SOP Admin
 
+## Jam layanan (pembanding joinbareng: chat Sen–Jum 10–18, WA 08–16 WIB, jasa bayar 09–22 WIB)
+- CS & patungan: setiap hari 08.00–22.00 WITA. Jasa bayar: 09.00–22.00 WITA. Di luar jam: auto-reply + diproses pagi.
+- Semua tanggal/jam di ClickUp mengikuti zona akun ClickUp (cek `clickup_get_user`).
+
+## QA/QC
+Checklist lengkap di `16-qa-qc.md`; jalankan skill `qc-harian` setiap malam.
+
 ## Harian (pagi 08.00 & malam 21.00)
 - [ ] Cek pesan masuk WA/IG/website, balas semua.
 - [ ] Cek mutasi pembayaran, aktivasi order yang sudah bayar.

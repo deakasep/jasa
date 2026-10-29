@@ -14,7 +14,9 @@
 | Unggulan | ≥ 100 pesanan, rating ≥ 4,8 | badge, prioritas di beranda, fee 4% |
 
 ## Payout
-Saldo penjualan bisa ditarik ke rekening KYC. Minimal Rp50.000. Diproses hari kerja 1×/hari (17.00 WIB).
+Saldo penjualan bisa ditarik ke rekening KYC. Minimal Rp50.000. Diproses ≤ 1×24 jam kerja (sama dengan joinbareng), via disbursement Xendit.
+Fee: hanya potongan transaksi saat terjual (`config/fee.json` → `marketplace`); daftar & posting gratis.
+Boleh dijual: akun premium yang sah dijual/dibagi, voucher digital, slot patungan (host terverifikasi), jasa digital. Produk fisik & ilegal dilarang.
 Biaya transfer ditanggung seller jika beda bank (sesuai tarif gateway disbursement).
 
 ## Kewajiban seller

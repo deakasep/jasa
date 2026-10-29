@@ -13,7 +13,8 @@ Folder **JASA – Patungan Premium** di Space "Space":
 | Jasa Bayar | 1 task per order JBY; langganan berulang → due = tagihan berikutnya |
 | Seller & KYC | 1 task per seller: status KYC, level, sanksi (tanpa data KTP) |
 | Sengketa & Escrow | sengketa marketplace, due = batas putusan 24 jam / akhir masa cek |
-| Roadmap Platform | tahap 0–5 website (`14-arsitektur-teknis.md`) + ide dari permintaan pembeli |
+| Roadmap Platform | tahap 0–5 website (`14-arsitektur-teknis.md`) + ide dari permintaan pembeli + kode promo (tag `promo`) |
+| QA & QC | QC harian/mingguan, laporan KPI, QA rilis, temuan & tindakan korektif (`16-qa-qc.md`) |
 
 Format judul order: `[Produk] Nama – JSA-YYMMDD-NN`. Tag: nama produk.
 
@@ -28,6 +29,7 @@ Format judul order: `[Produk] Nama – JSA-YYMMDD-NN`. Tag: nama produk.
 - Seller & KYC: `1100360000162011`
 - Sengketa & Escrow: `1100360000162012`
 - Roadmap Platform: `1100360000162013`
+- QA & QC: `1100360000162025`
 
 Format judul: Jasa Bayar `[Layanan] Nama – JBY-YYMMDD-NN` · Sengketa `[SENGKETA] KODE – masalah` · Seller `[SELLER] Nama toko`.
 

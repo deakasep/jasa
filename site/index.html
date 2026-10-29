@@ -59,11 +59,11 @@ function render(){
   const g=document.getElementById("grid");g.innerHTML="";
   data.filter(p=>cat==="Semua"||p.kategori===cat).forEach(p=>{
     const hemat=Math.round((1-p.harga_bulan/p.harga_resmi)*100);
-    const msg=encodeURIComponent(`Halo kak, saya mau gabung ${p.nama} 1 bulan`);
+    const msg=encodeURIComponent(`Halo kak, saya mau gabung ${p.nama} (${p.kode}) ${p.periode}`);
     const habis=p.slot_tersedia<=0;
     const c=document.createElement("div");c.className="card";
     c.innerHTML=`<small>${p.kategori} · ${p.akses}</small><b>${p.nama}</b>
-      <div><span class="price">${rp(p.harga_bulan)}</span><small>/bulan</small></div>
+      <div><span class="price">${rp(p.harga_bulan)}</span><small>/${p.periode==="tahunan"?"tahun":"bulan"} (termasuk biaya layanan)</small></div>
       <div><span class="strike">${rp(p.harga_resmi)}</span> <span class="save">Hemat ${hemat}%</span></div>
       <small>${habis?"Slot penuh":"Sisa "+p.slot_tersedia+" slot"} · ${p.catatan}</small>
       <a class="btn" href="https://wa.me/${WA}?text=${msg}" target="_blank" rel="noopener">${habis?"Waiting List":"Gabung"}</a>`;
@@ -71,7 +71,11 @@ function render(){
   });
 }
 fetch("produk.json").then(r=>r.json()).then(j=>{
-  data=j.produk;
+  // Format katalog: layanan → paket (docs/15-patungan-batch.md). Fee sama dengan config/fee.json.
+  const FEE={bulanan:[0.10,8000],tahunan:[0.20,6500]};
+  data=j.produk.flatMap(l=>l.paket.map(k=>({nama:`${l.nama} · ${k.slot} user`,kategori:l.kategori,akses:l.akses,
+    kode:k.kode,periode:k.periode,slot_tersedia:k.slot_tersedia,harga_resmi:k.harga_plan_resmi,catatan:(l.aturan||[])[0]||"",
+    harga_bulan:Math.round(k.harga_per_slot*(1+FEE[k.periode][0])+FEE[k.periode][1])})));
   const f=document.getElementById("filters");
   ["Semua",...new Set(data.map(p=>p.kategori))].forEach(k=>{
     const b=document.createElement("button");b.textContent=k;if(k===cat)b.className="on";

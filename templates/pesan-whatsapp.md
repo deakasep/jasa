@@ -7,9 +7,19 @@ Mau gabung langganan apa kak? Cek katalog: <link-website>
 ## tagihan
 Siap kak, ini detail pesanannya:
 🧾 Kode: {KODE}
-📦 Produk: {PRODUK} – {DURASI}
+📦 Produk: {PRODUK} – paket {PAKET} ({PERIODE})
+💵 Harga slot: Rp{HARGA_SLOT}
+🛠️ Biaya layanan: Rp{FEE}
+🎟️ Promo: {PROMO}
 💰 Total: Rp{TOTAL}
-Silakan bayar via QRIS terlampir, lalu kirim bukti ya kak. Slot dijaga 30 menit.
+Silakan bayar lewat link/QRIS terlampir ya kak. Slot dijaga 30 menit. Dana ditahan sampai batch aktif.
+
+## batch-menunggu
+Pembayaran diterima ✅ Kakak sudah masuk batch {PRODUK} ({TERISI}/{KAPASITAS}), butuh {SISA} orang lagi.
+Begitu penuh, akses langsung kami kirim. Kalau 7 hari belum penuh, kakak bisa pilih pindah batch, tunggu, atau refund 100%.
+
+## batch-7-hari
+Halo kak, batch {PRODUK} belum penuh setelah 7 hari 🙏 Kakak mau: 1) pindah ke batch {BATCH_LAIN}, 2) tetap tunggu, atau 3) refund 100%?
 
 ## aktivasi
 Pembayaran diterima ✅ Slot {PRODUK} kakak sudah aktif.

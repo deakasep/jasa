@@ -32,7 +32,15 @@ Seller diam 1 jam / lewat batas kirim → pembeli boleh BATAL → refund penuh k
 - Uang pembeli masuk rekening penampung → **ledger**: `ditahan` per pesanan.
 - Pelepasan: `saldo_seller += total - fee_platform`. Refund: `saldo_pembeli += nominal`.
 - Refund masuk **saldo**, bukan rekening (bisa dipakai belanja lagi). Penarikan tunai hanya untuk saldo seller.
-- Fee seller usulan: **5% (min Rp1.000)** per transaksi selesai; tanpa biaya listing/bulanan. Ubah di sini + CHANGELOG.
+- Fee seller: **5% (min Rp1.000)** per transaksi selesai, tanpa biaya daftar/listing/bulanan — sama seperti model joinbareng
+  (persen mereka tidak dipublikasi; angka sementara di `config/fee.json`).
+- Payout: dana masuk "Saldo Saya" seller saat pesanan SELESAI; penarikan ke bank ≤ 1×24 jam kerja, min Rp50.000.
+
+## Halaman listing (ditiru)
+Kode produk `JSA-<id>`, harga, rating & jumlah ulasan, terjual, jumlah, keranjang / beli sekarang, kartu seller (rating, chat, lihat toko),
+badge perlindungan (escrow, refund saldo, garansi N hari, seller terverifikasi), statistik (dilihat, dalam antrian, % order sukses,
+waktu respon seller, terakhir diperbarui), jaminan penjual (garansi toko, batas kirim), tab Deskripsi / FAQ / Ulasan.
+Listing langsung tayang di katalog, kategori, dan pencarian internal tanpa iklan. Iklan berbayar (label "Iklan") = fitur tahap lanjut.
 
 ## Aturan chat & anti-pindah platform
 - Chat per pesanan tersimpan untuk bukti sengketa.

@@ -1,0 +1,37 @@
+{
+  "_sumber": "Harga publik joinbareng.com, dicek 2026-10-30. Hanya pembanding, bukan harga kita. Perbarui via skill riset-kompetitor.",
+  "patungan_per_slot": [
+    { "layanan": "Netflix Premium (4 user)", "harga": 64000, "periode": "bulan" },
+    { "layanan": "Netflix Premium (5 user)", "harga": 52000, "periode": "bulan" },
+    { "layanan": "Netflix host komunitas (4 user)", "harga": 27500, "periode": "bulan" },
+    { "layanan": "Spotify", "harga": 91000, "periode": "bulan" },
+    { "layanan": "YouTube Premium", "harga": 85000, "periode": "bulan" },
+    { "layanan": "Microsoft 365", "harga": 48000, "periode": "bulan" },
+    { "layanan": "Perplexity Pro", "harga": 74000, "periode": "bulan" },
+    { "layanan": "Google Gemini", "harga": 86000, "periode": "bulan" },
+    { "layanan": "GitHub Pro", "harga": 114000, "periode": "bulan" },
+    { "layanan": "Apple Music", "harga": 32000, "periode": "bulan" },
+    { "layanan": "Apple One Premiere", "harga": 79000, "periode": "bulan" },
+    { "layanan": "Amazon Prime Video", "harga": 33000, "periode": "bulan" },
+    { "layanan": "Max", "harga": 46000, "periode": "bulan" },
+    { "layanan": "Bstation Premium", "harga": 12000, "periode": "bulan" },
+    { "layanan": "WeTV VIP", "harga": 12000, "periode": "bulan" },
+    { "layanan": "beIN Sports Connect", "harga": 18000, "periode": "bulan" },
+    { "layanan": "GetContact Premium", "harga": 12000, "periode": "bulan" },
+    { "layanan": "Duolingo", "harga": 243000, "periode": "tahun" },
+    { "layanan": "CapCut Pro", "harga": 643000, "periode": "tahun" }
+  ],
+  "marketplace_contoh": [
+    { "produk": "Netflix premium 1 bulan", "harga": 13000 },
+    { "produk": "Canva via invite", "harga": 3000 },
+    { "produk": "Google AI Pro 1 tahun", "harga": 50000 },
+    { "produk": "Spotify Premium 1 bulan", "harga": 15000 },
+    { "produk": "Disney Plus Premium 1 bulan", "harga": 15000 }
+  ],
+  "jasa_bayar_contoh_usd": [
+    { "layanan": "Claude Pro", "usd": 20 },
+    { "layanan": "Claude Max 5x", "usd": 100 },
+    { "layanan": "Claude Max 20x", "usd": 200 },
+    { "layanan": "ChatGPT Plus", "usd": 20 }
+  ]
+}
