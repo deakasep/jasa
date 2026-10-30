@@ -41,6 +41,7 @@ Sumber kebenaran:
 5. Pakai skill di `.claude/skills/`: `proses-order`, `cek-renewal`, `komplain-garansi`, `update-katalog`, `proses-jasa-bayar`,
    `onboarding-seller`, `mediasi-sengketa`, `riset-kompetitor`, `qc-harian`, `qa-uji-alur`, `qc-listing-host`.
 6. Riset situs lain: hanya baca halaman publik (WebFetch dulu, Claude in Chrome bila perlu); jangan login/isi form/beli.
-7. Git: setelah push, PR langsung di-merge; jika check `QA` merah, perbaiki dulu sampai hijau baru merge.
+7. Git: branch utama dilindungi ruleset — kerja di branch baru → push → buka PR → merge (squash) begitu check `Cek repo` & `Platform`
+   hijau; jika merah, perbaiki dulu sampai hijau baru merge. Push langsung ke branch utama akan ditolak.
 8. Kode: uang = integer Rupiah; mutasi saldo hanya lewat ledger (`app/src/domain/ledger.ts`); setiap fitur baru wajib test
    (`cd app && npm test`); angka fee dibaca dari `config/fee.json`, tidak pernah ditulis di kode.

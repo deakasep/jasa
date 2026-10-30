@@ -29,10 +29,11 @@ Terakhir diperbarui: 2026-10-30 (sesi Claude Code). Perbarui file ini di akhir s
   API `quote`, `webhooks/tripay`, `webhooks/xendit`, `cron`, `health`. CI GitHub Actions `QA` (repo + app), error tampil sebagai anotasi.
 - Stack terbaru (via Dependabot, semua hijau): **Next.js 16, Prisma 7** (`prisma.config.ts` + adapter `pg`, client di `src/generated/prisma`),
   **TypeScript 7** (`"types": ["node"]` wajib), @types/node 26, actions v7. PR Dependabot: 6 merge, 2 digantikan migrasi Prisma 7.
+- **Branch protection aktif** (ruleset "main", 30 Okt): branch utama wajib lewat PR, check `Cek repo` + `Platform` harus hijau,
+  tidak bisa dihapus/force-push. Push langsung ke branch utama ditolak → selalu: branch baru → PR → merge saat hijau.
 - ClickUp folder **JASA – Patungan Premium** (ID di `docs/08-clickup.md`): 10 list, pengingat setup, roadmap, QA/QC.
 
 ## Langkah berikutnya (urut) — task ClickUp sudah dibuat untuk semua
-0. Pemilik: aktifkan **branch protection** GitHub (wajib check QA + CODEOWNERS).
 1. Pemilik: daftar **NIB** (OSS) → **PSE** Komdigi → akun payment gateway (Xendit/Tripay) mode sandbox.
 2. Pemilik: beli plan induk pertama (Netflix/YouTube Family), siapkan vault password + 2FA.
 3. Claude: sambungkan Xendit invoice (buat tagihan) + pengolah pesanan bersama untuk webhook Xendit; halaman checkout minimal.
