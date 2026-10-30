@@ -31,14 +31,17 @@ Terakhir diperbarui: 2026-10-30 (sesi Claude Code). Perbarui file ini di akhir s
   **TypeScript 7** (`"types": ["node"]` wajib), @types/node 26, actions v7. PR Dependabot: 6 merge, 2 digantikan migrasi Prisma 7.
 - **Branch protection aktif** (ruleset "main", 30 Okt): branch utama wajib lewat PR, check `Cek repo` + `Platform` harus hijau,
   tidak bisa dihapus/force-push. Push langsung ke branch utama ditolak → selalu: branch baru → PR → merge saat hijau.
+- **Pembayaran siap disambungkan** (30 Okt siang): pengolah pembayaran bersama Xendit+Tripay (`domain/pembayaran.ts` + `server/payments/proses.ts`;
+  nominal beda / pesanan kadaluarsa → masuk audit `pembayaran.perlu_tinjau`, tidak error), klien invoice Xendit & Tripay
+  (`server/payments/invoice.ts`, diuji dengan fetch palsu), seed katalog (`npm run db:seed`). Total 57 test.
 - ClickUp folder **JASA – Patungan Premium** (ID di `docs/08-clickup.md`): 10 list, pengingat setup, roadmap, QA/QC.
 
 ## Langkah berikutnya (urut) — task ClickUp sudah dibuat untuk semua
 1. Pemilik: daftar **NIB** (OSS) → **PSE** Komdigi → akun payment gateway (Xendit/Tripay) mode sandbox.
 2. Pemilik: beli plan induk pertama (Netflix/YouTube Family), siapkan vault password + 2FA.
-3. Claude: sambungkan Xendit invoice (buat tagihan) + pengolah pesanan bersama untuk webhook Xendit; halaman checkout minimal.
+3. Claude: **tinggal isi key sandbox** → uji invoice & webhook nyata; lalu halaman checkout minimal (kode sudah siap, menunggu akun gateway).
 4. Claude: dashboard admin (antrian aksi cron, batch, refund) dengan RBAC; eksekusi aksi cron (`?jalankan=1`) + notifikasi WA/email.
-5. Claude: migrasi database pertama + seed katalog dari `site/produk.json`.
+5. Claude: migrasi database pertama (`npm run db:migrate`) + `npm run db:seed` — menunggu DATABASE_URL (Supabase/Neon, gratis).
 6. QA rilis Tahap 1 (skill `qa-uji-alur`), lalu desain web (paling akhir).
 
 ## Kendala lingkungan yang diketahui
