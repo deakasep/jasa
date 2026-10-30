@@ -8,6 +8,12 @@ Terakhir diperbarui: 2026-10-30 (sesi Claude Code). Perbarui file ini di akhir s
 3. Target **enterprise** (`docs/21-enterprise.md`), kerjakan satu per satu, pakai Claude Code otomatis bila perlu.
 4. Pengecualian yang tidak ditiru: patungan akun AI pribadi/plan single-user (→ jasa bayar), konten dewasa, akun keuangan ber-KYC, ulasan palsu.
 5. Git: push → PR langsung di-merge bila check `QA` hijau; merah = perbaiki dulu.
+6. **Perintah pemilik di chat = persetujuan**; tidak ada langkah konfirmasi terpisah (30 Okt).
+7. Skill/plugin hanya yang aman, **bukan pihak ketiga**, dan berguna; dikunci commit di `.claude/VENDORED.md` (30 Okt).
+8. JASA dan CLAU AI **tidak dicampur** (repo, ClickUp folder "JASA – Patungan Premium" vs "CLAW AI"). JASA tiru joinbareng; CLAU tiru Sintra.
+9. **Backup di GitHub** (file ini) supaya akun Claude baru langsung nyambung. Akun GitHub: `deakasep`. Kalau sesi berhenti karena
+   batas kuota: sesi berikutnya / tugas terjadwal "Lanjutkan antrian Claude" melanjutkan dari **Antrian Claude** di bawah.
+10. Saat omzet besar → model fee diubah seperti Shopee (`docs/19` §Banding Shopee).
 
 ## INGAT: berapa persen yang kita dapat (detail `docs/19-pendapatan.md`, angka live: `python3 scripts/hitung.py pendapatan`)
 | Dari | Pilar | Fee |
@@ -53,6 +59,12 @@ Terakhir diperbarui: 2026-10-30 (sesi Claude Code). Perbarui file ini di akhir s
 4. Claude: dashboard admin (antrian aksi cron, batch, refund) dengan RBAC; eksekusi aksi cron (`?jalankan=1`) + notifikasi WA/email.
 5. Claude: migrasi database pertama (`npm run db:migrate`) + `npm run db:seed` — menunggu DATABASE_URL (Supabase/Neon, gratis).
 6. QA rilis Tahap 1 (skill `qa-uji-alur`), lalu desain web (paling akhir).
+
+## Antrian Claude (dikerjakan AI tanpa menunggu pemilik; urut — `[x]` + nomor PR bila selesai)
+- [ ] Siapkan halaman checkout minimal + dashboard admin (RBAC, antrian aksi cron, batch, refund) dengan data contoh, tanpa gateway nyata
+- [ ] Eksekusi aksi cron (`?jalankan=1`) + notifikasi WA/email (mode uji, tanpa kirim ke pihak luar)
+- [ ] Rekonsiliasi harian gateway ↔ ledger (skill `reconciliation`) sebagai fungsi domain + test
+Butuh pemilik dulu (bukan antrian): NIB/PSE/gateway sandbox, DATABASE_URL, kartu virtual, akuntan, keputusan kategori Joki/Top Up Login/Akun.
 
 ## Kendala lingkungan yang diketahui
 - Sesi cloud Claude: registry npm diblokir kebijakan jaringan (403) → test domain jalan dengan `node --experimental-strip-types --test`
