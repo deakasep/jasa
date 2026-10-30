@@ -10,7 +10,7 @@ Ulangi riset dengan skill `riset-kompetitor`.
 - Jam layanan mereka: CS chat Senin–Jumat 10.00–18.00, WhatsApp 08.00–16.00 WIB; tim jasa bayar 09.00–22.00 WIB.
   Kita tetapkan di `05-sop-admin.md` §Jam layanan.
 - Payment gateway masuk: **Tripay** (mitra PJP berizin BI). Invoice jasa bayar & pencairan seller: **Xendit**. Platform tidak menyimpan data kartu.
-- Klaim kepercayaan: rating 4,9/5, 12.000+ joiner, 1.000+ listing, 10.000+ transaksi jasa bayar, "zero permanent ban".
+- Klaim kepercayaan: rating 4,9/5, 12.000+ joiner, 1.000+ listing, 10.000+ transaksi jasa bayar, "zero permanent ban". Per pilar ada strip "10.000+ transaksi sukses · Rating 4,9/5 · Garansi 100% refund · Aktif 1–5 menit" → kita tiru sebagai strip otomatis dari data asli (`02` §Strip kepercayaan).
 
 ## 2. Lima pilar
 | Pilar | URL | Dokumen kita |

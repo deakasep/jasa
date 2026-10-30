@@ -28,6 +28,19 @@
 /perlindungan-pembeli, /help, /contact-us, /terms-and-conditions, /privacy-policy, /legalitas, /blog
 ```
 
+## Strip kepercayaan per pilar (ala joinbareng: "10.000+ transaksi sukses · Rating 4,9/5 · Garansi 100% refund · Aktif 1–5 menit")
+Ada di setiap pilar (Marketplace, Patungan, Jasa Bayar, Permintaan). **Angka dihitung otomatis dari data asli, tidak pernah ditulis tangan**
+(klaim palsu = pelanggaran UU 8/1999 Perlindungan Konsumen & pengecualian ulasan palsu `09` §10).
+
+| Badge | Sumber angka | Tampil jika | Sebelum syarat terpenuhi tampilkan |
+|---|---|---|---|
+| Transaksi sukses | jumlah pesanan status selesai per pilar, dibulatkan ke bawah (100+, 500+, 1.000+, 10.000+) | ≥ 100 transaksi | "Transaksi baru — dilindungi escrow" |
+| Rating | rata-rata ulasan asli pembeli terverifikasi (1 pesanan = maks 1 ulasan), 1 desimal + jumlah ulasan | ≥ 30 ulasan | sembunyikan |
+| Garansi refund | aturan S&K: Marketplace dana escrow kembali penuh bila seller telat/gagal kirim; Patungan batch tidak penuh/belum aktif; Jasa Bayar penyedia menolak; Permintaan ikut escrow marketplace | selalu, **dengan tautan syarat** ("Garansi 100% refund*" → `04` §refund) | — |
+| Kecepatan | median waktu bayar → aktif/terkirim 30 hari terakhir per pilar (Jasa Bayar target 1–5 menit, Patungan sesuai batch, Marketplace batas kirim seller) | ≥ 50 pesanan dalam 30 hari dan median ≤ target | "Target 1–5 menit" (label *target*, bukan klaim) |
+
+QC mingguan (`16-qa-qc.md`) mencocokkan angka strip dengan database; selisih = temuan QC.
+
 ## Navigasi
 `Beranda | Katalog | Cara Kerja | FAQ | Cek Pesanan | Hubungi Kami`
 
