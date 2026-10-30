@@ -1,5 +1,9 @@
 # Changelog
 
+- 2026-10-30 (7): audit kelengkapan tiruan joinbareng → celah ditutup: 19 kategori marketplace + hub game + urutan/paginasi,
+  alur Top Up Login, Papan Penawaran Custom, struktur blog, metode bayar (`docs/22`, `data/kategori-marketplace.json`).
+  Joki, Top Up Login, Akun disembunyikan sampai pemilik memutuskan (risiko ToS game & keamanan akun).
+
 - 2026-10-30 (6): pengolah pembayaran bersama Xendit+Tripay (antrian tinjau untuk nominal tidak cocok), klien invoice Xendit/Tripay,
   seed katalog ke database. 57 test.
 
