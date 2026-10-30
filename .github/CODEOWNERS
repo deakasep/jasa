@@ -1,0 +1,7 @@
+# Perubahan angka fee, katalog, aturan, dan alur uang wajib ditinjau pemilik.
+*                         @deakasep
+/config/                  @deakasep
+/site/produk.json         @deakasep
+/docs/04-rules-syarat-ketentuan.md @deakasep
+/app/src/domain/          @deakasep
+/app/prisma/              @deakasep

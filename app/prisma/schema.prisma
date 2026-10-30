@@ -1,0 +1,524 @@
+// Skema database JASA — PostgreSQL. Uang = Int (Rupiah). Saldo TIDAK disimpan sebagai kolom; dihitung dari JournalLine (ledger).
+// Data rahasia (KTP, nomor rekening, kredensial) TIDAK disimpan polos: hanya referensi ke storage/vault terenkripsi.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  owner
+  finance
+  admin_ops
+  cs
+  kyc_reviewer
+  host
+  seller
+  buyer
+}
+
+enum Periode {
+  bulanan
+  tahunan
+}
+
+enum VerifStatus {
+  menunggu
+  terverifikasi
+  ditolak
+}
+
+enum BatchStatus {
+  BUKA
+  PENUH
+  AKTIF
+  BATAL
+}
+
+enum JoinRequestStatus {
+  MENUNGGU
+  DITERIMA
+  DITOLAK
+  DIBATALKAN
+  KADALUARSA
+}
+
+enum SubscriptionStatus {
+  MENUNGGU_BAYAR
+  MENUNGGU_BATCH
+  AKTIF
+  H3_RENEWAL
+  DIPERPANJANG
+  LEPAS
+  DICABUT
+  REFUND
+}
+
+enum OrderStatus {
+  MENUNGGU_BAYAR
+  DIBAYAR
+  DIKIRIM
+  SENGKETA
+  SELESAI
+  DIBATALKAN
+  KADALUARSA
+}
+
+enum JasaBayarStatus {
+  MENUNGGU_BAYAR
+  DIBAYAR
+  DIPROSES
+  SELESAI
+  GAGAL
+  REFUND
+}
+
+enum PaymentStatus {
+  MENUNGGU
+  LUNAS
+  GAGAL
+  KADALUARSA
+}
+
+enum Gateway {
+  xendit
+  tripay
+  dompet
+}
+
+model User {
+  id               String         @id @default(cuid())
+  email            String         @unique
+  emailVerifiedAt  DateTime?
+  nama             String
+  alias            String?
+  phone            String?        @unique
+  phoneVerifiedAt  DateTime?
+  tampilkanPhone   Boolean        @default(true)
+  fotoUrl          String?
+  tanggalLahir     DateTime?
+  roles            UserRole[]
+  trustScore       Int            @default(0)
+  menerimaPromo    Boolean        @default(true)
+  createdAt        DateTime       @default(now())
+  deletedAt        DateTime?
+  kycChecks        KycCheck[]
+  bankAccount      BankAccount?
+  hostOffers       HostOffer[]
+  subscriptions    Subscription[]
+  joinRequests     JoinRequest[]
+  listings         Listing[]      @relation("SellerListings")
+  ordersAsBuyer    Order[]        @relation("BuyerOrders")
+  jasaBayarOrders  JasaBayarOrder[]
+  referralCode     ReferralCode?
+  waitlists        Waitlist[]
+  requestPosts     RequestPost[]
+  payouts          Payout[]
+}
+
+model UserRole {
+  userId    String
+  role      Role
+  grantedBy String?
+  grantedAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@id([userId, role])
+}
+
+model KycCheck {
+  id           String      @id @default(cuid())
+  userId       String
+  jenisDokumen String // ktp | paspor | izin_tinggal | sim
+  fileRef      String // referensi storage privat terenkripsi
+  status       VerifStatus @default(menunggu)
+  alasan       String?
+  diperiksaOleh String?
+  diperiksaAt  DateTime?
+  createdAt    DateTime    @default(now())
+  user         User        @relation(fields: [userId], references: [id])
+
+  @@index([status, createdAt])
+}
+
+model BankAccount {
+  userId          String      @id
+  bank            String
+  nomorRef        String // token/ID terenkripsi, bukan nomor polos
+  nomorTerakhir4  String
+  buktiRef        String
+  status          VerifStatus @default(menunggu)
+  alasan          String?
+  verifiedAt      DateTime?
+  user            User        @relation(fields: [userId], references: [id])
+}
+
+model Service {
+  id           String     @id // slug, mis. "netflix"
+  nama         String
+  kategori     String
+  akses        String
+  aturan       String[]
+  multiUserResmi Boolean  @default(true) // plan yang ToS-nya mengizinkan multi-user
+  aktif        Boolean    @default(true)
+  packages     Package[]
+  hostOffers   HostOffer[]
+  waitlists    Waitlist[]
+}
+
+model Package {
+  kode            String    @id // mis. "NFX-4"
+  serviceId       String
+  slot            Int
+  periode         Periode
+  hargaPlanResmi  Int
+  hargaPerSlot    Int
+  autoProvision   Boolean   @default(false)
+  service         Service   @relation(fields: [serviceId], references: [id])
+  batches         Batch[]
+}
+
+model Batch {
+  id          String         @id @default(cuid())
+  packageKode String
+  kapasitas   Int
+  status      BatchStatus    @default(BUKA)
+  dibukaAt    DateTime       @default(now())
+  aktifAt     DateTime?
+  credentialVaultRef String? // referensi vault, bukan password
+  package     Package        @relation(fields: [packageKode], references: [kode])
+  subscriptions Subscription[]
+
+  @@index([status])
+}
+
+model HostOffer {
+  id               String        @id @default(cuid())
+  hostId           String
+  serviceId        String
+  slotDibagi       Int
+  periode          Periode
+  hargaPerSlot     Int
+  publik           Boolean       @default(true)
+  penerimaanInstan Boolean       @default(true)
+  fakturRef        String?
+  fakturTerverifikasi Boolean    @default(false)
+  aktif            Boolean       @default(true)
+  credentialVaultRef String?
+  createdAt        DateTime      @default(now())
+  host             User          @relation(fields: [hostId], references: [id])
+  service          Service       @relation(fields: [serviceId], references: [id])
+  joinRequests     JoinRequest[]
+  subscriptions    Subscription[]
+}
+
+model JoinRequest {
+  id        String            @id @default(cuid())
+  offerId   String
+  joinerId  String
+  status    JoinRequestStatus @default(MENUNGGU)
+  createdAt DateTime          @default(now())
+  decidedAt DateTime?
+  offer     HostOffer         @relation(fields: [offerId], references: [id])
+  joiner    User              @relation(fields: [joinerId], references: [id])
+
+  @@index([status, createdAt])
+}
+
+model Subscription {
+  id          String             @id @default(cuid())
+  kode        String             @unique // JSA-YYMMDD-NN
+  userId      String
+  batchId     String?
+  hostOfferId String?
+  slotKode    String?
+  periode     Periode
+  hargaSlot   Int
+  diskon      Int                @default(0)
+  feeJoiner   Int
+  bulanKe     Int                @default(1)
+  status      SubscriptionStatus @default(MENUNGGU_BAYAR)
+  mulaiAt     DateTime?
+  habisAt     DateTime?
+  createdAt   DateTime           @default(now())
+  user        User               @relation(fields: [userId], references: [id])
+  batch       Batch?             @relation(fields: [batchId], references: [id])
+  hostOffer   HostOffer?         @relation(fields: [hostOfferId], references: [id])
+
+  @@index([status, habisAt])
+}
+
+model Listing {
+  id            String   @id @default(cuid())
+  sellerId      String
+  kategori      String
+  judul         String
+  deskripsi     String
+  harga         Int
+  stok          Int
+  batasKirimJam Int      @default(24)
+  garansiHari   Int      @default(0)
+  kirimOtomatis Boolean  @default(false)
+  status        String   @default("aktif") // aktif | ditinjau | diturunkan
+  dilihat       Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  seller        User     @relation("SellerListings", fields: [sellerId], references: [id])
+  orders        Order[]
+  stockItems    ListingStock[]
+}
+
+model ListingStock {
+  id              String  @id @default(cuid())
+  listingId       String
+  payloadVaultRef String // kode voucher dsb. terenkripsi
+  orderId         String? @unique
+  listing         Listing @relation(fields: [listingId], references: [id])
+}
+
+model Order {
+  id            String      @id @default(cuid())
+  kode          String      @unique // MKT-YYMMDD-NNN
+  buyerId       String
+  listingId     String
+  qty           Int         @default(1)
+  total         Int
+  feeSeller     Int         @default(0)
+  refund        Int         @default(0)
+  status        OrderStatus @default(MENUNGGU_BAYAR)
+  metodeBayar   String
+  batasKirimJam Int
+  garansiHari   Int
+  createdAt     DateTime    @default(now())
+  dibayarAt     DateTime?
+  responSellerAt DateTime?
+  dikirimAt     DateTime?
+  selesaiAt     DateTime?
+  buyer         User        @relation("BuyerOrders", fields: [buyerId], references: [id])
+  listing       Listing     @relation(fields: [listingId], references: [id])
+  messages      ChatMessage[]
+  dispute       Dispute?
+  review        Review?
+
+  @@index([status, createdAt])
+}
+
+model ChatMessage {
+  id        String   @id @default(cuid())
+  orderId   String
+  senderId  String
+  body      String // sudah melewati sensorChat
+  disensor  Boolean  @default(false)
+  pelanggaran String[]
+  lampiranRef String?
+  createdAt DateTime @default(now())
+  order     Order    @relation(fields: [orderId], references: [id])
+}
+
+model Dispute {
+  id            String    @id @default(cuid())
+  orderId       String    @unique
+  kategori      String
+  buktiRefs     String[]
+  putusan       String? // KIRIM_ULANG | REFUND_SEBAGIAN | REFUND_PENUH | DANA_KE_PENJUAL
+  nominalRefund Int?
+  decidedBy     String?
+  decidedAt     DateTime?
+  createdAt     DateTime  @default(now())
+  order         Order     @relation(fields: [orderId], references: [id])
+}
+
+model Review {
+  id           String   @id @default(cuid())
+  orderId      String   @unique
+  rating       Int
+  komentar     String?
+  balasanSeller String?
+  createdAt    DateTime @default(now())
+  order        Order    @relation(fields: [orderId], references: [id])
+}
+
+model JasaBayarOrder {
+  id            String          @id @default(cuid())
+  kode          String          @unique // JBY-YYMMDD-NN
+  buyerId       String
+  layanan       String
+  emailAkunRef  String // email akun layanan milik pembeli (disimpan terenkripsi bila perlu)
+  hargaUsd      Decimal         @db.Decimal(12, 2)
+  kursMid       Decimal         @db.Decimal(12, 2)
+  kursJual      Decimal         @db.Decimal(12, 2)
+  hargaRp       Int
+  spreadRp      Int
+  fee           Int
+  total         Int
+  berlakuSampai DateTime
+  berulang      Boolean         @default(false)
+  status        JasaBayarStatus @default(MENUNGGU_BAYAR)
+  buktiRef      String?
+  catatan       String?
+  createdAt     DateTime        @default(now())
+  buyer         User            @relation(fields: [buyerId], references: [id])
+}
+
+model Payment {
+  id          String        @id @default(cuid())
+  gateway     Gateway
+  externalId  String // id invoice/transaksi di gateway
+  merchantRef String // kode pesanan internal
+  nominal     Int
+  status      PaymentStatus @default(MENUNGGU)
+  rawPayload  Json?
+  createdAt   DateTime      @default(now())
+  paidAt      DateTime?
+
+  @@unique([gateway, externalId])
+  @@index([merchantRef])
+}
+
+// ---------- Ledger berpasangan ----------
+model Journal {
+  id         String        @id @default(cuid())
+  ref        String        @unique // idempotensi: "bayar:MKT-...", "lepas:...", dst.
+  keterangan String
+  createdAt  DateTime      @default(now())
+  createdBy  String?
+  lines      JournalLine[]
+}
+
+model JournalLine {
+  id        String  @id @default(cuid())
+  journalId String
+  akun      String // kas:gateway | escrow:<id> | dompet:<userId> | saldo_penjual:<userId> | pendapatan:<x> | biaya:<x> | hutang_penyedia:<x>
+  debit     Int     @default(0)
+  kredit    Int     @default(0)
+  journal   Journal @relation(fields: [journalId], references: [id])
+
+  @@index([akun])
+}
+
+model Payout {
+  id          String   @id @default(cuid())
+  sellerId    String
+  nominal     Int
+  status      String   @default("diajukan") // diajukan | disetujui | dikirim | gagal
+  diajukanOleh String
+  disetujuiOleh String?
+  refGateway  String?
+  createdAt   DateTime @default(now())
+  disetujuiAt DateTime?
+  seller      User     @relation(fields: [sellerId], references: [id])
+}
+
+model RefundRequest {
+  id             String   @id @default(cuid())
+  objek          String // "subscription:<id>" | "order:<id>" | "jasabayar:<id>"
+  pemohonId      String
+  alasan         String
+  buktiRefs      String[]
+  deskripsi      String
+  status         String   @default("menunggu") // menunggu | disetujui | ditolak
+  nominal        Int?
+  keputusan      String?
+  diputusOleh    String?
+  createdAt      DateTime @default(now())
+  diputusAt      DateTime?
+}
+
+// ---------- Promo, referral, waitlist ----------
+model PromoCode {
+  kode          String   @id
+  tipe          String // persen | nominal
+  nilai         Decimal  @db.Decimal(12, 4)
+  kuota         Int
+  terpakai      Int      @default(0)
+  minTransaksi  Int      @default(0)
+  maksDiskon    Int?
+  berlakuSampai DateTime
+  redemptions   PromoRedemption[]
+}
+
+model PromoRedemption {
+  kode      String
+  userId    String
+  objek     String
+  diskon    Int
+  createdAt DateTime  @default(now())
+  promo     PromoCode @relation(fields: [kode], references: [kode])
+
+  @@id([kode, userId])
+}
+
+model ReferralCode {
+  kode        String               @id
+  userId      String               @unique
+  user        User                 @relation(fields: [userId], references: [id])
+  activations ReferralActivation[]
+}
+
+model ReferralActivation {
+  id            String       @id @default(cuid())
+  kode          String
+  penggunaBaruId String      @unique
+  bonus         Int
+  status        String       @default("menunggu_transaksi") // menunggu_transaksi | dibayar | ditolak
+  createdAt     DateTime     @default(now())
+  referral      ReferralCode @relation(fields: [kode], references: [kode])
+}
+
+model Waitlist {
+  serviceId String
+  userId    String
+  createdAt DateTime @default(now())
+  service   Service  @relation(fields: [serviceId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@id([serviceId, userId])
+}
+
+model RequestPost {
+  id        String   @id @default(cuid())
+  buyerId   String
+  judul     String
+  kategori  String
+  deskripsi String
+  budgetMin Int
+  budgetMax Int
+  status    String   @default("ditinjau") // ditinjau | aktif | selesai | kadaluarsa | ditolak
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  buyer     User     @relation(fields: [buyerId], references: [id])
+  offers    OfferPost[]
+}
+
+model OfferPost {
+  id        String       @id @default(cuid())
+  requestId String?
+  sellerId  String
+  judul     String
+  harga     Int
+  catatan   String?
+  status    String       @default("aktif")
+  createdAt DateTime     @default(now())
+  request   RequestPost? @relation(fields: [requestId], references: [id])
+}
+
+// ---------- Audit (append-only; cabut hak UPDATE/DELETE di level database) ----------
+model AuditLog {
+  id        String   @id @default(cuid())
+  aktorId   String
+  peran     String[]
+  aksi      String
+  objek     String
+  sebelum   Json?
+  sesudah   Json?
+  alasan    String?
+  ip        String?
+  at        DateTime @default(now())
+
+  @@index([objek])
+  @@index([aktorId, at])
+}

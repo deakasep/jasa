@@ -25,6 +25,12 @@ dengan kata sendiri. Tampilan web dibuat terakhir. Panduan kerja Claude: `CLAUDE
 | `docs/16-qa-qc.md` | QA otomatis & manual, QC harian/mingguan, KPI, tindakan korektif |
 | `docs/17-kebijakan-privasi.md` | Draf kebijakan privasi (UU PDP) |
 | `docs/18-faq.md` | FAQ pembeli, joiner, seller |
+| `docs/19-pendapatan.md` | **Berapa persen kita dapat dari pembeli & penjual** |
+| `docs/20-pusat-bantuan.md` | Pusat bantuan (63 artikel joinbareng ditiru) |
+| `docs/21-enterprise.md` | RBAC, audit, keamanan, backup/DR, insiden, kepatuhan |
+| `docs/adr/`, `docs/postmortem/` | Catatan keputusan & template post-mortem |
+| `STATUS.md` | **Backup progres** — baca pertama tiap sesi |
+| `app/` | Platform Next.js + Prisma: domain uang & alur + 42 test, webhook, cron |
 | `config/fee.json` | Semua fee & timer (sama dengan joinbareng) |
 | `data/harga-pembanding.json` | Harga publik joinbareng untuk pembanding |
 | `scripts/hitung.py` | Kalkulator fee patungan / jasa bayar / seller |
@@ -34,7 +40,7 @@ dengan kata sendiri. Tampilan web dibuat terakhir. Panduan kerja Claude: `CLAUDE
 | `.claude/skills/` | 11 skill: order, renewal, komplain, katalog, jasa bayar, seller, sengketa, riset, QC harian, QA alur, QC listing/host |
 
 ## Mulai cepat
-1. `python3 scripts/qa_check.py` → harus "SEMUA CEK LULUS".
+1. Baca `STATUS.md`. Lalu `python3 scripts/qa_check.py` → harus "SEMUA CEK LULUS"; `cd app && npm test`.
 2. Cek harga plan resmi di `site/produk.json` (skill `update-katalog`).
 3. Hitung harga: `python3 scripts/hitung.py patungan 50000 bulanan` · `python3 scripts/hitung.py jasa-bayar 20 16500`.
 4. Jalankan SOP `docs/05-sop-admin.md`; pengingat ada di ClickUp folder **JASA – Patungan Premium**.

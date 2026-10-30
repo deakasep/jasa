@@ -94,7 +94,7 @@ def cek_referensi():
 def cek_rahasia():
     for p in ROOT.rglob("*"):
         rel = p.relative_to(ROOT).as_posix()
-        if not p.is_file() or rel.startswith(".git/") or rel in LEWATI_RAHASIA or p.suffix not in {".md", ".json", ".html", ".py", ".yml", ".txt"}:
+        if not p.is_file() or rel.startswith(".git/") or rel in LEWATI_RAHASIA or p.suffix not in {".md", ".json", ".html", ".py", ".yml", ".txt", ".ts", ".tsx", ".mjs", ".prisma"} or "node_modules" in rel:
             continue
         isi = p.read_text(encoding="utf-8", errors="ignore")
         for pola, label in POLA_RAHASIA:

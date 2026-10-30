@@ -2,8 +2,14 @@ name: QA
 on:
   push:
   pull_request:
+
+concurrency:
+  group: qa-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  qa:
+  repo:
+    name: Cek repo (docs, fee, katalog, rahasia)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -14,5 +20,31 @@ jobs:
         run: python3 scripts/qa_check.py
       - name: Uji kalkulator fee
         run: |
-          python3 scripts/hitung.py patungan 50000 bulanan
+          python3 scripts/hitung.py patungan 46500 bulanan
+          python3 scripts/hitung.py host 46500 bulanan
           python3 scripts/hitung.py jasa-bayar 100 16000
+          python3 scripts/hitung.py pendapatan
+
+  app:
+    name: Platform (Prisma, typecheck, test, build)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    env:
+      DATABASE_URL: postgresql://ci:ci@localhost:5432/ci
+      NEXT_TELEMETRY_DISABLED: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm install --no-audit --no-fund
+      - name: Validasi skema Prisma
+        run: npx prisma validate && npx prisma generate
+      - name: Test domain (node:test)
+        run: npm test
+      - name: Typecheck
+        run: npx tsc --noEmit
+      - name: Build Next.js
+        run: npm run build

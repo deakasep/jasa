@@ -2,6 +2,10 @@
 
 Bahasa: balas pemilik dalam Bahasa Indonesia santai, jelas, singkat.
 
+## Mulai & akhiri sesi (backup ingatan)
+- **Mulai**: baca `STATUS.md` (keputusan, persen pendapatan, langkah berikutnya) — jangan mulai dari nol.
+- **Akhiri**: perbarui `STATUS.md` + `docs/CHANGELOG.md`, jalankan QA, commit & push.
+
 ## Konteks
 Bisnis digital yang **meniru penuh struktur, mekanisme, aturan, dan fee joinbareng.com** (keputusan pemilik 2026-10-30);
 tampilan web dibuat sendiri paling akhir. 5 pilar: **Patungan** (batch plan resmi + grup host), **Jasa Bayar**, **Marketplace escrow**,
@@ -20,6 +24,9 @@ Sumber kebenaran:
 - Arsitektur teknis & roadmap: `docs/14-arsitektur-teknis.md`
 - **QA & QC**: `docs/16-qa-qc.md` · cek otomatis: `scripts/qa_check.py` (GitHub Actions `QA`)
 - Template pesan: `templates/pesan-whatsapp.md`
+- **Persen pendapatan (pembeli vs penjual)**: `docs/19-pendapatan.md` · Pusat bantuan (63 artikel ditiru): `docs/20-pusat-bantuan.md`
+- **Standar enterprise** (RBAC, audit, keamanan, backup/DR, insiden, kepatuhan): `docs/21-enterprise.md` · keputusan: `docs/adr/`
+- **Platform** (Next.js + Prisma, domain murni + test): `app/` — `app/README.md`
 
 ## Aturan
 1. Jangan pernah menyimpan password/email akun pelanggan, akun induk, data KTP/KYC, nomor kartu atau rekening di repo
@@ -35,3 +42,5 @@ Sumber kebenaran:
    `onboarding-seller`, `mediasi-sengketa`, `riset-kompetitor`, `qc-harian`, `qa-uji-alur`, `qc-listing-host`.
 6. Riset situs lain: hanya baca halaman publik (WebFetch dulu, Claude in Chrome bila perlu); jangan login/isi form/beli.
 7. Git: setelah push, PR langsung di-merge; jika check `QA` merah, perbaiki dulu sampai hijau baru merge.
+8. Kode: uang = integer Rupiah; mutasi saldo hanya lewat ledger (`app/src/domain/ledger.ts`); setiap fitur baru wajib test
+   (`cd app && npm test`); angka fee dibaca dari `config/fee.json`, tidak pernah ditulis di kode.
