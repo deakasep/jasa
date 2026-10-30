@@ -1,6 +1,7 @@
 {
-  "_sumber": "docs/22-marketplace-kategori.md (joinbareng.com/jual-beli, dibaca 2026-10-30)",
+  "_sumber": "docs/22-marketplace-kategori.md (joinbareng.com/jual-beli, dibaca 2026-10-30) · game fokus, rak beranda & Rekomendasi: keputusan pemilik 2026-10-31 (docs/22 §6).",
   "urutan": [
+    "rekomendasi",
     "terpopuler",
     "termurah",
     "terbaru",
@@ -160,5 +161,118 @@
       "perlu_keputusan_pemilik": false,
       "kredensial_lewat_chat": false
     }
-  ]
+  ],
+  "rekomendasi": {
+    "_catatan": "Skor 0..1 per listing, tanpa iklan berbayar. Bobot dijumlah = 1. Listing seller dengan skor kepercayaan < min tidak masuk tab Rekomendasi.",
+    "bobot": {
+      "penjualan_30_hari": 0.4,
+      "rating": 0.3,
+      "skor_kepercayaan_seller": 0.2,
+      "kecepatan_respon": 0.1
+    },
+    "rating_prior": 4.0,
+    "rating_prior_bobot": 10,
+    "respon_ideal_menit": 5,
+    "respon_maks_menit": 60,
+    "skor_kepercayaan_min": 50
+  },
+  "game_fokus": {
+    "_catatan": "Hanya game paling banyak dimainkan di Indonesia (survei APJII 2026: Mobile Legends 40,5%, Free Fire 24,2%, Roblox 11,3%, PUBG 9,3%, FIFA/EA FC Mobile 2,3%, Minecraft 1,8%; Brawl Stars trending Sep 2026). Game lain ditolak saat listing; review tiap kuartal.",
+    "game": [
+      {
+        "nama": "Mobile Legends: Bang Bang",
+        "slug": "mobile-legends",
+        "kategori": [
+          "top-up",
+          "voucher-code",
+          "item"
+        ]
+      },
+      {
+        "nama": "Free Fire",
+        "slug": "free-fire",
+        "kategori": [
+          "top-up",
+          "voucher-code",
+          "item"
+        ]
+      },
+      {
+        "nama": "Roblox",
+        "slug": "roblox",
+        "kategori": [
+          "top-up",
+          "rbl-games",
+          "voucher-code"
+        ],
+        "experience": [
+          "Grow a Garden",
+          "Blox Fruits",
+          "Adopt Me!",
+          "Brookhaven RP",
+          "Murder Mystery 2"
+        ]
+      },
+      {
+        "nama": "PUBG Mobile",
+        "slug": "pubg-mobile",
+        "kategori": [
+          "top-up",
+          "voucher-code",
+          "item"
+        ]
+      },
+      {
+        "nama": "EA SPORTS FC Mobile",
+        "slug": "ea-fc-mobile",
+        "kategori": [
+          "top-up",
+          "koin-game"
+        ]
+      },
+      {
+        "nama": "Minecraft",
+        "slug": "minecraft",
+        "kategori": [
+          "game-key",
+          "voucher-code"
+        ]
+      },
+      {
+        "nama": "Brawl Stars",
+        "slug": "brawl-stars",
+        "kategori": [
+          "top-up"
+        ]
+      }
+    ]
+  },
+  "rak_beranda": [
+    {
+      "judul": "Trending Bulan Ini",
+      "sumber": "otomatis: penjualan 30 hari semua kategori aktif",
+      "maks": 12
+    },
+    {
+      "judul": "Top Up Game Favorit",
+      "sumber": "top-up + voucher-code untuk game_fokus",
+      "maks": 12
+    },
+    {
+      "judul": "Gamepass Roblox",
+      "sumber": "rbl-games, jenis gamepass",
+      "maks": 12
+    },
+    {
+      "judul": "Item & Pets Roblox",
+      "sumber": "rbl-games, jenis item/pet (Grow a Garden, Adopt Me!, Blox Fruits)",
+      "maks": 12
+    },
+    {
+      "judul": "Akun Premium & Streaming",
+      "sumber": "streaming + aplikasi-software",
+      "maks": 12
+    }
+  ],
+  "_rak_tidak_ditiru": "Gift Item & Pets dari banyak game kecil (Zepeto, Toram, dll.) dan rak 'Lainnya' tidak ditiru — item dibatasi ke game_fokus."
 }

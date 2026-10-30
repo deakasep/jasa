@@ -13,6 +13,9 @@ Terakhir diperbarui: 2026-10-31 (sesi Claude Code). Perbarui file ini di akhir s
 8. JASA dan CLAU AI **tidak dicampur** (repo, ClickUp folder "JASA – Patungan Premium" vs "CLAW AI"). JASA tiru joinbareng; CLAU tiru Sintra.
 9. **Backup di GitHub** (file ini) supaya akun Claude baru langsung nyambung. Akun GitHub: `deakasep`. Kalau sesi berhenti karena
    batas kuota: sesi berikutnya / tugas terjadwal "Lanjutkan antrian Claude" melanjutkan dari **Antrian Claude** di bawah.
+11. **Tanpa kartu kredit/debit** — hanya QRIS, VA, e-wallet, Indomaret/Alfamart lewat Xendit/Tripay (`config/pembayaran.json`). Situs **Bahasa Indonesia saja**.
+    Marketplace game **ramping**: 7 game paling laku (ML, FF, Roblox, PUBG, EA FC, Minecraft, Brawl Stars), tab **Rekomendasi**, schema.org + piksel iklan
+    setelah persetujuan cookie (31 Okt, `docs/22` §6, `docs/24` §3b).
 10. Saat omzet besar → model fee diubah seperti Shopee (`docs/19` §Banding Shopee).
 
 ## INGAT: berapa persen yang kita dapat (detail `docs/19-pendapatan.md`, angka live: `python3 scripts/hitung.py pendapatan`)
@@ -52,6 +55,8 @@ Terakhir diperbarui: 2026-10-31 (sesi Claude Code). Perbarui file ini di akhir s
   (artikel fee masih versi 29/05/2026; fee seller marketplace tetap tidak dipublikasi). Celah ditutup di `docs/24`: Siaran Pers,
   Temukan Kami (akun resmi + tools gratis SEO + schema.org), blok identitas & lowongan di Hubungi Kami, daftar kini Google + email saja,
   tombol Ingatkan seller/Batalkan & refund/Ada masalah?, tab Rekomendasi, rak beranda, daftar metode bayar, klaim Jasa Bayar 2.370+ produk.
+- **Keputusan 31 Okt diterapkan**: `config/pembayaran.json` + `domain/metodeBayar.ts` (invoice Xendit hanya kanal lokal, Tripay tolak kanal kartu),
+  `domain/rekomendasi.ts` (tab Rekomendasi + tolak listing game di luar 7 game fokus), privasi §9 cookie & piksel. 113 test.
 - ClickUp folder **JASA – Patungan Premium** (ID di `docs/08-clickup.md`): 10 list, pengingat setup, roadmap, QA/QC.
 
 - **Keputusan 30 Okt:** omzet besar → model fee diubah seperti Shopee (pemicu & rincian `docs/19` §Banding Shopee).

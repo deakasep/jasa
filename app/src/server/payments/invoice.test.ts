@@ -25,6 +25,24 @@ test("xendit: kirim body & auth benar, kembalikan url bayar", async () => {
   assert.equal(body.invoice_duration, 1800);
 });
 
+test("xendit: halaman bayar hanya metode lokal, tanpa kartu kredit", async () => {
+  const { f, panggilan } = palsu({ id: "inv_2", invoice_url: "https://checkout.xendit.co/y" });
+  await buatTagihanXendit(minta, { secretKey: "x" }, f);
+  const kanal: string[] = JSON.parse(panggilan[0].init.body).payment_methods;
+  assert.ok(kanal.includes("QRIS") && kanal.includes("BCA") && kanal.includes("INDOMARET"));
+  assert.ok(!kanal.some((k) => /CARD/.test(k)));
+});
+
+test("tripay: kanal kartu kredit / tidak terdaftar ditolak sebelum ke gateway", async () => {
+  const { f, panggilan } = palsu({ success: true, data: { reference: "T", checkout_url: "u" } });
+  const k = { apiKey: "a", privateKey: "b", merchantCode: "c", mode: "sandbox" as const };
+  await assert.rejects(buatTagihanTripay(minta, { ...k, metode: "CC" }, f), /tidak diizinkan/);
+  await assert.rejects(buatTagihanTripay(minta, { ...k, metode: "XYZVA" }, f), /tidak diizinkan/);
+  assert.equal(panggilan.length, 0);
+  await buatTagihanTripay(minta, { ...k, metode: "BRIVA" }, f);
+  assert.equal(JSON.parse(panggilan[0].init.body).method, "BRIVA");
+});
+
 test("xendit: tolakan gateway & input salah jadi error jelas", async () => {
   const { f } = palsu({ message: "INVALID_API_KEY" }, false);
   await assert.rejects(buatTagihanXendit(minta, { secretKey: "x" }, f), /INVALID_API_KEY/);

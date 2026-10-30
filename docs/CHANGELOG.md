@@ -1,5 +1,9 @@
 # Changelog
 
+- 2026-10-31 (2): keputusan pemilik — tanpa kartu kredit (`config/pembayaran.json`, invoice Xendit dibatasi kanal lokal, Tripay tolak kanal kartu);
+  Bahasa Indonesia saja; marketplace game dibatasi 7 game paling laku di Indonesia (APJII 2026) + tab Rekomendasi + rak beranda ramping;
+  schema.org & piksel iklan setelah persetujuan cookie. Test 108 → 113.
+
 - 2026-10-31: audit ulang semua menu footer joinbareng lewat browser. Fee dicek ulang — tidak berubah. Dokumen baru `24-audit-menu-footer.md`
   (Siaran Pers, Temukan Kami, Hubungi Kami, daftar Google+email, tombol perlindungan pembeli, temuan beranda). Sitemap `02`, `07`, `09`, `10`, `20` diperbarui.
 

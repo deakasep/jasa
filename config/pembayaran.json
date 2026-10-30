@@ -1,0 +1,25 @@
+{
+  "_sumber": "Keputusan pemilik 2026-10-31: tanpa kartu kredit/debit, hanya metode lokal lewat payment gateway Indonesia berizin BI (Xendit, Tripay). Ubah di sini saja; catat di docs/CHANGELOG.md.",
+  "kartu_diizinkan": false,
+  "_alasan_kartu": "Kartu kredit rawan chargeback & fraud kartu curian di produk digital (dana sudah diteruskan ke seller/penyedia); metode lokal tidak bisa dibatalkan sepihak.",
+  "metode": [
+    { "id": "qris", "nama": "QRIS (semua e-wallet & m-banking)", "jenis": "qris", "xendit": "QRIS", "tripay": "QRIS" },
+    { "id": "va_bca", "nama": "Virtual Account BCA", "jenis": "va", "xendit": "BCA", "tripay": "BCAVA" },
+    { "id": "va_bni", "nama": "Virtual Account BNI", "jenis": "va", "xendit": "BNI", "tripay": "BNIVA" },
+    { "id": "va_bri", "nama": "Virtual Account BRI", "jenis": "va", "xendit": "BRI", "tripay": "BRIVA" },
+    { "id": "va_mandiri", "nama": "Virtual Account Mandiri", "jenis": "va", "xendit": "MANDIRI", "tripay": "MANDIRIVA" },
+    { "id": "va_permata", "nama": "Virtual Account Permata", "jenis": "va", "xendit": "PERMATA", "tripay": "PERMATAVA" },
+    { "id": "va_bsi", "nama": "Virtual Account BSI", "jenis": "va", "xendit": "BSI", "tripay": "BSIVA" },
+    { "id": "va_cimb", "nama": "Virtual Account CIMB Niaga", "jenis": "va", "xendit": "CIMB", "tripay": "CIMBVA" },
+    { "id": "va_bjb", "nama": "Virtual Account BJB", "jenis": "va", "xendit": "BJB", "tripay": null },
+    { "id": "va_sampoerna", "nama": "Virtual Account Bank Sahabat Sampoerna", "jenis": "va", "xendit": "SAHABAT_SAMPOERNA", "tripay": null },
+    { "id": "ew_dana", "nama": "DANA", "jenis": "ewallet", "xendit": "DANA", "tripay": "DANA" },
+    { "id": "ew_ovo", "nama": "OVO", "jenis": "ewallet", "xendit": "OVO", "tripay": "OVO" },
+    { "id": "ew_shopeepay", "nama": "ShopeePay", "jenis": "ewallet", "xendit": "SHOPEEPAY", "tripay": "SHOPEEPAY" },
+    { "id": "ew_linkaja", "nama": "LinkAja", "jenis": "ewallet", "xendit": "LINKAJA", "tripay": null },
+    { "id": "rt_indomaret", "nama": "Indomaret", "jenis": "retail", "xendit": "INDOMARET", "tripay": "INDOMARET" },
+    { "id": "rt_alfamart", "nama": "Alfamart", "jenis": "retail", "xendit": "ALFAMART", "tripay": "ALFAMART" }
+  ],
+  "kode_kartu_ditolak": ["CREDIT_CARD", "DEBIT_CARD", "CC", "CARD"],
+  "_catatan_kode": "Kode kanal mengikuti dokumentasi publik Xendit/Tripay — wajib dicek ulang ke dokumen resmi saat akun sandbox jadi (STATUS langkah 3). null = kanal tidak tersedia di gateway itu."
+}
