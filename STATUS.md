@@ -26,10 +26,13 @@ Terakhir diperbarui: 2026-10-30 (sesi Claude Code). Perbarui file ini di akhir s
 - Skrip: `scripts/hitung.py` (fee, host, pendapatan), `scripts/qa_check.py` (QA otomatis, pemindai rahasia).
 - **Platform `app/`** (fondasi Tahap 1): domain murni + 42 test (fee, ledger berpasangan, escrow, patungan batch/host/renewal, jasa bayar,
   promo/referral, RBAC + empat mata, filter chat, skor kepercayaan, audit, cron), verifikasi webhook Xendit/Tripay, skema Prisma lengkap,
-  API `quote`, `webhooks/tripay`, `webhooks/xendit`, `cron`, `health`. CI GitHub Actions `QA` (repo + app).
+  API `quote`, `webhooks/tripay`, `webhooks/xendit`, `cron`, `health`. CI GitHub Actions `QA` (repo + app), error tampil sebagai anotasi.
+- Stack terbaru (via Dependabot, semua hijau): **Next.js 16, Prisma 7** (`prisma.config.ts` + adapter `pg`, client di `src/generated/prisma`),
+  **TypeScript 7** (`"types": ["node"]` wajib), @types/node 26, actions v7. PR Dependabot: 6 merge, 2 digantikan migrasi Prisma 7.
 - ClickUp folder **JASA – Patungan Premium** (ID di `docs/08-clickup.md`): 10 list, pengingat setup, roadmap, QA/QC.
 
-## Langkah berikutnya (urut)
+## Langkah berikutnya (urut) — task ClickUp sudah dibuat untuk semua
+0. Pemilik: aktifkan **branch protection** GitHub (wajib check QA + CODEOWNERS).
 1. Pemilik: daftar **NIB** (OSS) → **PSE** Komdigi → akun payment gateway (Xendit/Tripay) mode sandbox.
 2. Pemilik: beli plan induk pertama (Netflix/YouTube Family), siapkan vault password + 2FA.
 3. Claude: sambungkan Xendit invoice (buat tagihan) + pengolah pesanan bersama untuk webhook Xendit; halaman checkout minimal.

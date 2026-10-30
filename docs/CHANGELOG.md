@@ -1,5 +1,9 @@
 # Changelog
 
+- 2026-10-30 (4): upgrade dependensi via Dependabot — Next.js 16, Prisma 7 (prisma.config.ts, adapter pg, generator prisma-client),
+  TypeScript 7 (tsconfig types node), actions v7; `scripts/ci-run.sh` menampilkan error CI sebagai anotasi. ClickUp: task harga plan selesai,
+  task baru branch protection, PSE, review hukum, uji pulihkan backup, 3 task Tahap 1 untuk Claude.
+
 - 2026-10-30 (3): **enterprise**. Fee host (connection fee) & fee joiner tahunan per bulan sesuai artikel resmi joinbareng; harga plan resmi
   terbaru (Spotify Family → Platinum 3 orang; Disney+ Super 4 layar; Canva Teams & Netflix 5 user dikeluarkan); 63 artikel pusat bantuan ditiru
   (`docs/20`); rekap persen pendapatan (`docs/19`, `hitung.py pendapatan`); standar enterprise (`docs/21`, SECURITY, CODEOWNERS, Dependabot,
