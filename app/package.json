@@ -2,7 +2,7 @@
   "name": "jasa-app",
   "version": "0.1.0",
   "private": true,
-  "description": "Platform JASA (patungan, jasa bayar, marketplace escrow) \u2014 fondasi Tahap 1",
+  "description": "Platform JASA (patungan, jasa bayar, marketplace escrow) — fondasi Tahap 1",
   "engines": {
     "node": ">=22.6"
   },
@@ -15,7 +15,8 @@
     "db:validate": "prisma validate",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
-    "ci": "npm run db:validate && npm run db:generate && npm run typecheck && npm test && npm run build"
+    "ci": "npm run db:validate && npm run db:generate && npm run typecheck && npm test && npm run build",
+    "db:seed": "node --experimental-strip-types prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "^7.0.0",

@@ -1,5 +1,8 @@
 # Changelog
 
+- 2026-10-30 (6): pengolah pembayaran bersama Xendit+Tripay (antrian tinjau untuk nominal tidak cocok), klien invoice Xendit/Tripay,
+  seed katalog ke database. 57 test.
+
 - 2026-10-30 (5): branch protection aktif (ruleset "main": wajib PR + check QA hijau). Alur git di CLAUDE.md & STATUS.md disesuaikan.
 
 - 2026-10-30 (4): upgrade dependensi via Dependabot — Next.js 16, Prisma 7 (prisma.config.ts, adapter pg, generator prisma-client),

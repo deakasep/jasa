@@ -1,6 +1,6 @@
-/** Webhook Xendit (invoice). Verifikasi x-callback-token, simpan Payment idempoten; pengolahan pesanan sama dengan Tripay. */
+/** Webhook Xendit (invoice). Verifikasi x-callback-token → simpan Payment idempoten → proses bersama (ledger + status). */
 import { prisma } from "../../../../server/db.ts";
-import { keJson } from "../../../../server/ledgerRepo.ts";
+import { keJson, prosesPembayaranLunas } from "../../../../server/payments/proses.ts";
 import { statusXendit, verifikasiXendit } from "../../../../server/payments/verify.ts";
 
 export const runtime = "nodejs";
@@ -19,11 +19,17 @@ export async function POST(req: Request): Promise<Response> {
   }
   const data = (await req.json()) as PayloadXendit;
   const status = statusXendit(data.status);
-  await prisma.payment.upsert({
-    where: { gateway_externalId: { gateway: "xendit", externalId: data.id } },
-    create: { gateway: "xendit", externalId: data.id, merchantRef: data.external_id, nominal: Math.round(data.paid_amount ?? data.amount ?? 0), status, rawPayload: keJson(data), paidAt: status === "LUNAS" ? new Date() : null },
-    update: { status, rawPayload: keJson(data) },
+  const nominal = Math.round(data.paid_amount ?? data.amount ?? 0);
+
+  const hasil = await prisma.$transaction(async (tx) => {
+    await tx.payment.upsert({
+      where: { gateway_externalId: { gateway: "xendit", externalId: data.id } },
+      create: { gateway: "xendit", externalId: data.id, merchantRef: data.external_id, nominal, status, rawPayload: keJson(data), paidAt: status === "LUNAS" ? new Date() : null },
+      update: { status, rawPayload: keJson(data), paidAt: status === "LUNAS" ? new Date() : undefined },
+    });
+    if (status !== "LUNAS") return null;
+    return prosesPembayaranLunas(tx, data.external_id, nominal, "xendit");
   });
-  // TODO Tahap 1: panggil pengolah pesanan bersama (lihat webhooks/tripay) setelah gateway utama dipilih.
-  return Response.json({ ok: true });
+
+  return Response.json({ ok: true, hasil: hasil?.hasil ?? "TERCATAT" });
 }
