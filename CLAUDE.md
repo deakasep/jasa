@@ -25,6 +25,7 @@ Sumber kebenaran:
 - **QA & QC**: `docs/16-qa-qc.md` · cek otomatis: `scripts/qa_check.py` (GitHub Actions `QA`)
 - Template pesan: `templates/pesan-whatsapp.md`
 - **Persen pendapatan (pembeli vs penjual)**: `docs/19-pendapatan.md` · Pusat bantuan (63 artikel ditiru): `docs/20-pusat-bantuan.md`
+- Kategori marketplace, papan penawaran, blog: `docs/22-marketplace-kategori.md` · data: `data/kategori-marketplace.json`
 - **Standar enterprise** (RBAC, audit, keamanan, backup/DR, insiden, kepatuhan): `docs/21-enterprise.md` · keputusan: `docs/adr/`
 - **Platform** (Next.js + Prisma, domain murni + test): `app/` — `app/README.md`
 

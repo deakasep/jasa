@@ -40,7 +40,7 @@ Seller diam 1 jam / lewat batas kirim → pembeli boleh BATAL → refund penuh k
 Kode produk `JSA-<id>`, harga, rating & jumlah ulasan, terjual, jumlah, keranjang / beli sekarang, kartu seller (rating, chat, lihat toko),
 badge perlindungan (escrow, refund saldo, garansi N hari, seller terverifikasi), statistik (dilihat, dalam antrian, % order sukses,
 waktu respon seller, terakhir diperbarui), jaminan penjual (garansi toko, batas kirim), tab Deskripsi / FAQ / Ulasan.
-Listing langsung tayang di katalog, kategori, dan pencarian internal tanpa iklan. Iklan berbayar (label "Iklan") = fitur tahap lanjut.
+Listing langsung tayang di katalog, kategori (19 kategori: `22-marketplace-kategori.md`), dan pencarian internal tanpa iklan. Iklan berbayar (label "Iklan") = fitur tahap lanjut.
 
 ## Aturan chat & anti-pindah platform
 - Chat per pesanan tersimpan untuk bukti sengketa.

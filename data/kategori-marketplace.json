@@ -1,0 +1,164 @@
+{
+  "_sumber": "docs/22-marketplace-kategori.md (joinbareng.com/jual-beli, dibaca 2026-10-30)",
+  "urutan": [
+    "terpopuler",
+    "termurah",
+    "terbaru",
+    "rating_tertinggi"
+  ],
+  "per_halaman": 24,
+  "kategori": [
+    {
+      "nama": "Top Up Game",
+      "slug": "top-up",
+      "aktif": true,
+      "hub_per_game": true,
+      "perlu_keputusan_pemilik": false,
+      "kredensial_lewat_chat": false
+    },
+    {
+      "nama": "Game Key",
+      "slug": "game-key",
+      "aktif": true,
+      "hub_per_game": true,
+      "perlu_keputusan_pemilik": false,
+      "kredensial_lewat_chat": false
+    },
+    {
+      "nama": "Roblox Games",
+      "slug": "rbl-games",
+      "aktif": true,
+      "hub_per_game": true,
+      "perlu_keputusan_pemilik": false,
+      "kredensial_lewat_chat": false
+    },
+    {
+      "nama": "Akun",
+      "slug": "akun",
+      "aktif": false,
+      "hub_per_game": true,
+      "perlu_keputusan_pemilik": true,
+      "kredensial_lewat_chat": true
+    },
+    {
+      "nama": "Voucher",
+      "slug": "voucher-code",
+      "aktif": true,
+      "hub_per_game": true,
+      "perlu_keputusan_pemilik": false,
+      "kredensial_lewat_chat": false
+    },
+    {
+      "nama": "Koin Game",
+      "slug": "koin-game",
+      "aktif": true,
+      "hub_per_game": true,
+      "perlu_keputusan_pemilik": false,
+      "kredensial_lewat_chat": false
+    },
+    {
+      "nama": "Item",
+      "slug": "item",
+      "aktif": true,
+      "hub_per_game": true,
+      "perlu_keputusan_pemilik": false,
+      "kredensial_lewat_chat": false
+    },
+    {
+      "nama": "Joki",
+      "slug": "joki",
+      "aktif": false,
+      "hub_per_game": true,
+      "perlu_keputusan_pemilik": true,
+      "kredensial_lewat_chat": true
+    },
+    {
+      "nama": "Top Up Login",
+      "slug": "top-up-login",
+      "aktif": false,
+      "hub_per_game": true,
+      "perlu_keputusan_pemilik": true,
+      "kredensial_lewat_chat": true
+    },
+    {
+      "nama": "Streaming",
+      "slug": "streaming",
+      "aktif": true,
+      "hub_per_game": false,
+      "perlu_keputusan_pemilik": false,
+      "kredensial_lewat_chat": false
+    },
+    {
+      "nama": "Pulsa & Utilitas",
+      "slug": "pulsa-utilitas",
+      "aktif": true,
+      "hub_per_game": false,
+      "perlu_keputusan_pemilik": false,
+      "kredensial_lewat_chat": false
+    },
+    {
+      "nama": "Aplikasi & Software",
+      "slug": "aplikasi-software",
+      "aktif": true,
+      "hub_per_game": false,
+      "perlu_keputusan_pemilik": false,
+      "kredensial_lewat_chat": false
+    },
+    {
+      "nama": "Jasa Freelance & Digital",
+      "slug": "jasa-freelance",
+      "aktif": true,
+      "hub_per_game": false,
+      "perlu_keputusan_pemilik": false,
+      "kredensial_lewat_chat": false
+    },
+    {
+      "nama": "Lisensi Software & Cloud",
+      "slug": "lisensi-software",
+      "aktif": true,
+      "hub_per_game": false,
+      "perlu_keputusan_pemilik": false,
+      "kredensial_lewat_chat": false
+    },
+    {
+      "nama": "Aset & Template Kreatif",
+      "slug": "aset-kreatif",
+      "aktif": true,
+      "hub_per_game": false,
+      "perlu_keputusan_pemilik": false,
+      "kredensial_lewat_chat": false
+    },
+    {
+      "nama": "Course & Edukasi Digital",
+      "slug": "course-edukasi",
+      "aktif": true,
+      "hub_per_game": false,
+      "perlu_keputusan_pemilik": false,
+      "kredensial_lewat_chat": false
+    },
+    {
+      "nama": "Server, Hosting & Domain",
+      "slug": "server-hosting",
+      "aktif": true,
+      "hub_per_game": false,
+      "perlu_keputusan_pemilik": false,
+      "kredensial_lewat_chat": false
+    },
+    {
+      "nama": "Source Code & Tools Developer",
+      "slug": "source-code",
+      "aktif": true,
+      "hub_per_game": false,
+      "perlu_keputusan_pemilik": false,
+      "kredensial_lewat_chat": false
+    },
+    {
+      "nama": "Bahan Konten Siap Upload",
+      "slug": "konten-siap-upload",
+      "aktif": true,
+      "hub_per_game": false,
+      "perlu_keputusan_pemilik": false,
+      "kredensial_lewat_chat": false
+    }
+  ]
+}

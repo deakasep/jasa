@@ -34,6 +34,9 @@ Terakhir diperbarui: 2026-10-30 (sesi Claude Code). Perbarui file ini di akhir s
 - **Pembayaran siap disambungkan** (30 Okt siang): pengolah pembayaran bersama Xendit+Tripay (`domain/pembayaran.ts` + `server/payments/proses.ts`;
   nominal beda / pesanan kadaluarsa → masuk audit `pembayaran.perlu_tinjau`, tidak error), klien invoice Xendit & Tripay
   (`server/payments/invoice.ts`, diuji dengan fetch palsu), seed katalog (`npm run db:seed`). Total 57 test.
+- **Audit kelengkapan joinbareng** (30 Okt sore): halaman publik dibandingkan dengan repo; celah kategori marketplace, papan penawaran,
+  blog ditutup di `docs/22`. Yang tidak bisa ditiru tanpa login (dashboard, form listing, chat, checkout) dirancang sendiri.
+  **Menunggu keputusan pemilik:** buka kategori Joki / Top Up Login / Akun atau tidak.
 - ClickUp folder **JASA – Patungan Premium** (ID di `docs/08-clickup.md`): 10 list, pengingat setup, roadmap, QA/QC.
 
 ## Langkah berikutnya (urut) — task ClickUp sudah dibuat untuk semua
