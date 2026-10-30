@@ -1,5 +1,7 @@
 # Changelog
 
+- 2026-10-30 (5): branch protection aktif (ruleset "main": wajib PR + check QA hijau). Alur git di CLAUDE.md & STATUS.md disesuaikan.
+
 - 2026-10-30 (4): upgrade dependensi via Dependabot — Next.js 16, Prisma 7 (prisma.config.ts, adapter pg, generator prisma-client),
   TypeScript 7 (tsconfig types node), actions v7; `scripts/ci-run.sh` menampilkan error CI sebagai anotasi. ClickUp: task harga plan selesai,
   task baru branch protection, PSE, review hukum, uji pulihkan backup, 3 task Tahap 1 untuk Claude.
