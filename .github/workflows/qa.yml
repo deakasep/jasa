@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Cek otomatis repo (docs/16-qa-qc.md §A)
-        run: python3 scripts/qa_check.py
+        run: bash scripts/ci-run.sh "qa_check" python3 scripts/qa_check.py
       - name: Uji kalkulator fee
         run: |
           python3 scripts/hitung.py patungan 46500 bulanan
@@ -39,12 +39,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - run: npm install --no-audit --no-fund
+      - name: Install
+        run: bash ../scripts/ci-run.sh "npm install" npm install --no-audit --no-fund
       - name: Validasi skema Prisma
-        run: npx prisma validate && npx prisma generate
+        run: bash ../scripts/ci-run.sh "prisma validate" npx prisma validate && bash ../scripts/ci-run.sh "prisma generate" npx prisma generate
       - name: Test domain (node:test)
-        run: npm test
+        run: bash ../scripts/ci-run.sh "test" npm test
       - name: Typecheck
-        run: npx tsc --noEmit
+        run: bash ../scripts/ci-run.sh "typecheck" npx tsc --noEmit
       - name: Build Next.js
-        run: npm run build
+        run: bash ../scripts/ci-run.sh "build" npm run build

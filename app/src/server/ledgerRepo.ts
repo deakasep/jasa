@@ -1,5 +1,5 @@
 /** Menyimpan Jurnal ke database secara idempoten (ref unik) dan atomik. */
-import type { Prisma } from "@prisma/client";
+import type { Prisma } from "../generated/prisma/client";
 import type { Jurnal } from "../domain/ledger.ts";
 import { prisma } from "./db.ts";
 

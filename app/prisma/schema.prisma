@@ -1,13 +1,15 @@
 // Skema database JASA — PostgreSQL. Uang = Int (Rupiah). Saldo TIDAK disimpan sebagai kolom; dihitung dari JournalLine (ledger).
 // Data rahasia (KTP, nomor rekening, kredensial) TIDAK disimpan polos: hanya referensi ke storage/vault terenkripsi.
 
+// Prisma 7: generator "prisma-client" menulis client TypeScript ke src/generated/prisma (diabaikan git, dibuat ulang oleh `prisma generate`).
 generator client {
-  provider = "prisma-client-js"
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
 }
 
+// URL koneksi ada di prisma.config.ts (env DATABASE_URL).
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
 enum Role {
