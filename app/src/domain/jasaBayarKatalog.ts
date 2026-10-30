@@ -19,6 +19,18 @@ export interface ProdukJasaBayar {
   mata_uang: "USD" | "IDR";
   cara_bayar: CaraBayar;
   butuh_login: boolean;
+  aktif: boolean;
+  alasan_nonaktif?: string;
+  /** Domain & kata kunci untuk mengenali layanan ini saat dipesan lewat jalur Layanan lain (wajib bila nonaktif). */
+  domain?: string[];
+  kata_kunci?: string[];
+  /** null = PPN penyedia belum diverifikasi → harga otomatis tidak tampil (dihitung CS). 0 = penyedia tidak memungut PPN. */
+  ppn_persen: number | null;
+  sumber_ppn?: string;
+  /** Halaman harga resmi untuk pantau perubahan harga (domain/pantauHarga.ts). */
+  url_harga: string | null;
+  /** YYYY-MM-DD terakhir paket USD & PPN dicek manusia. */
+  harga_dicek: string | null;
   paket: { nama: string; harga: number }[];
   catatan?: string;
   patungan?: string;
@@ -51,6 +63,13 @@ export function validasiKatalog(k: KatalogJasaBayar): string[] {
     const cek = cekLayanan(`${p.slug} ${p.nama}`);
     if (!cek.ok) salah.push(`${p.slug}: ${cek.alasan}`);
     for (const pk of p.paket) if (!(pk.harga > 0)) salah.push(`${p.slug}/${pk.nama}: harga harus > 0`);
+    if (typeof p.aktif !== "boolean") salah.push(`${p.slug}: aktif wajib true/false`);
+    if (!p.aktif && !p.alasan_nonaktif) salah.push(`${p.slug}: nonaktif wajib punya alasan_nonaktif`);
+    if (!p.aktif && !(p.domain?.length && p.kata_kunci?.length)) salah.push(`${p.slug}: nonaktif wajib punya domain & kata_kunci`);
+    if (p.ppn_persen !== null && !(p.ppn_persen >= 0 && p.ppn_persen < 0.5)) salah.push(`${p.slug}: ppn_persen tidak wajar`);
+    if (p.ppn_persen !== null && !p.sumber_ppn) salah.push(`${p.slug}: ppn_persen wajib punya sumber_ppn`);
+    if (p.harga_dicek !== null && !/^\d{4}-\d{2}-\d{2}$/.test(p.harga_dicek)) salah.push(`${p.slug}: harga_dicek harus YYYY-MM-DD`);
+    if (p.url_harga !== null && !p.url_harga.startsWith("https://")) salah.push(`${p.slug}: url_harga harus https`);
   }
   return salah;
 }
@@ -93,6 +112,7 @@ export function rencanakanOrder(k: KatalogJasaBayar, input: InputOrder): HasilRe
   if (input.slugProduk) {
     const produk = k.produk.find((p) => p.slug === input.slugProduk);
     if (!produk) return { ok: false, alasan: "produk tidak ada di katalog — pakai jalur Layanan lain" };
+    if (!produk.aktif) return { ok: false, alasan: `${produk.nama} sementara tidak dilayani: ${produk.alasan_nonaktif ?? "nonaktif"}` };
     const peringatan: string[] = [];
     if (produk.cara_bayar === "tagihan_sekali") {
       peringatan.push("Layanan pascabayar: kami bayar tagihan yang sudah terbit sekali, kartu dilepas setelah lunas. Pasang budget alert di akunmu.");
@@ -119,6 +139,12 @@ export function rencanakanOrder(k: KatalogJasaBayar, input: InputOrder): HasilRe
   if (!/^https:\/\/[^\s/]+\.[^\s]+$/i.test(url)) return { ok: false, alasan: "isi link halaman harga/checkout layanan (https://…)" };
   const cek = cekLayanan(`${nama} ${url}`);
   if (!cek.ok) return { ok: false, alasan: cek.alasan };
+  const host = kunciLayanan(url);
+  const kata = new Set(normal(nama).split(" "));
+  const nonaktif = k.produk.find((p) => !p.aktif && (
+    (p.domain ?? []).some((d) => host === d || host.endsWith(`.${d}`))
+    || (p.kata_kunci ?? []).some((w) => normal(w).split(" ").every((x) => kata.has(x)))));
+  if (nonaktif) return { ok: false, alasan: `${nonaktif.nama} sementara tidak dilayani: ${nonaktif.alasan_nonaktif ?? "nonaktif"}` };
   return {
     ok: true,
     rencana: {
@@ -157,4 +183,27 @@ export function usulanKatalog(
     .filter(([, v]) => v.jumlah >= ambang && !sudahAda.has(normal(v.contohNama)))
     .map(([kunci, v]) => ({ kunci, ...v }))
     .sort((a, b) => b.jumlah - a.jumlah);
+}
+
+/**
+ * Langkah wajib admin per order (docs/11 §Alur + docs/23 §3). Dipakai sebagai checklist di dashboard admin:
+ * order tidak bisa ditandai SELESAI sebelum semua langkah dicentang.
+ */
+export function checklistProses(caraBayar: CaraBayar | "ditentukan_cs"): string[] {
+  const umum = ["cek total checkout penyedia ≤ yang dibayar klien (domain/checkout.ts)", "catat nominal yang benar-benar terpotong dari kartu"];
+  const kartu = ["buat kartu virtual khusus order ini, limit = total checkout", "bekukan kartu virtual setelah pembayaran berhasil"];
+  switch (caraBayar) {
+    case "kartu_di_akun_pembeli":
+      return [...kartu, ...umum, "matikan perpanjangan otomatis di akun penyedia (langganan tetap aktif sampai akhir periode)",
+        "minta pembeli ganti password bila sempat login", "kirim bukti invoice penyedia ke pembeli"];
+    case "tagihan_sekali":
+      return [...kartu, ...umum, "pastikan tidak ada kartu kita tersisa sebagai metode bayar utama", "kirim bukti lunas tagihan"];
+    case "topup_saldo":
+    case "invoice_sekali":
+      return [...kartu, ...umum, "kirim bukti pembayaran"];
+    case "gift_card":
+      return [...umum, "kirim kode gift card lewat chat platform (bukan WhatsApp/email pribadi)"];
+    default:
+      return [...kartu, ...umum, "tentukan cara bayar & catat sebelum memproses"];
+  }
 }

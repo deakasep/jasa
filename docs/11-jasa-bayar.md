@@ -21,6 +21,8 @@ Kurs **terkunci 30 menit**: invoice tidak dibayar dalam 30 menit → hitung ulan
 Katalog 39 kategori + halaman per layanan, jalur **Layanan lain** (nama + link wajib) untuk apa pun di luar katalog, lima cara bayar
 (termasuk cloud pascabayar AWS/Azure), ulasan & ticker: `23-jasa-bayar-katalog.md`.
 
+Harga otomatis, kurs, pantau harga, cek checkout, kartu virtual per order, cloud pascabayar nonaktif: `23-jasa-bayar-katalog.md` §3 & §6.
+
 ## Form order (field wajib)
 Estimasi harga produk (USD, sebelum pajak) · email akun produk (milik pembeli) · nama lengkap · nomor WhatsApp · email untuk bukti bayar ·
 catatan (paket/tier, sekali/berulang). Pembeli baru otomatis dibuatkan akun.

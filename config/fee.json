@@ -2,23 +2,57 @@
   "_sumber": "Disamakan dengan joinbareng.com: artikel bantuan 'Berapa biaya yang harus saya bayar' (diubah 29/05/2026), S&K, FAQ jasa bayar (dicek 2026-10-30). Ubah di sini saja; catat di docs/CHANGELOG.md.",
   "patungan": {
     "_catatan": "Fee JOINER (pembeli). Basis = harga slot PER BULAN. Paket tahunan: fee dihitung per bulan lalu dikali 12.",
-    "bulanan": { "persen": 0.10, "tetap": 8000 },
-    "tahunan": { "persen": 0.20, "tetap": 6500 }
+    "bulanan": {
+      "persen": 0.1,
+      "tetap": 8000
+    },
+    "tahunan": {
+      "persen": 0.2,
+      "tetap": 6500
+    }
   },
   "patungan_host": {
     "_catatan": "Connection fee HOST (penjual slot): dipotong dari harga slot HANYA bulan pertama tiap joiner baru (berlaku lagi jika joiner pindah grup). Berbagi pribadi (undangan) tanpa connection fee.",
-    "bulanan": { "persen": 0.25, "maks": 5000 },
-    "tahunan": { "persen": 0.20, "maks": 6000 },
+    "bulanan": {
+      "persen": 0.25,
+      "maks": 5000
+    },
+    "tahunan": {
+      "persen": 0.2,
+      "maks": 6000
+    },
     "pribadi_bebas_connection_fee": true
   },
   "jasa_bayar": {
     "tier": [
-      { "maks_usd": 70, "tipe": "flat", "nilai": 50000 },
-      { "maks_usd": 500, "tipe": "persen", "nilai": 0.04 },
-      { "maks_usd": null, "tipe": "persen", "nilai": 0.035 }
+      {
+        "maks_usd": 70,
+        "tipe": "flat",
+        "nilai": 50000
+      },
+      {
+        "maks_usd": 500,
+        "tipe": "persen",
+        "nilai": 0.04
+      },
+      {
+        "maks_usd": null,
+        "tipe": "persen",
+        "nilai": 0.035
+      }
     ],
     "spread_kurs": 0.015,
-    "kunci_kurs_menit": 30
+    "kunci_kurs_menit": 30,
+    "kurs": {
+      "_catatan": "Kurs otomatis (docs/23 §6): diambil berkala dari 2 sumber publik; lonjakan > maks_lonjakan dibanding kurs terakhir atau data lebih tua dari maks_umur_jam → pakai kurs terakhir + peringatan admin; tanpa kurs sah → harga otomatis disembunyikan (CS).",
+      "refresh_menit": 30,
+      "maks_umur_jam": 30,
+      "maks_lonjakan": 0.02,
+      "maks_beda_antar_sumber": 0.01
+    },
+    "toleransi_selisih_checkout": 5000,
+    "_catatan_toleransi": "Total checkout penyedia lebih mahal dari yang dibayar klien: selisih ≤ toleransi ditanggung kita, lebih → pesanan ditahan (klien tambah kekurangan / refund penuh).",
+    "harga_dicek_maks_hari": 30
   },
   "marketplace": {
     "fee_seller_persen": 0.05,
@@ -35,9 +69,18 @@
   },
   "biaya_gateway_estimasi": {
     "_catatan": "Estimasi biaya payment gateway yang KITA tanggung (cek tarif resmi Xendit/Tripay saat daftar). Tidak dibebankan ke pembeli.",
-    "qris": { "persen": 0.007, "tetap": 750 },
-    "va": { "persen": 0, "tetap": 4250 },
-    "payout": { "persen": 0, "tetap": 4500 }
+    "qris": {
+      "persen": 0.007,
+      "tetap": 750
+    },
+    "va": {
+      "persen": 0,
+      "tetap": 4250
+    },
+    "payout": {
+      "persen": 0,
+      "tetap": 4500
+    }
   },
   "timer": {
     "bayar_qris_menit": 30,
@@ -58,5 +101,10 @@
     "layanan_host_min_hari": 30,
     "reminder_renewal_hari": 3,
     "batch_resmi_maks_hari": 7
+  },
+  "estimasi_pajak": {
+    "_catatan": "Estimasi untuk kalkulator untung bersih saja, BUKAN nasihat pajak. PPh final UMKM PP 55/2022; dasar omzet jasa bayar (total vs fee saja) wajib dikonfirmasi akuntan.",
+    "pph_final_umkm": 0.005,
+    "markup_kurs_bank_estimasi": 0.02
   }
 }

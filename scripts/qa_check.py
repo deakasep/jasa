@@ -75,6 +75,11 @@ def cek_fee():
         r = hitung.jasa_bayar(usd, kurs)
         cek(r["fee"] == int(round(r["harga_rp"] * persen)), f"fee: jasa bayar ${usd} harus {persen * 100:g}%")
     cek(math.isclose(hitung.jasa_bayar(10, 10000)["kurs_jual"], 10150), "fee: spread kurs harus 1,5%")
+    # Sama persis dengan app/src/domain/checkout.test.ts (Python ↔ TypeScript tidak boleh beda)
+    b = hitung.jasa_bayar_bersih(10, 16500)
+    cek((b["total"], b["ke_kartu"], b["gateway"], b["pajak"], b["bersih"]) == (236000, 186813, 2402, 1180, 45605),
+        "untung bersih jasa bayar $10 harus sama dengan domain/checkout.ts")
+    cek(hitung.jasa_bayar_bersih(20, 16500)["total"] == 422000, "harga otomatis Claude Pro $20 + PPN 11% harus Rp422.000 (hargaOtomatis.test.ts)")
 
 
 def cek_referensi():

@@ -34,6 +34,9 @@ Terakhir diperbarui: 2026-10-30 (sesi Claude Code). Perbarui file ini di akhir s
 - **Pembayaran siap disambungkan** (30 Okt siang): pengolah pembayaran bersama Xendit+Tripay (`domain/pembayaran.ts` + `server/payments/proses.ts`;
   nominal beda / pesanan kadaluarsa → masuk audit `pembayaran.perlu_tinjau`, tidak error), klien invoice Xendit & Tripay
   (`server/payments/invoice.ts`, diuji dengan fetch palsu), seed katalog (`npm run db:seed`). Total 57 test.
+- **Harga otomatis Jasa Bayar + pengaman** (30 Okt malam): harga Rupiah final di web (Claude Pro $20 = Rp422.000 @16.500), kurs otomatis,
+  pantau harga penyedia, cek checkout, untung bersih (`hitung.py jasa-bayar-bersih`). Cloud pascabayar nonaktif. 96 test (`docs/23` §6).
+  **Syarat buka Jasa Bayar:** kartu virtual per order (pemilik pilih penyedia) + konfirmasi akuntan soal dasar pajak.
 - **Jasa Bayar layanan apa saja + ulasan semua pilar** (30 Okt malam): katalog 39 kategori, jalur Layanan lain, cara bayar per jenis
   (cloud AWS/Azure: bayar tagihan sekali, kartu dilepas), ulasan & testimoni & ticker dari data asli, strip kepercayaan otomatis (`docs/23`). 74 test.
 - **Audit kelengkapan joinbareng** (30 Okt sore): halaman publik dibandingkan dengan repo; celah kategori marketplace, papan penawaran,

@@ -16,7 +16,15 @@ export interface TierJasaBayar {
 export interface FeeConfig {
   patungan: Record<Periode, { persen: number; tetap: number }>;
   patungan_host: Record<Periode, { persen: number; maks: number }> & { pribadi_bebas_connection_fee: boolean };
-  jasa_bayar: { tier: TierJasaBayar[]; spread_kurs: number; kunci_kurs_menit: number };
+  jasa_bayar: {
+    tier: TierJasaBayar[];
+    spread_kurs: number;
+    kunci_kurs_menit: number;
+    kurs: { refresh_menit: number; maks_umur_jam: number; maks_lonjakan: number; maks_beda_antar_sumber: number };
+    toleransi_selisih_checkout: number;
+    harga_dicek_maks_hari: number;
+  };
+  estimasi_pajak: { pph_final_umkm: number; markup_kurs_bank_estimasi: number };
   marketplace: {
     fee_seller_persen: number;
     fee_seller_min: number;
@@ -72,5 +80,12 @@ export function validasiConfig(cfg: FeeConfig): void {
     salah.push("jasa_bayar.tier (tier terakhir harus maks_usd null)");
   }
   if (!(cfg.marketplace?.fee_seller_persen >= 0 && cfg.marketplace.fee_seller_persen < 1)) salah.push("marketplace.fee_seller_persen");
+  const k = cfg.jasa_bayar?.kurs;
+  if (!(k?.refresh_menit > 0 && k.maks_umur_jam > 0 && k.maks_lonjakan > 0 && k.maks_beda_antar_sumber > 0)) salah.push("jasa_bayar.kurs");
+  if (!Number.isInteger(cfg.jasa_bayar?.toleransi_selisih_checkout) || cfg.jasa_bayar.toleransi_selisih_checkout < 0) {
+    salah.push("jasa_bayar.toleransi_selisih_checkout");
+  }
+  if (!(cfg.jasa_bayar?.harga_dicek_maks_hari > 0)) salah.push("jasa_bayar.harga_dicek_maks_hari");
+  if (!(cfg.estimasi_pajak?.pph_final_umkm >= 0)) salah.push("estimasi_pajak.pph_final_umkm");
   if (salah.length) throw new Error(`config/fee.json tidak valid: ${salah.join(", ")}`);
 }

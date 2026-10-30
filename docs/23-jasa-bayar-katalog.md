@@ -32,8 +32,16 @@ Setelah form masuk, CS mengonfirmasi harga final (1–3 menit), kirim invoice (k
 | `invoice_sekali` | kursus, tes bahasa, biaya aplikasi kampus: pembeli kirim link checkout | tidak |
 | `tagihan_sekali` | **cloud pascabayar (AWS, Azure, Google Cloud)**: bayar tagihan yang sudah terbit sekali, **kartu dilepas setelah lunas** | ya, sebentar |
 
-Aturan cloud (tambahan kita, joinbareng tidak menjelaskan): tidak boleh ada kartu kita yang tertinggal di akun pascabayar — tagihan bisa
-membengkak tanpa batas. Pembeli wajib pasang budget alert; tagihan berikutnya = order baru.
+**Keputusan pemilik 2026-10-30 — pengaman kartu (wajib sebelum Jasa Bayar dibuka):**
+1. **Kartu virtual per order**: setiap order memakai kartu virtual sendiri, limit = total checkout, **dibekukan** setelah bayar. Kartu yang
+   tertinggal di akun klien tidak bisa ditagih lagi (perpanjangan, upgrade, add-on). Di DB hanya disimpan `kartuVirtualRef` (id/alias), tidak
+   pernah nomor kartu. Kandidat penyedia (perlu dicek pemilik): Mekari Expense corporate card (kartu virtual tanpa batas jumlah, limit per kartu,
+   bekukan instan), kartu korporat virtual Paper.id, kartu virtual bank.
+2. **Perpanjangan otomatis dimatikan** setelah aktif; perpanjangan = order baru (bayar dulu, H-3).
+3. **Cloud pascabayar (AWS, Azure, Google Cloud) NONAKTIF** — juga tertolak lewat Layanan lain (dikenali dari domain & kata kunci). Alasannya:
+   akun pascabayar wajib punya kartu aktif, jadi kartu kita sulit dilepas, dan tagihan mengikuti pemakaian tanpa batas. Dibuka lagi hanya
+   bila kartu virtual berlimit + deposit di muka siap. Cloud prabayar (isi saldo) tetap lewat `topup_saldo`.
+4. Checklist admin per order (`checklistProses`): order tidak bisa SELESAI sebelum semua langkah dicentang.
 
 ## 4. Ulasan & rating — terlihat publik di semua pilar
 - **Marketplace**: model `Review` per pesanan (bintang 1–5 + komentar, seller balas sekali), rating listing & toko (`10-marketplace-escrow.md`).
@@ -47,3 +55,25 @@ membengkak tanpa batas. Pembeli wajib pasang budget alert; tagihan berikutnya = 
 ## 5. Ditolak tetap ditolak
 Daftar tolak `11-jasa-bayar.md` §Aturan berlaku untuk katalog **dan** layanan lain (judi, konten dewasa, kripto/forex, akun keuangan ber-KYC,
 "Development Mode (Credential)" / akun AI berbagi kredensial).
+
+## 6. Harga otomatis, kurs, pantau harga, cek checkout (keputusan pemilik 2026-10-30)
+**Harga tampil langsung dalam Rupiah** untuk paket berharga pasti (`domain/hargaOtomatis.ts`, API `GET /api/harga/jasa-bayar`):
+`total = ke atas ribuan( USD × kurs_jual + USD × PPN penyedia × kurs_jual + fee )`, `kurs_jual = kurs tengah × 1,015`, dikunci 30 menit.
+Contoh kurs 16.500: Claude Pro $20 (PPN 11%) = **Rp422.000** · ChatGPT Plus $20 (PPN 0) = Rp385.000.
+Tampil otomatis hanya bila: produk aktif · harga USD · paket ada · `ppn_persen` sudah diverifikasi (ada `sumber_ppn`) · `harga_dicek` ≤ 30 hari ·
+tidak dijeda · kurs sah ada. Selain itu tombol **"Hitung harga via CS"** — sistem tidak pernah menebak.
+
+PPN penyedia (cek ulang berkala, sumber di katalog): Anthropic 11% · Perplexity 11% (ditunjuk pemungut PPN PMSE 2026) · OpenAI 0 (dicabut
+dari daftar pemungut April 2026; tetap dicek di checkout). Produk lain `null` sampai diverifikasi.
+
+| Pengaman | Cara kerja | Angka (config/fee.json) |
+|---|---|---|
+| Kurs otomatis | `/api/cron/kurs` tiap 30 menit: Frankfurter (ECB) + open.er-api, median; angka tidak wajar/basi dibuang | `jasa_bayar.kurs` |
+| Lonjakan kurs | beda > 2% dari kurs terakhir → **ditahan**, pakai kurs terakhir, admin dicek; sumber mati > 30 jam → harga otomatis mati | `maks_lonjakan`, `maks_umur_jam` |
+| Pantau harga penyedia | `/api/cron/pantau-harga` harian baca halaman harga resmi; paket hilang → produk **dijeda** + task ClickUp; tidak terbaca → cek manual | `harga_dicek_maks_hari` |
+| Cek checkout | sebelum bayar, total di halaman penyedia dibanding USD yang dibayar klien: ≤ Rp5.000 ditanggung, lebih → **tahan** (klien tambah / refund penuh) | `toleransi_selisih_checkout` |
+| Bocor kurs bank | Rp yang benar-benar terpotong dicatat per order; rata-rata markup bank > spread 1,5% → peringatan | `spread_kurs` |
+| Untung bersih | `python3 scripts/hitung.py jasa-bayar-bersih <usd> <kurs> [ppn] [total|fee]` (sama dengan `domain/checkout.ts`) | `estimasi_pajak` |
+
+Catatan untung: order besar lewat QRIS (0,7%) memakan untung — Claude Max $200 hanya ±2,3% bersih via QRIS; arahkan order ≥ Rp1 juta ke VA
+(flat ±Rp4.250).
