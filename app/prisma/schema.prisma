@@ -359,11 +359,55 @@ model JasaBayarOrder {
   total         Int
   berlakuSampai DateTime
   berulang      Boolean         @default(false)
+  produkSlug    String? // null = jalur "Layanan lain" (docs/23)
+  layananUrl    String? // wajib untuk Layanan lain: link harga/checkout
+  caraBayar     String? // kartu_di_akun_pembeli | topup_saldo | gift_card | invoice_sekali | tagihan_sekali
+  menitProses   Int? // bayar → selesai, untuk strip kepercayaan
   status        JasaBayarStatus @default(MENUNGGU_BAYAR)
   buktiRef      String?
   catatan       String?
   createdAt     DateTime        @default(now())
   buyer         User            @relation(fields: [buyerId], references: [id])
+  produk        JasaBayarProduct? @relation(fields: [produkSlug], references: [slug])
+
+  @@index([produkSlug, status])
+}
+
+/// Katalog Jasa Bayar (data/jasa-bayar-katalog.json): halaman per layanan, satu alur order generik.
+model JasaBayarProduct {
+  slug       String  @id
+  nama       String
+  kategori   String
+  mataUang   String // USD | IDR
+  caraBayar  String
+  butuhLogin Boolean @default(false)
+  paket      Json    @default("[]")
+  catatan    String?
+  patungan   String? // slug Service patungan untuk cross-sell
+  aktif      Boolean @default(true)
+  orders     JasaBayarOrder[]
+
+  @@index([kategori, aktif])
+}
+
+/// Ulasan Patungan & Jasa Bayar (Marketplace memakai model Review per Order). Satu pesanan = satu ulasan,
+/// hanya pesanan SELESAI (domain/ulasan.ts). Nama ditampilkan disingkat; kota & paket opsional.
+model UlasanLayanan {
+  id        String   @id @default(cuid())
+  pilar     String // patungan | jasa_bayar
+  pesananId String // Subscription.id atau JasaBayarOrder.id
+  userId    String
+  produk    String // slug service/produk
+  paket     String?
+  kota      String?
+  rating    Int
+  komentar  String?
+  balasan   String? // balasan admin/host, sekali
+  disembunyikan Boolean @default(false) // hanya karena melanggar aturan (SARA, data pribadi), dicatat di audit
+  createdAt DateTime @default(now())
+
+  @@unique([pilar, pesananId])
+  @@index([pilar, produk, createdAt])
 }
 
 model Payment {
