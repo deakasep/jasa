@@ -14,6 +14,7 @@ Pilih listing → (chat seller) → Checkout → Bayar via gateway → DIBAYAR (
    ├ pembeli "Sudah bisa dipakai"      → SELESAI → dana ke saldo seller (dikurangi fee)
    ├ masa cek habis tanpa laporan       → SELESAI otomatis
    └ "Ada masalah?" + bukti             → SENGKETA → putusan admin ≤ 1×24 jam
+   (tombol lengkap Ingatkan seller / Batalkan & refund / Ada masalah? + 4 titik notifikasi: `24` §2.4)
                                             → kirim ulang / refund sebagian / refund penuh (ke saldo pembeli)
 Seller diam 1 jam / lewat batas kirim → pembeli boleh BATAL → refund penuh ke saldo
 ```

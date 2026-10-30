@@ -13,7 +13,7 @@ Angka waktu & fee: `config/fee.json`.
 - **Data pribadi** — dikelola sesuai UU PDP & UU ITE (`17-kebijakan-privasi.md`). **S&K** — `04-rules-syarat-ketentuan.md`.
 
 ## B. Panduan pengguna (akun)
-- **Daftar** — via Google / Facebook / X / email; daftar email → kode aktivasi dikirim ke email.
+- **Daftar** — via Google / email (per 31 Okt 2026 Facebook & X tidak tampil lagi, `24` §2.5); daftar email → kode aktivasi dikirim ke email.
 - **Satu orang satu akun** — akun ganda dilarang (keamanan & keunikan data).
 - **Lupa password** — Login → Lupa Kata Sandi → tautan reset ke email. Lupa email terdaftar → hubungi CS.
 - **Ganti email** — tidak bisa sendiri; pulihkan akses email dulu; jalan terakhir CS mengganti setelah verifikasi.

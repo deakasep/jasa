@@ -24,8 +24,11 @@
 /jadi-penjual             onboarding seller
 /cart, /checkout          keranjang & bayar
 /dashboard                saldo, pesanan saya, patungan aktif, jasa bayar, toko (seller), payout
-/login, /sign-up          akun (email + OTP WA)
+/login, /sign-up          akun (Google + email; OTP WA untuk host) — `24` §2.5
 /perlindungan-pembeli, /help, /contact-us, /terms-and-conditions, /privacy-policy, /legalitas, /blog
+/siaran-pers, /temukan-kami  area pers + daftar akun resmi, tools gratis, liputan (`24` §2.1–2.2)
+/dashboard/orders         Pesanan Saya: Ingatkan seller · Batalkan & refund · Ada masalah? (`24` §2.4)
+Tab urutan produk: Rekomendasi · Terlaris · Termurah · Terbaru · Rating; rak beranda & metode bayar: `24` §3
 ```
 
 ## Strip kepercayaan per pilar (ala joinbareng: "10.000+ transaksi sukses · Rating 4,9/5 · Garansi 100% refund · Aktif 1–5 menit")

@@ -72,6 +72,7 @@ Beranda · Marketplace · Patungan · Jasa Bayar · Permintaan · Penawaran · J
 Masuk/Daftar · Legalitas · Blog · Siaran Pers · Temukan Kami · Pusat Bantuan · Perlindungan Pembeli · Hubungi Kami · Kebijakan Privasi ·
 S&K · newsletter. Detail di `02-struktur-website.md`.
 19 kategori marketplace, hub game per kategori, Papan Penawaran Custom, blog: `22-marketplace-kategori.md`.
+Audit menu footer 31 Okt (Siaran Pers, Temukan Kami, Hubungi Kami, daftar akun, tombol perlindungan pembeli, fee dicek ulang): `24-audit-menu-footer.md`.
 
 ## 8. Legalitas & privasi mereka (ditiru → `06-legal-risiko.md`, `17-kebijakan-privasi.md`)
 - Posisi: pengelola plan resmi multi-user, bukan reseller akun bajakan; hanya plan yang ToS-nya mengizinkan multi-user

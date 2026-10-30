@@ -1,5 +1,8 @@
 # Changelog
 
+- 2026-10-31: audit ulang semua menu footer joinbareng lewat browser. Fee dicek ulang — tidak berubah. Dokumen baru `24-audit-menu-footer.md`
+  (Siaran Pers, Temukan Kami, Hubungi Kami, daftar Google+email, tombol perlindungan pembeli, temuan beranda). Sitemap `02`, `07`, `09`, `10`, `20` diperbarui.
+
 - 2026-10-30 (15): halaman `/checkout` minimal (ringkasan harga slot + fee dari `config/fee.json`, validasi slot habis & layanan
   Jasa Bayar, tombol bayar nonaktif) + `/admin` data contoh (bagian sesuai RBAC, antrian aksi cron mode rencana, batch, refund dengan
   batas ops Rp500.000 & empat mata). Domain `checkoutPatungan.ts`, `adminDashboard.ts`, `contohAdmin.ts`. 104 test. (Antrian Claude, PR #19)
