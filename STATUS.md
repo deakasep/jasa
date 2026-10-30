@@ -44,6 +44,8 @@ Terakhir diperbarui: 2026-10-30 (sesi Claude Code). Perbarui file ini di akhir s
   **Menunggu keputusan pemilik:** buka kategori Joki / Top Up Login / Akun atau tidak.
 - ClickUp folder **JASA – Patungan Premium** (ID di `docs/08-clickup.md`): 10 list, pengingat setup, roadmap, QA/QC.
 
+- **Keputusan 30 Okt:** omzet besar → model fee diubah seperti Shopee (pemicu & rincian `docs/19` §Banding Shopee).
+
 ## Langkah berikutnya (urut) — task ClickUp sudah dibuat untuk semua
 1. Pemilik: daftar **NIB** (OSS) → **PSE** Komdigi → akun payment gateway (Xendit/Tripay) mode sandbox.
 2. Pemilik: beli plan induk pertama (Netflix/YouTube Family), siapkan vault password + 2FA.

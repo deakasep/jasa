@@ -1,5 +1,8 @@
 # Changelog
 
+- 2026-10-30 (11): banding fee & pajak joinbareng vs Shopee (PPh 22 marketplace 0,5%); keputusan pemilik: saat omzet besar model fee
+  diubah seperti Shopee, pemicu review dicatat di `docs/19`.
+
 - 2026-10-30 (10): **harga otomatis Jasa Bayar** (Rupiah final per paket termasuk PPN penyedia, `/api/harga/jasa-bayar`), kurs otomatis
   2 sumber + tahan lonjakan (`/api/cron/kurs`, model `Kurs`), pantau harga resmi penyedia (`/api/cron/pantau-harga`, produk dijeda),
   cek selisih checkout (toleransi Rp5.000), catat markup kurs bank, untung bersih (`hitung.py jasa-bayar-bersih`). Pengaman kartu:

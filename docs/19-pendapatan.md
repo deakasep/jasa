@@ -39,6 +39,23 @@ Tabel selalu terbaru: `python3 scripts/hitung.py pendapatan`.
 \* estimasi kurs bank +2% di atas kurs tengah (angka nyata dicatat per order). \*\* dasar pajak (total vs fee saja) wajib dikonfirmasi akuntan.
 Sumber untung utama = fee jasa; spread 1,5% hanya menutup kurs bank.
 
+## Banding Shopee (dicek 2026-10-30) — model fee di-review saat omzet besar
+Joinbareng/JASA memungut terutama dari **pembeli**; Shopee memotong **penjual**. Contoh barang/slot Rp100.000:
+
+| | Shopee (penjual non-Star) | Joinbareng / JASA |
+|---|---|---|
+| Pembeli bayar | Rp100.000 + ongkir | Patungan Rp118.000 (10% + Rp8.000) · Marketplace Rp100.000 |
+| Penjual dipotong | admin 10% (fashion) / 2,5% (voucher digital, e-money, tiket) + proses Rp1.250/pesanan (+ gratis ongkir, promo, iklan bila ikut: total 20–28%) | host Rp5.000 **hanya bulan pertama** · marketplace 5% (sementara) |
+| Platform dapat | ±11% / ±4% dari penjual | ±18% dari pembeli + Rp5.000 host bulan pertama |
+| Pajak | Shopee/Tokopedia/Lazada/Blibli **memungut PPh 22 0,5% dari omzet penjual** (PMK 37/2025, berlaku Okt 2026; WP orang pribadi omzet ≤ Rp500 juta bebas dengan surat pernyataan) | belum ditunjuk pemungut; penjual urus pajak sendiri |
+
+Sumber: remarketing.id (update admin Shopee 31 Jul 2026), webekspor.com (potongan 2026), CNBC Indonesia 31 Jul 2026, Katadata (berlaku Okt 2026).
+
+**Keputusan pemilik 2026-10-30:** saat omzet sudah besar, model fee diubah **seperti Shopee** (fee per transaksi dari penjual per kategori,
+biaya proses per pesanan, fee pembeli diturunkan supaya harga bersaing). Pemicu review (usulan, dicek tiap kuartal):
+omzet JASA > Rp4,8 miliar/tahun (batas PKP → fee kita kena PPN 11%) **atau** JASA ditunjuk pemungut PPh 22 marketplace **atau** volume
+marketplace melewati patungan. Perubahan = ubah `config/fee.json` + CHANGELOG + QA, umumkan ke pengguna ≥ 30 hari sebelumnya.
+
 ## Catatan keputusan
 1. **Pesanan marketplace kecil hampir tidak untung** karena biaya QRIS (±0,7% + Rp750) kita tanggung. Mitigasi bawaan joinbareng:
    **dompet** (top-up min Rp50.000 sekali bayar → banyak transaksi kecil tanpa biaya gateway per transaksi). Dorong pembeli pakai saldo.
