@@ -1,5 +1,7 @@
 # Changelog
 
+- 2026-10-30 (14): STATUS: preferensi pemilik (chat = persetujuan, skill non-pihak-ketiga, backup GitHub) + Antrian Claude.
+
 - 2026-10-30 (13): skill `frontend-design` buatan Anthropic (direview, commit ca45fc4) untuk tahap tampilan web.
 
 - 2026-10-30 (12): pasang komponen Claude buatan Anthropic yang sudah direview & dikunci commit: `/code-review`, `/review-pr` + 6 agen
