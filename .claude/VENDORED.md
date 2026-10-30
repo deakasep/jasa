@@ -8,6 +8,7 @@ dan **dikunci ke commit yang sudah direview**. Tidak ada hook, MCP server, skrip
 | `.claude/commands/code-review.md` | anthropics/claude-plugins-official `plugins/code-review` | f8c5e7a | Hanya baca diff PR (gh). Komentar ke PR **hanya** jika dipanggil dengan `--comment`. |
 | `.claude/commands/review-pr.md` + `.claude/agents/{code-reviewer,code-simplifier,comment-analyzer,pr-test-analyzer,silent-failure-hunter,type-design-analyzer}.md` | anthropics/claude-plugins-official `plugins/pr-review-toolkit` | f8c5e7a | Instruksi agen pemeriksa (Read/Grep/Bash lokal). |
 | `.claude/skills/reconciliation/SKILL.md` | anthropics/knowledge-work-plugins `finance/skills/reconciliation` | 2574e29 | Panduan rekonsiliasi (ledger vs gateway vs bank); tanpa konektor. Dipakai untuk rekonsiliasi harian Xendit/Tripay ↔ `ledger.ts`. |
+| `.claude/skills/frontend-design/` (SKILL.md + LICENSE.txt) | anthropics/skills `skills/frontend-design` | ca45fc4 | Panduan desain tampilan web (dipakai saat tahap tampilan, terakhir). Hanya teks. |
 Dipakai: `/review-pr` sebelum membuka PR (wajib untuk perubahan uang/keamanan), `/code-review <PR>` untuk review PR.
 
 ## Aturan menambah/menaikkan komponen pihak luar (skill `cari-skill-aman`)
