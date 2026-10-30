@@ -61,7 +61,7 @@ Terakhir diperbarui: 2026-10-30 (sesi Claude Code). Perbarui file ini di akhir s
 6. QA rilis Tahap 1 (skill `qa-uji-alur`), lalu desain web (paling akhir).
 
 ## Antrian Claude (dikerjakan AI tanpa menunggu pemilik; urut — `[x]` + nomor PR bila selesai)
-- [ ] Siapkan halaman checkout minimal + dashboard admin (RBAC, antrian aksi cron, batch, refund) dengan data contoh, tanpa gateway nyata
+- [x] Siapkan halaman checkout minimal + dashboard admin (RBAC, antrian aksi cron, batch, refund) dengan data contoh, tanpa gateway nyata — PR #PRNUM (`/checkout`, `/admin`, 104 test)
 - [ ] Eksekusi aksi cron (`?jalankan=1`) + notifikasi WA/email (mode uji, tanpa kirim ke pihak luar)
 - [ ] Rekonsiliasi harian gateway ↔ ledger (skill `reconciliation`) sebagai fungsi domain + test
 Butuh pemilik dulu (bukan antrian): NIB/PSE/gateway sandbox, DATABASE_URL, kartu virtual, akuntan, keputusan kategori Joki/Top Up Login/Akun.
