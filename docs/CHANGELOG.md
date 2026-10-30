@@ -1,5 +1,8 @@
 # Changelog
 
+- 2026-10-30 (12): pasang komponen Claude buatan Anthropic yang sudah direview & dikunci commit: `/code-review`, `/review-pr` + 6 agen
+  pemeriksa, skill `reconciliation`; aturan keamanan komponen pihak luar di `.claude/VENDORED.md`.
+
 - 2026-10-30 (11): banding fee & pajak joinbareng vs Shopee (PPh 22 marketplace 0,5%); keputusan pemilik: saat omzet besar model fee
   diubah seperti Shopee, pemicu review dicatat di `docs/19`.
 
