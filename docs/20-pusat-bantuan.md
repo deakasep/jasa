@@ -58,7 +58,8 @@ Angka waktu & fee: `config/fee.json`.
 - **Harga layanan naik** — host tidak perlu apa-apa; sistem menyesuaikan harga penawaran untuk periode berikutnya dan memberi tahu joiner.
 
 ## E. Kelola pembayaran
-- **Metode** — kartu debit/kredit (Visa, Mastercard, JCB), e-wallet (OVO, DANA, ShopeePay, LinkAja, dll.), VA bank, QRIS, Indomaret/Alfamart,
+- **Metode** — QRIS, VA bank (BCA, BNI, BRI, Mandiri, Permata, BSI, CIMB, BJB, Sahabat Sampoerna), e-wallet (DANA, OVO, ShopeePay, LinkAja), Indomaret/Alfamart,
+  **tanpa kartu kredit/debit** (keputusan pemilik 31 Okt; daftar resmi `config/pembayaran.json`),
   dan **Dompet JASA**. Pembayaran berulang diingatkan otomatis oleh gateway.
 - **Dompet** — isi ulang min Rp50.000 (Dompet Saya / Metode Pembayaran → Isi Dompet). Saldo **tidak bisa ditarik** ke bank/e-wallet, **tidak kedaluwarsa**,
   hanya untuk bayar patungan & marketplace. Sumber saldo: top-up, refund, reward referral, komisi afiliasi. Opsi "Pakai saldo otomatis saat checkout".

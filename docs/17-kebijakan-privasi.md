@@ -14,7 +14,9 @@ Mengikuti struktur kebijakan joinbareng, ditulis ulang. Dasar: UU 27/2022 (PDP),
 7. **Hak pengguna** — akses, koreksi, hapus, tarik persetujuan, keberatan; ajukan via email/WA, dijawab ≤ 3 x 24 jam (UU PDP: ≤ 3 x 24 jam untuk akses).
 8. **Email promosi** — maks 1 email/hari (pengingat checkout, batch hampir/ sudah penuh, produk baru); berhenti kapan saja via tautan
    atau setelan profil. Email transaksi & keamanan tetap dikirim.
-9. **Cookie** — untuk preferensi dan analitik; bisa dimatikan di browser.
+9. **Cookie & piksel iklan** — cookie wajib (login, keranjang) selalu aktif. Cookie analitik dan **piksel iklan** (Meta/Facebook, TikTok, Google Ads) hanya
+   dipasang **setelah pengguna setuju** lewat banner cookie (pilihan Terima / Tolak sama mudahnya; default Tolak), sesuai UU 27/2022 PDP. Persetujuan bisa ditarik
+   kapan saja dari pengaturan cookie di footer. Data yang dikirim ke piksel tidak berisi nama, email, nomor HP, atau isi pesanan.
 10. **Anak** — tidak ditujukan untuk < 13 tahun; 13–17 tahun dengan izin orang tua/wali.
 11. **Kebocoran data** — pemberitahuan ke pengguna terdampak ≤ 3 x 24 jam sesuai UU PDP.
 12. **Perubahan** — diumumkan di halaman ini dengan tanggal pembaruan.

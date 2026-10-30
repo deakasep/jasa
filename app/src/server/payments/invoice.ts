@@ -4,6 +4,7 @@
  * saat akun sandbox sudah ada (STATUS.md langkah 3), sebelum dipakai produksi.
  */
 import { createHmac } from "node:crypto";
+import { kanalTripaySah, kanalXendit, muatKonfigPembayaran, type KonfigPembayaran } from "../../domain/metodeBayar.ts";
 
 export type Fetch = (url: string, init: { method: string; headers: Record<string, string>; body: string }) => Promise<{
   ok: boolean;
@@ -39,11 +40,13 @@ function validasi(p: PermintaanTagihan): void {
 export interface KonfigXendit {
   secretKey: string;
   baseUrl?: string; // default https://api.xendit.co
+  pembayaran?: KonfigPembayaran; // default config/pembayaran.json (tanpa kartu)
 }
 
 export async function buatTagihanXendit(p: PermintaanTagihan, k: KonfigXendit, f: Fetch = fetch as unknown as Fetch): Promise<Tagihan> {
   validasi(p);
   if (!k.secretKey) throw new Error("XENDIT_SECRET_KEY belum diatur");
+  const kanal = kanalXendit(k.pembayaran ?? muatKonfigPembayaran());
   const res = await f(`${k.baseUrl ?? "https://api.xendit.co"}/v2/invoices`, {
     method: "POST",
     headers: {
@@ -59,6 +62,7 @@ export async function buatTagihanXendit(p: PermintaanTagihan, k: KonfigXendit, f
       customer: { given_names: p.namaPembeli, email: p.emailPembeli, mobile_number: p.hpPembeli },
       invoice_duration: p.berlakuMenit * 60,
       success_redirect_url: p.urlKembali,
+      payment_methods: kanal, // hanya metode lokal; kartu kredit/debit tidak tampil
     }),
   });
   const data = (await res.json()) as { id?: string; invoice_url?: string; expiry_date?: string; message?: string };
@@ -73,6 +77,7 @@ export interface KonfigTripay {
   merchantCode: string;
   mode: "sandbox" | "production";
   metode?: string; // mis. "QRIS"
+  pembayaran?: KonfigPembayaran; // default config/pembayaran.json (tanpa kartu)
 }
 
 export function urlDasarTripay(mode: KonfigTripay["mode"]): string {
@@ -87,11 +92,13 @@ export function tandaTanganTransaksiTripay(merchantCode: string, merchantRef: st
 export async function buatTagihanTripay(p: PermintaanTagihan, k: KonfigTripay, f: Fetch = fetch as unknown as Fetch, now = new Date()): Promise<Tagihan> {
   validasi(p);
   if (!k.apiKey || !k.privateKey || !k.merchantCode) throw new Error("kredensial Tripay belum lengkap");
+  const metode = k.metode ?? "QRIS";
+  if (!kanalTripaySah(metode, k.pembayaran ?? muatKonfigPembayaran())) throw new Error(`metode Tripay ${metode} tidak diizinkan (config/pembayaran.json)`);
   const res = await f(`${urlDasarTripay(k.mode)}/transaction/create`, {
     method: "POST",
     headers: { Authorization: `Bearer ${k.apiKey}`, "Content-Type": "application/json" },
     body: JSON.stringify({
-      method: k.metode ?? "QRIS",
+      method: metode,
       merchant_ref: p.kode,
       amount: p.nominal,
       customer_name: p.namaPembeli,

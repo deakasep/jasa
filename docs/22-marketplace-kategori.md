@@ -34,7 +34,7 @@ Sumber: halaman publik joinbareng.com yang dibaca 2026-10-30 (`/jual-beli`, `/ju
   game → **hub game per kategori** `/jual-beli/<game>/<kategori>`. Teks penjelasan + FAQ per kategori (harga dari seller, bisa berubah; transaksi
   wajib di platform agar escrow berlaku; garansi seller mis. 3–7 hari; durasi beberapa jam s.d. hari).
 - **Listing**: `/jual-beli/<slug>-i.<seller_id>.<item_id>` (detail di `10-marketplace-escrow.md`).
-- **Metode bayar yang ditampilkan**: QRIS, VA (BNI, BSI, BRI, Mandiri, Permata, Sahabat Sampoerna, BJB, CIMB), kartu kredit Visa/Mastercard, Indomaret.
+- **Metode bayar yang ditampilkan** (joinbareng): QRIS, VA 8 bank, kartu kredit Visa/Mastercard, Indomaret. **Kita: tanpa kartu kredit** — QRIS, VA, e-wallet, Indomaret/Alfamart lewat Xendit/Tripay (`config/pembayaran.json`).
 
 ## 3. Alur kategori "Top Up Login" (mereka)
 1. Pilih listing (tertera metode login yang dibutuhkan + estimasi proses) → 2. bayar lewat escrow → 3. setelah lunas, berikan data yang diminta seller
@@ -55,11 +55,33 @@ Mereka membukanya; kita tiru strukturnya, tapi **aktif hanya setelah pemilik mem
   massal, akun hasil curian/cracking (`09` §10).
 Tanpa keputusan, kategori ini **disembunyikan** (flag `aktif: false` di `data/kategori-marketplace.json`).
 
-## 6. Blog (`/blog`)
+## 6. Keputusan pemilik 31 Okt 2026 — marketplace ramping
+- **Urutan produk**: Rekomendasi (default) · Terpopuler · Termurah · Terbaru · Rating tertinggi. Skor Rekomendasi = 40% penjualan 30 hari + 30% rating
+  (rata-rata dengan prior, supaya 1 ulasan bintang 5 tidak langsung juara) + 20% skor kepercayaan seller + 10% kecepatan respon. Tanpa iklan berbayar;
+  seller dengan skor kepercayaan < 50 tidak masuk tab ini. Bobot di `data/kategori-marketplace.json` → `rekomendasi`; kode `app/src/domain/rekomendasi.ts`.
+- **Game fokus (hanya yang paling banyak dimainkan di Indonesia)** — survei APJII 2026 (8.700 responden, Feb–Mar 2026): Mobile Legends 40,5% · Free Fire 24,2% ·
+  Roblox 11,3% · PUBG 9,3% · FIFA/EA FC Mobile 2,3% · Minecraft 1,8%; Brawl Stars masuk daftar trending Sep 2026.
+
+  | Game | Kategori yang dibuka |
+  |---|---|
+  | Mobile Legends: Bang Bang | Top Up · Voucher · Item |
+  | Free Fire | Top Up · Voucher · Item |
+  | Roblox (Grow a Garden, Blox Fruits, Adopt Me!, Brookhaven RP, Murder Mystery 2) | Top Up Robux · Gamepass/Item/Pets · Voucher |
+  | PUBG Mobile | Top Up · Voucher · Item |
+  | EA SPORTS FC Mobile | Top Up · Koin |
+  | Minecraft | Game Key · Voucher |
+  | Brawl Stars | Top Up |
+
+  Listing untuk game di luar daftar ditolak otomatis (`listingGameDiizinkan`). Candy Crush tidak dimasukkan (tidak ada pasar item antarpemain).
+  Daftar ditinjau tiap kuartal dari data penjualan + survei terbaru. Joki / Top Up Login / Akun tetap **tutup** sampai pemilik memutuskan (§5).
+- **Rak beranda**: Trending Bulan Ini (otomatis) · Top Up Game Favorit · Gamepass Roblox · Item & Pets Roblox · Akun Premium & Streaming.
+  Rak "Gift Item" dan "Lainnya" dari banyak game kecil **tidak ditiru**.
+
+## 7. Blog (`/blog`)
 Kolom cari blog, 6 kategori (Tutorial ±996, Entertainment 81, Education 22, News 6, Netflix 3, Lecture 1), daftar "Semua artikel" berhalaman (±93
 halaman), tanpa nama penulis. Isinya mayoritas tutorial SEO seputar layanan langganan (cara berhenti langganan, gagal bayar, metode bayar di
 Indonesia). Rencana kita: `07-marketing.md` §Blog SEO — artikel ditulis sendiri, tidak disalin.
 
-## 7. Yang TIDAK bisa disimpan (butuh login — dilarang aturan #6)
+## 8. Yang TIDAK bisa disimpan (butuh login — dilarang aturan #6)
 Dashboard & saldo, form buat listing seller, ruang chat, checkout & keranjang setelah login, panel KYC, halaman toko milik seller. Strukturnya sudah
 kita rancang sendiri dari artikel pusat bantuan (`20`) dan S&K (`04`); detail layar menyusul saat tampilan dibuat.

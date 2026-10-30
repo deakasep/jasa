@@ -41,8 +41,8 @@ Fungsi ganda di joinbareng: (a) **daftar akun resmi** supaya pengguna bisa memas
 - Kita tiru strukturnya: Akun Resmi · Tools Gratis · Liputan Media · Direktori & Komunitas. Tools gratis = taktik SEO/backlink: bikin alat kecil yang
   relevan dengan pembeli kita (contoh: kalkulator hemat patungan, kalkulator kurs + fee jasa bayar, pengingat tanggal perpanjangan, kalkulator split tagihan),
   open source di akun GitHub perusahaan, tiap tool menautkan balik ke situs. Rencana konten → `07-marketing.md` §SEO.
-- Juga pasang **data terstruktur schema.org** (Organization: nama, logo, deskripsi, `sameAs` = akun resmi, contactPoint ke Hubungi Kami, bahasa id/en;
-  WebSite) di semua halaman — joinbareng memakainya.
+- Juga pasang **data terstruktur schema.org** (Organization: nama, logo, deskripsi, `sameAs` = akun resmi, contactPoint ke Hubungi Kami;
+  WebSite, bahasa `id-ID` saja) di semua halaman — joinbareng memakainya.
 
 ### 2.3 Hubungi Kami (`/hubungi-kami`) — tambahan
 - Kartu: **Mulai percakapan** (chat CS, jam operasional), **Lowongan** (tautan LinkedIn perusahaan), **Siaran Pers** (ke §2.1).
@@ -71,8 +71,17 @@ Alur joinbareng (ditiru, lengkapi `10-marketplace-escrow.md`):
 4. **Jasa Bayar** sekarang mengklaim **2.370+ produk** (kita: 39 kategori, 35 produk benih + jalur Layanan lain). Fee "mulai Rp50.000" — sama dengan `config/fee.json`.
 5. Klaim beranda: "hemat hingga 80%", "100+ layanan patungan", "1.000+ listing seller terverifikasi", "live chat 24/7". Kita tampilkan klaim sejenis **hanya bila
    datanya ada** (aturan strip kepercayaan `02`).
-6. Pilihan bahasa (id/en) di header → situs dwibahasa. Kita: Indonesia dulu, Inggris di Tahap 5 (`14` roadmap).
+6. Pilihan bahasa (id/en) di header → situs dwibahasa. **Kita: Bahasa Indonesia saja** (keputusan pemilik 31 Okt); schema.org `inLanguage` = `id-ID`.
 7. Situs memakai piksel iklan (Facebook dll.) untuk iklan berbayar → wajib disebut di Kebijakan Privasi & banner cookie (`17`).
+
+## 3b. Keputusan pemilik atas temuan §3 (31 Okt 2026)
+| Temuan | Keputusan | Di repo |
+|---|---|---|
+| Tab Rekomendasi | **Ditiru**, skor dari data asli tanpa iklan | `22` §6, `app/src/domain/rekomendasi.ts` |
+| Rak Trending/Gamepass/Gift Item/Pets | **Ramping**: hanya game paling laku di Indonesia (7 game) | `22` §6, `data/kategori-marketplace.json` |
+| Metode bayar | **Tanpa kartu kredit/debit**; QRIS, VA, e-wallet, Indomaret/Alfamart lewat gateway Indonesia (Xendit/Tripay) | `config/pembayaran.json`, `app/src/domain/metodeBayar.ts` |
+| Pilihan bahasa | **Bahasa Indonesia saja** (tidak ada id/en) | §3 butir 6 diganti |
+| schema.org + piksel iklan | **Ditiru**; piksel hanya setelah persetujuan cookie | `17` §9, §2.2 |
 
 ## 4. Fee — dicek ulang 31 Okt 2026: TIDAK berubah
 - Artikel bantuan "Berapa biaya yang harus saya bayar" masih versi **29/05/2026**: joiner bulanan 10% + Rp8.000, tahunan 20% + Rp6.500 per bulan,
