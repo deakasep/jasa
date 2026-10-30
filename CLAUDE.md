@@ -40,7 +40,7 @@ Sumber kebenaran:
 4. Tiru joinbareng sepenuhnya, **kecuali** yang dicatat di `docs/09-benchmark-joinbareng.md` §10: patungan plan pribadi/single-user
    (mis. akun AI pribadi — arahkan ke Jasa Bayar), konten dewasa, akun keuangan ber-KYC, ulasan palsu. Teks/desain mereka tidak disalin
    mentah; tulis ulang dengan kata kita.
-5. Pakai skill di `.claude/skills/`: `proses-order`, `cek-renewal`, `komplain-garansi`, `update-katalog`, `proses-jasa-bayar`,
+5. Komponen Claude pihak luar (review PR, rekonsiliasi) & aturan keamanannya: `.claude/VENDORED.md`. Pakai skill di `.claude/skills/`: `proses-order`, `cek-renewal`, `komplain-garansi`, `update-katalog`, `proses-jasa-bayar`,
    `onboarding-seller`, `mediasi-sengketa`, `riset-kompetitor`, `qc-harian`, `qa-uji-alur`, `qc-listing-host`.
 6. Riset situs lain: hanya baca halaman publik (WebFetch dulu, Claude in Chrome bila perlu); jangan login/isi form/beli.
 7. Git: branch utama dilindungi ruleset — kerja di branch baru → push → buka PR → merge (squash) begitu check `Cek repo` & `Platform`
