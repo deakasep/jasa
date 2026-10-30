@@ -1,5 +1,8 @@
 # Changelog
 
+- 2026-10-30 (8): strip kepercayaan per pilar (transaksi sukses, rating, garansi refund, kecepatan) ala joinbareng — angka otomatis
+  dari data asli dengan ambang tampil; sebelum ambang tampil label jujur (`docs/02`).
+
 - 2026-10-30 (7): audit kelengkapan tiruan joinbareng → celah ditutup: 19 kategori marketplace + hub game + urutan/paginasi,
   alur Top Up Login, Papan Penawaran Custom, struktur blog, metode bayar (`docs/22`, `data/kategori-marketplace.json`).
   Joki, Top Up Login, Akun disembunyikan sampai pemilik memutuskan (risiko ToS game & keamanan akun).

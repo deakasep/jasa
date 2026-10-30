@@ -58,6 +58,7 @@ Gagal → turunkan + pesan alasan.
 | Respon pertama CS | ≤ 5 menit |
 | Aktivasi patungan setelah batch penuh | ≤ 15 menit |
 | Proses jasa bayar | 1–5 menit |
+| Strip kepercayaan per pilar | angka = database (dicek mingguan), tidak ada angka tulisan tangan |
 | Putusan sengketa | ≤ 24 jam |
 | Klaim patungan selesai | ≤ 1 hari kerja (janji publik 1–3) |
 | Payout seller | ≤ 1×24 jam kerja |
