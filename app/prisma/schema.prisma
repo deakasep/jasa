@@ -363,6 +363,16 @@ model JasaBayarOrder {
   layananUrl    String? // wajib untuk Layanan lain: link harga/checkout
   caraBayar     String? // kartu_di_akun_pembeli | topup_saldo | gift_card | invoice_sekali | tagihan_sekali
   menitProses   Int? // bayar → selesai, untuk strip kepercayaan
+  paketNama     String? // paket katalog (harga otomatis)
+  ppnRp         Int? // PPN penyedia yang diteruskan ke pembeli
+  usdDitagih    Decimal?        @db.Decimal(12, 2) // USD termasuk PPN yang sudah dibayar klien
+  checkoutUsd   Decimal?        @db.Decimal(12, 2) // total di halaman checkout penyedia (domain/checkout.ts)
+  keputusanCheckout String? // lanjut | tanggung | tahan
+  selisihDitanggungRp Int?
+  rpTerpotongKartu Int? // nominal nyata terpotong dari kartu → markup bank
+  kartuVirtualRef String? // HANYA id/alias kartu virtual di penyedia kartu, BUKAN nomor kartu (CLAUDE.md aturan 1)
+  autoRenewDimatikan Boolean      @default(false)
+  checklist     Json            @default("[]") // langkah checklistProses yang sudah dicentang admin
   status        JasaBayarStatus @default(MENUNGGU_BAYAR)
   buktiRef      String?
   catatan       String?
@@ -385,9 +395,27 @@ model JasaBayarProduct {
   catatan    String?
   patungan   String? // slug Service patungan untuk cross-sell
   aktif      Boolean @default(true)
+  ppnPersen  Decimal? @db.Decimal(5, 4) // null = belum diverifikasi → harga dihitung CS
+  urlHarga   String?
+  hargaDicek DateTime?
+  dijedaAlasan String? // diisi pemantau harga; null = tidak dijeda
   orders     JasaBayarOrder[]
 
   @@index([kategori, aktif])
+}
+
+/// Riwayat kurs USD→IDR yang dipilih domain/kurs.ts (sumber, nilai median, status). Harga otomatis memakai baris terbaru
+/// berstatus "baru"/"pakai_terakhir"; lonjakan yang ditahan juga dicatat untuk audit.
+model Kurs {
+  id         String   @id @default(cuid())
+  nilai      Decimal  @db.Decimal(12, 2)
+  sumber     String
+  waktuData  DateTime
+  status     String // baru | pakai_terakhir | ditahan
+  peringatan String[]
+  createdAt  DateTime @default(now())
+
+  @@index([status, createdAt])
 }
 
 /// Ulasan Patungan & Jasa Bayar (Marketplace memakai model Review per Order). Satu pesanan = satu ulasan,

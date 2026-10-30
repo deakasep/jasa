@@ -56,6 +56,11 @@
       "mata_uang": "USD",
       "cara_bayar": "kartu_di_akun_pembeli",
       "butuh_login": true,
+      "aktif": true,
+      "ppn_persen": 0.11,
+      "sumber_ppn": "joinbareng /jasa-bayar/claude-code: Anthropic menambah PPN 11% untuk tagihan Indonesia",
+      "url_harga": "https://claude.com/pricing",
+      "harga_dicek": "2026-10-30",
       "paket": [
         {
           "nama": "Pro",
@@ -79,6 +84,11 @@
       "mata_uang": "USD",
       "cara_bayar": "kartu_di_akun_pembeli",
       "butuh_login": true,
+      "aktif": true,
+      "ppn_persen": 0.11,
+      "sumber_ppn": "sama dengan claude",
+      "url_harga": "https://claude.com/pricing",
+      "harga_dicek": "2026-10-30",
       "paket": [
         {
           "nama": "Pro",
@@ -101,6 +111,10 @@
       "mata_uang": "USD",
       "cara_bayar": "topup_saldo",
       "butuh_login": false,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": [],
       "catatan": "top up kredit Console ke organisasi milik pembeli"
     },
@@ -111,6 +125,11 @@
       "mata_uang": "USD",
       "cara_bayar": "kartu_di_akun_pembeli",
       "butuh_login": true,
+      "aktif": true,
+      "ppn_persen": 0,
+      "sumber_ppn": "DJP mencabut OpenAI dari daftar pemungut PPN PMSE (April 2026, Kontan 22 Mei 2026); diverifikasi di checkout",
+      "url_harga": "https://openai.com/chatgpt/pricing/",
+      "harga_dicek": "2026-10-30",
       "paket": [
         {
           "nama": "Plus",
@@ -129,6 +148,10 @@
       "mata_uang": "USD",
       "cara_bayar": "topup_saldo",
       "butuh_login": false,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": []
     },
     {
@@ -138,6 +161,10 @@
       "mata_uang": "USD",
       "cara_bayar": "kartu_di_akun_pembeli",
       "butuh_login": true,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": []
     },
     {
@@ -147,6 +174,10 @@
       "mata_uang": "USD",
       "cara_bayar": "kartu_di_akun_pembeli",
       "butuh_login": true,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": "https://cursor.com/pricing",
+      "harga_dicek": null,
       "paket": [
         {
           "nama": "Pro",
@@ -161,6 +192,10 @@
       "mata_uang": "USD",
       "cara_bayar": "kartu_di_akun_pembeli",
       "butuh_login": true,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": "https://github.com/features/copilot/plans",
+      "harga_dicek": null,
       "paket": []
     },
     {
@@ -170,6 +205,11 @@
       "mata_uang": "USD",
       "cara_bayar": "kartu_di_akun_pembeli",
       "butuh_login": true,
+      "aktif": true,
+      "ppn_persen": 0.11,
+      "sumber_ppn": "DJP menunjuk Perplexity AI pemungut PPN PMSE (Mei 2026)",
+      "url_harga": "https://www.perplexity.ai/pro",
+      "harga_dicek": "2026-10-30",
       "paket": [
         {
           "nama": "Pro",
@@ -184,6 +224,10 @@
       "mata_uang": "USD",
       "cara_bayar": "kartu_di_akun_pembeli",
       "butuh_login": true,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": []
     },
     {
@@ -193,6 +237,10 @@
       "mata_uang": "USD",
       "cara_bayar": "kartu_di_akun_pembeli",
       "butuh_login": true,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": []
     },
     {
@@ -202,6 +250,10 @@
       "mata_uang": "USD",
       "cara_bayar": "topup_saldo",
       "butuh_login": false,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": []
     },
     {
@@ -211,6 +263,19 @@
       "mata_uang": "USD",
       "cara_bayar": "tagihan_sekali",
       "butuh_login": true,
+      "aktif": false,
+      "alasan_nonaktif": "cloud pascabayar: tunggu kartu virtual berlimit + deposit (docs/23 §3)",
+      "domain": [
+        "aws.amazon.com",
+        "amazonaws.com"
+      ],
+      "kata_kunci": [
+        "aws",
+        "amazon web services"
+      ],
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": [],
       "catatan": "pascabayar: kita bayar tagihan yang sudah terbit sekali, kartu dilepas setelah bayar; pembeli wajib pasang budget alert"
     },
@@ -221,6 +286,19 @@
       "mata_uang": "USD",
       "cara_bayar": "tagihan_sekali",
       "butuh_login": true,
+      "aktif": false,
+      "alasan_nonaktif": "cloud pascabayar: tunggu kartu virtual berlimit + deposit (docs/23 §3)",
+      "domain": [
+        "azure.com",
+        "azure.microsoft.com",
+        "portal.azure.com"
+      ],
+      "kata_kunci": [
+        "azure"
+      ],
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": [],
       "catatan": "pascabayar: bayar tagihan/invoice sekali, kartu dilepas; tidak ada auto-charge ke kartu kita"
     },
@@ -231,6 +309,19 @@
       "mata_uang": "USD",
       "cara_bayar": "tagihan_sekali",
       "butuh_login": true,
+      "aktif": false,
+      "alasan_nonaktif": "cloud pascabayar: tunggu kartu virtual berlimit + deposit (docs/23 §3)",
+      "domain": [
+        "cloud.google.com",
+        "console.cloud.google.com"
+      ],
+      "kata_kunci": [
+        "google cloud",
+        "gcp"
+      ],
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": [],
       "catatan": "pascabayar: bayar tagihan sekali, kartu dilepas"
     },
@@ -241,6 +332,10 @@
       "mata_uang": "USD",
       "cara_bayar": "kartu_di_akun_pembeli",
       "butuh_login": true,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": []
     },
     {
@@ -250,6 +345,10 @@
       "mata_uang": "USD",
       "cara_bayar": "topup_saldo",
       "butuh_login": false,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": [],
       "catatan": "isi saldo akun registrar pembeli, domain atas nama pembeli"
     },
@@ -260,6 +359,10 @@
       "mata_uang": "USD",
       "cara_bayar": "gift_card",
       "butuh_login": false,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": [],
       "catatan": "kode gift card resmi dikirim ke pembeli; tanpa login"
     },
@@ -270,6 +373,10 @@
       "mata_uang": "USD",
       "cara_bayar": "gift_card",
       "butuh_login": false,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": [],
       "catatan": "gift card wallet atau gift game ke akun pembeli"
     },
@@ -280,6 +387,10 @@
       "mata_uang": "USD",
       "cara_bayar": "gift_card",
       "butuh_login": false,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": []
     },
     {
@@ -289,6 +400,10 @@
       "mata_uang": "IDR",
       "cara_bayar": "kartu_di_akun_pembeli",
       "butuh_login": true,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": [],
       "catatan": "harga Rupiah → harga final dihitung CS",
       "patungan": "spotify"
@@ -300,6 +415,10 @@
       "mata_uang": "IDR",
       "cara_bayar": "kartu_di_akun_pembeli",
       "butuh_login": true,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": [],
       "patungan": "netflix"
     },
@@ -310,6 +429,10 @@
       "mata_uang": "IDR",
       "cara_bayar": "kartu_di_akun_pembeli",
       "butuh_login": true,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": [],
       "patungan": "youtube"
     },
@@ -320,6 +443,10 @@
       "mata_uang": "IDR",
       "cara_bayar": "kartu_di_akun_pembeli",
       "butuh_login": true,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": []
     },
     {
@@ -329,6 +456,10 @@
       "mata_uang": "USD",
       "cara_bayar": "kartu_di_akun_pembeli",
       "butuh_login": true,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": []
     },
     {
@@ -338,6 +469,10 @@
       "mata_uang": "IDR",
       "cara_bayar": "kartu_di_akun_pembeli",
       "butuh_login": true,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": [],
       "patungan": "m365"
     },
@@ -348,6 +483,10 @@
       "mata_uang": "USD",
       "cara_bayar": "kartu_di_akun_pembeli",
       "butuh_login": true,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": []
     },
     {
@@ -357,6 +496,10 @@
       "mata_uang": "USD",
       "cara_bayar": "kartu_di_akun_pembeli",
       "butuh_login": true,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": []
     },
     {
@@ -366,6 +509,10 @@
       "mata_uang": "USD",
       "cara_bayar": "kartu_di_akun_pembeli",
       "butuh_login": true,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": []
     },
     {
@@ -375,6 +522,10 @@
       "mata_uang": "USD",
       "cara_bayar": "invoice_sekali",
       "butuh_login": true,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": []
     },
     {
@@ -384,6 +535,10 @@
       "mata_uang": "USD",
       "cara_bayar": "kartu_di_akun_pembeli",
       "butuh_login": true,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": []
     },
     {
@@ -393,6 +548,10 @@
       "mata_uang": "USD",
       "cara_bayar": "invoice_sekali",
       "butuh_login": false,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": []
     },
     {
@@ -402,6 +561,10 @@
       "mata_uang": "USD",
       "cara_bayar": "invoice_sekali",
       "butuh_login": false,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": []
     },
     {
@@ -411,6 +574,10 @@
       "mata_uang": "USD",
       "cara_bayar": "gift_card",
       "butuh_login": false,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": []
     },
     {
@@ -420,7 +587,12 @@
       "mata_uang": "USD",
       "cara_bayar": "kartu_di_akun_pembeli",
       "butuh_login": true,
+      "aktif": true,
+      "ppn_persen": null,
+      "url_harga": null,
+      "harga_dicek": null,
       "paket": []
     }
-  ]
+  ],
+  "_catatan_harga": "ppn_persen null = belum diverifikasi → harga otomatis tidak tampil, dihitung CS. harga_dicek = tanggal paket USD & PPN terakhir dicek (lebih dari jasa_bayar.harga_dicek_maks_hari → harga otomatis mati sampai dicek ulang)."
 }

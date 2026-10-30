@@ -29,6 +29,16 @@ Tabel selalu terbaru: `python3 scripts/hitung.py pendapatan`.
 | Marketplace pesanan Rp50.000 | penjual | Rp2.500 | 5,0% | Rp1.400 |
 | Marketplace pesanan Rp13.000 | penjual | Rp1.000 | 7,7% | Rp159 |
 
+## Untung BERSIH Jasa Bayar (setelah kartu, QRIS, pajak) — `python3 scripts/hitung.py jasa-bayar-bersih <usd> <kurs>`
+| Contoh (kurs 16.500) | Tagihan klien | Keluar ke kartu* | QRIS | Pajak UMKM 0,5%** | **Bersih** |
+|---|---|---|---|---|---|
+| Claude $10 + PPN 11% | Rp236.000 | Rp186.813 | Rp2.402 | Rp1.180 | **Rp45.605 (19,3%)** |
+| ChatGPT Plus $20 (PPN 0) | Rp385.000 | Rp336.600 | Rp3.445 | Rp1.925 | **Rp43.030 (11,2%)** |
+| Claude Max $200 + PPN, pajak dasar fee | Rp3.852.000 | Rp3.736.260 | Rp27.714 | Rp579 | **Rp87.447 (2,3%)** → pakai VA |
+
+\* estimasi kurs bank +2% di atas kurs tengah (angka nyata dicatat per order). \*\* dasar pajak (total vs fee saja) wajib dikonfirmasi akuntan.
+Sumber untung utama = fee jasa; spread 1,5% hanya menutup kurs bank.
+
 ## Catatan keputusan
 1. **Pesanan marketplace kecil hampir tidak untung** karena biaya QRIS (±0,7% + Rp750) kita tanggung. Mitigasi bawaan joinbareng:
    **dompet** (top-up min Rp50.000 sekali bayar → banyak transaksi kecil tanpa biaya gateway per transaksi). Dorong pembeli pakai saldo.

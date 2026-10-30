@@ -30,6 +30,10 @@ async function main(): Promise<void> {
         paket: j.paket,
         catatan: j.catatan ?? null,
         patungan: j.patungan ?? null,
+        aktif: j.aktif,
+        ppnPersen: j.ppn_persen,
+        urlHarga: j.url_harga,
+        hargaDicek: j.harga_dicek ? new Date(`${j.harga_dicek}T00:00:00+08:00`) : null,
       };
       await tx.jasaBayarProduct.upsert({ where: { slug: j.slug }, create: { slug: j.slug, ...data }, update: data });
     }

@@ -6,6 +6,8 @@ Pakai:
   python3 scripts/hitung.py host <harga_slot> [bulanan|tahunan]       # connection fee host (bulan pertama/joiner)
   python3 scripts/hitung.py slot <harga_plan_resmi> <jumlah_slot>
   python3 scripts/hitung.py jasa-bayar <harga_usd> <kurs_mid_market>
+  python3 scripts/hitung.py jasa-bayar-bersih <harga_usd> <kurs_mid> [ppn=0.11] [dasar_pajak=total|fee]
+                                                                     # rincian tagihan + untung BERSIH (biaya kartu, QRIS, pajak)
   python3 scripts/hitung.py seller <total_pesanan>
   python3 scripts/hitung.py pendapatan                                 # tabel % pendapatan dari pembeli & penjual
 """
@@ -63,6 +65,23 @@ def jasa_bayar(usd: float, kurs_mid: float) -> dict:
             "spread_rp": int(round(harga_rp - usd * kurs_mid)), "total": ribuan(harga_rp + fee)}
 
 
+def jasa_bayar_bersih(usd: float, kurs_mid: float, ppn: float = 0.11, dasar_pajak: str = "total") -> dict:
+    """Sama dengan app/src/domain/hargaOtomatis.ts + checkout.ts (harga otomatis termasuk PPN penyedia, lalu untung bersih)."""
+    kurs_jual = kurs_mid * (1 + FEE["jasa_bayar"]["spread_kurs"])
+    harga = usd * kurs_jual
+    ppn_rp = usd * ppn * kurs_jual
+    fee = fee_jasa_bayar(usd, harga)
+    total = ribuan(harga + ppn_rp + fee)
+    pj = FEE["estimasi_pajak"]
+    ke_kartu = int(round(usd * (1 + ppn) * kurs_mid * (1 + pj["markup_kurs_bank_estimasi"])))
+    gateway = biaya_qris(total)
+    kotor = total - ke_kartu
+    pajak = int(round((total if dasar_pajak == "total" else max(0, kotor)) * pj["pph_final_umkm"]))
+    bersih = kotor - gateway - pajak
+    return {"harga_rp": int(round(harga)), "ppn_rp": int(round(ppn_rp)), "fee": fee, "total": total, "ke_kartu": ke_kartu,
+            "gateway": gateway, "pajak": pajak, "bersih": bersih, "persen": bersih / total}
+
+
 def fee_seller(total: int) -> int:
     m = FEE["marketplace"]
     return max(m["fee_seller_min"], int(round(total * m["fee_seller_persen"])))
@@ -118,6 +137,14 @@ def main(argv):
     elif mode == "jasa-bayar":
         r = jasa_bayar(float(argv[2]), float(argv[3]))
         print(f"kurs jual {r['kurs_jual']} | harga {rp(r['harga_rp'])} | fee {rp(r['fee'])} | total {rp(r['total'])}")
+    elif mode == "jasa-bayar-bersih":
+        ppn = float(argv[4]) if len(argv) > 4 else 0.11
+        dasar = argv[5] if len(argv) > 5 else "total"
+        r = jasa_bayar_bersih(float(argv[2]), float(argv[3]), ppn, dasar)
+        print(f"Tagihan klien : harga {rp(r['harga_rp'])} + PPN penyedia {rp(r['ppn_rp'])} + fee {rp(r['fee'])} = {rp(r['total'])}")
+        print(f"Keluar        : kartu {rp(r['ke_kartu'])} (estimasi kurs bank +{FEE['estimasi_pajak']['markup_kurs_bank_estimasi']:.0%})"
+              f" · QRIS {rp(r['gateway'])} · pajak UMKM {rp(r['pajak'])} (dasar {dasar})")
+        print(f"Untung bersih : {rp(r['bersih'])} ({r['persen']:.1%} dari tagihan) — estimasi, pajak wajib dikonfirmasi akuntan")
     elif mode == "seller":
         t = int(argv[2]); f = fee_seller(t)
         print(f"fee seller {rp(f)} | diterima seller {rp(t - f)}")

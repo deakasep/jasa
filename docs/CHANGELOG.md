@@ -1,5 +1,10 @@
 # Changelog
 
+- 2026-10-30 (10): **harga otomatis Jasa Bayar** (Rupiah final per paket termasuk PPN penyedia, `/api/harga/jasa-bayar`), kurs otomatis
+  2 sumber + tahan lonjakan (`/api/cron/kurs`, model `Kurs`), pantau harga resmi penyedia (`/api/cron/pantau-harga`, produk dijeda),
+  cek selisih checkout (toleransi Rp5.000), catat markup kurs bank, untung bersih (`hitung.py jasa-bayar-bersih`). Pengaman kartu:
+  kartu virtual per order + perpanjangan otomatis dimatikan + checklist admin; **cloud pascabayar AWS/Azure/GCP nonaktif**. 96 test.
+
 - 2026-10-30 (9): katalog Jasa Bayar (39 kategori ala joinbareng, 35 produk benih) + jalur **Layanan lain** (nama + link, cek daftar tolak,
   usulan katalog otomatis), lima cara bayar termasuk cloud pascabayar (kartu dilepas setelah bayar); ulasan Patungan & Jasa Bayar
   (`UlasanLayanan`), testimoni & ticker dari data asli, strip kepercayaan otomatis (`domain/ulasan.ts`, `config/kepercayaan.json`). 74 test.
