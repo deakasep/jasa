@@ -73,7 +73,9 @@ Terakhir diperbarui: 2026-10-31 (sesi Claude Code). Perbarui file ini di akhir s
 - [x] Siapkan halaman checkout minimal + dashboard admin (RBAC, antrian aksi cron, batch, refund) dengan data contoh, tanpa gateway nyata — PR #19 (`/checkout`, `/admin`, 104 test)
 - [ ] Eksekusi aksi cron (`?jalankan=1`) + notifikasi WA/email (mode uji, tanpa kirim ke pihak luar)
 - [ ] Rekonsiliasi harian gateway ↔ ledger (skill `reconciliation`) sebagai fungsi domain + test
-Butuh pemilik dulu (bukan antrian): NIB/PSE/gateway sandbox, DATABASE_URL, kartu virtual, akuntan, keputusan kategori Joki/Top Up Login/Akun.
+Butuh pemilik dulu (bukan antrian, semua sudah jadi task ClickUp tag `keputusan-pemilik`/`butuh-pemilik`): nama brand + domain + email resmi,
+bentuk badan usaha → NIB → PSE → gateway sandbox, DATABASE_URL, kartu virtual, akuntan, penyedia WA API + email, akun iklan (ID piksel),
+keputusan kategori Joki/Top Up Login/Akun, review kuartal 7 game fokus.
 
 ## Kendala lingkungan yang diketahui
 - Sesi cloud Claude: registry npm diblokir kebijakan jaringan (403) → test domain jalan dengan `node --experimental-strip-types --test`
