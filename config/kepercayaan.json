@@ -1,0 +1,12 @@
+{
+  "_sumber": "docs/02-struktur-website.md §Strip kepercayaan — ambang tampil badge; angka badge selalu dihitung dari database",
+  "transaksi_min_tampil": 100,
+  "transaksi_tangga": [100, 500, 1000, 5000, 10000, 50000, 100000],
+  "ulasan_min_tampil": 30,
+  "kecepatan_min_pesanan_30_hari": 50,
+  "kecepatan_target_menit": { "jasa_bayar": 5, "patungan": 5, "marketplace": 60, "permintaan": 60 },
+  "testimoni_min_rating": 4,
+  "testimoni_tampil": 3,
+  "ticker_tampil": 6,
+  "layanan_lain_jadi_katalog_min_pesanan": 3
+}

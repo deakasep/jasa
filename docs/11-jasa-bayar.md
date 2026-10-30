@@ -17,6 +17,10 @@ total       = harga_rp + PPN/pajak yang ditagih penyedia (jika ada) + fee_jasa  
 ```
 Kurs **terkunci 30 menit**: invoice tidak dibayar dalam 30 menit → hitung ulang. Hitung otomatis: `python3 scripts/hitung.py jasa-bayar <USD> <kurs>`.
 
+## Katalog & layanan lain
+Katalog 39 kategori + halaman per layanan, jalur **Layanan lain** (nama + link wajib) untuk apa pun di luar katalog, lima cara bayar
+(termasuk cloud pascabayar AWS/Azure), ulasan & ticker: `23-jasa-bayar-katalog.md`.
+
 ## Form order (field wajib)
 Estimasi harga produk (USD, sebelum pajak) · email akun produk (milik pembeli) · nama lengkap · nomor WhatsApp · email untuk bukti bayar ·
 catatan (paket/tier, sekali/berulang). Pembeli baru otomatis dibuatkan akun.

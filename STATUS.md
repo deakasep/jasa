@@ -34,6 +34,8 @@ Terakhir diperbarui: 2026-10-30 (sesi Claude Code). Perbarui file ini di akhir s
 - **Pembayaran siap disambungkan** (30 Okt siang): pengolah pembayaran bersama Xendit+Tripay (`domain/pembayaran.ts` + `server/payments/proses.ts`;
   nominal beda / pesanan kadaluarsa → masuk audit `pembayaran.perlu_tinjau`, tidak error), klien invoice Xendit & Tripay
   (`server/payments/invoice.ts`, diuji dengan fetch palsu), seed katalog (`npm run db:seed`). Total 57 test.
+- **Jasa Bayar layanan apa saja + ulasan semua pilar** (30 Okt malam): katalog 39 kategori, jalur Layanan lain, cara bayar per jenis
+  (cloud AWS/Azure: bayar tagihan sekali, kartu dilepas), ulasan & testimoni & ticker dari data asli, strip kepercayaan otomatis (`docs/23`). 74 test.
 - **Audit kelengkapan joinbareng** (30 Okt sore): halaman publik dibandingkan dengan repo; celah kategori marketplace, papan penawaran,
   blog ditutup di `docs/22`. Yang tidak bisa ditiru tanpa login (dashboard, form listing, chat, checkout) dirancang sendiri.
   **Menunggu keputusan pemilik:** buka kategori Joki / Top Up Login / Akun atau tidak.

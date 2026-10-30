@@ -1,0 +1,426 @@
+{
+  "_sumber": "docs/23-jasa-bayar-katalog.md — kategori meniru joinbareng.com/jasa-bayar (2.379 layanan, 39 kategori, dibaca 2026-10-30); produk = benih awal, ditambah bertahap",
+  "cara_bayar": {
+    "kartu_di_akun_pembeli": "kartu bisnis kita dipasang di akun pembeli sendiri untuk 1 periode, dilepas bila pembeli berhenti; butuh login/OTP pembeli",
+    "topup_saldo": "isi saldo/kredit ke akun pembeli (API credit, registrar domain); tanpa kartu tertinggal",
+    "gift_card": "beli kode gift card/voucher resmi lalu kirim kodenya; tanpa login",
+    "invoice_sekali": "bayar satu invoice/checkout yang dikirim pembeli (link pembayaran); tanpa login",
+    "tagihan_sekali": "layanan pascabayar (cloud): bayar tagihan yang sudah terbit sekali, kartu dilepas setelah lunas; tidak boleh ada auto-charge ke kartu kita"
+  },
+  "kategori": [
+    "SVOD",
+    "Music",
+    "Security",
+    "Video games",
+    "Software",
+    "Reading",
+    "Ecommerce",
+    "Cloud",
+    "Well-being",
+    "eLearning",
+    "AI Education",
+    "AI Video",
+    "AI Audio & Music",
+    "AI Writing",
+    "AI Image",
+    "AI Productivity",
+    "AI Assistant & Chat",
+    "AI Coding",
+    "AI Marketing",
+    "AI API & Inference",
+    "AI Agent & Otomasi",
+    "Utilitas",
+    "Editing Foto & Video",
+    "Aset Kreatif & Stock",
+    "Produksi Musik & Audio",
+    "Developer Tools",
+    "Website Builder & WordPress",
+    "SaaS Bisnis",
+    "Statistik & Riset",
+    "CAD & Engineering",
+    "eSIM & Nomor Virtual",
+    "Tiket & Event",
+    "Travel & Visa",
+    "Studi Luar Negeri & Administrasi",
+    "Gift Card Region Luar",
+    "AI Animation & Modeling",
+    "Membership Klub & Olahraga",
+    "Publikasi Ilmiah",
+    "Donasi, Crowdfunding & Kreator"
+  ],
+  "produk": [
+    {
+      "slug": "claude",
+      "nama": "Claude (Pro/Max)",
+      "kategori": "AI Assistant & Chat",
+      "mata_uang": "USD",
+      "cara_bayar": "kartu_di_akun_pembeli",
+      "butuh_login": true,
+      "paket": [
+        {
+          "nama": "Pro",
+          "harga": 20
+        },
+        {
+          "nama": "Max 5x",
+          "harga": 100
+        },
+        {
+          "nama": "Max 20x",
+          "harga": 200
+        }
+      ],
+      "catatan": "PPN 11% dari Anthropic untuk tagihan Indonesia; upgrade tengah periode tanpa fee jasa"
+    },
+    {
+      "slug": "claude-code",
+      "nama": "Claude Code",
+      "kategori": "AI Coding",
+      "mata_uang": "USD",
+      "cara_bayar": "kartu_di_akun_pembeli",
+      "butuh_login": true,
+      "paket": [
+        {
+          "nama": "Pro",
+          "harga": 20
+        },
+        {
+          "nama": "Max 5x",
+          "harga": 100
+        },
+        {
+          "nama": "Max 20x",
+          "harga": 200
+        }
+      ]
+    },
+    {
+      "slug": "anthropic-api",
+      "nama": "Anthropic API (Console)",
+      "kategori": "AI API & Inference",
+      "mata_uang": "USD",
+      "cara_bayar": "topup_saldo",
+      "butuh_login": false,
+      "paket": [],
+      "catatan": "top up kredit Console ke organisasi milik pembeli"
+    },
+    {
+      "slug": "chatgpt",
+      "nama": "ChatGPT Plus/Pro",
+      "kategori": "AI Assistant & Chat",
+      "mata_uang": "USD",
+      "cara_bayar": "kartu_di_akun_pembeli",
+      "butuh_login": true,
+      "paket": [
+        {
+          "nama": "Plus",
+          "harga": 20
+        },
+        {
+          "nama": "Pro",
+          "harga": 200
+        }
+      ]
+    },
+    {
+      "slug": "openai-api",
+      "nama": "OpenAI API",
+      "kategori": "AI API & Inference",
+      "mata_uang": "USD",
+      "cara_bayar": "topup_saldo",
+      "butuh_login": false,
+      "paket": []
+    },
+    {
+      "slug": "gemini",
+      "nama": "Google Gemini / Google AI Pro",
+      "kategori": "AI Assistant & Chat",
+      "mata_uang": "USD",
+      "cara_bayar": "kartu_di_akun_pembeli",
+      "butuh_login": true,
+      "paket": []
+    },
+    {
+      "slug": "cursor",
+      "nama": "Cursor Pro",
+      "kategori": "AI Coding",
+      "mata_uang": "USD",
+      "cara_bayar": "kartu_di_akun_pembeli",
+      "butuh_login": true,
+      "paket": [
+        {
+          "nama": "Pro",
+          "harga": 20
+        }
+      ]
+    },
+    {
+      "slug": "github-copilot",
+      "nama": "GitHub Pro / Copilot",
+      "kategori": "Developer Tools",
+      "mata_uang": "USD",
+      "cara_bayar": "kartu_di_akun_pembeli",
+      "butuh_login": true,
+      "paket": []
+    },
+    {
+      "slug": "perplexity",
+      "nama": "Perplexity Pro",
+      "kategori": "AI Assistant & Chat",
+      "mata_uang": "USD",
+      "cara_bayar": "kartu_di_akun_pembeli",
+      "butuh_login": true,
+      "paket": [
+        {
+          "nama": "Pro",
+          "harga": 20
+        }
+      ]
+    },
+    {
+      "slug": "midjourney",
+      "nama": "Midjourney",
+      "kategori": "AI Image",
+      "mata_uang": "USD",
+      "cara_bayar": "kartu_di_akun_pembeli",
+      "butuh_login": true,
+      "paket": []
+    },
+    {
+      "slug": "elevenlabs",
+      "nama": "ElevenLabs",
+      "kategori": "AI Audio & Music",
+      "mata_uang": "USD",
+      "cara_bayar": "kartu_di_akun_pembeli",
+      "butuh_login": true,
+      "paket": []
+    },
+    {
+      "slug": "openrouter",
+      "nama": "OpenRouter",
+      "kategori": "AI API & Inference",
+      "mata_uang": "USD",
+      "cara_bayar": "topup_saldo",
+      "butuh_login": false,
+      "paket": []
+    },
+    {
+      "slug": "aws",
+      "nama": "Amazon Web Services (AWS)",
+      "kategori": "Cloud",
+      "mata_uang": "USD",
+      "cara_bayar": "tagihan_sekali",
+      "butuh_login": true,
+      "paket": [],
+      "catatan": "pascabayar: kita bayar tagihan yang sudah terbit sekali, kartu dilepas setelah bayar; pembeli wajib pasang budget alert"
+    },
+    {
+      "slug": "azure",
+      "nama": "Microsoft Azure",
+      "kategori": "Cloud",
+      "mata_uang": "USD",
+      "cara_bayar": "tagihan_sekali",
+      "butuh_login": true,
+      "paket": [],
+      "catatan": "pascabayar: bayar tagihan/invoice sekali, kartu dilepas; tidak ada auto-charge ke kartu kita"
+    },
+    {
+      "slug": "google-cloud",
+      "nama": "Google Cloud",
+      "kategori": "Cloud",
+      "mata_uang": "USD",
+      "cara_bayar": "tagihan_sekali",
+      "butuh_login": true,
+      "paket": [],
+      "catatan": "pascabayar: bayar tagihan sekali, kartu dilepas"
+    },
+    {
+      "slug": "vercel",
+      "nama": "Vercel Pro",
+      "kategori": "Cloud",
+      "mata_uang": "USD",
+      "cara_bayar": "kartu_di_akun_pembeli",
+      "butuh_login": true,
+      "paket": []
+    },
+    {
+      "slug": "namecheap",
+      "nama": "Domain (Namecheap/Porkbun)",
+      "kategori": "Website Builder & WordPress",
+      "mata_uang": "USD",
+      "cara_bayar": "topup_saldo",
+      "butuh_login": false,
+      "paket": [],
+      "catatan": "isi saldo akun registrar pembeli, domain atas nama pembeli"
+    },
+    {
+      "slug": "roblox",
+      "nama": "Roblox (Robux/Premium)",
+      "kategori": "Video games",
+      "mata_uang": "USD",
+      "cara_bayar": "gift_card",
+      "butuh_login": false,
+      "paket": [],
+      "catatan": "kode gift card resmi dikirim ke pembeli; tanpa login"
+    },
+    {
+      "slug": "steam",
+      "nama": "Steam Wallet / Game",
+      "kategori": "Video games",
+      "mata_uang": "USD",
+      "cara_bayar": "gift_card",
+      "butuh_login": false,
+      "paket": [],
+      "catatan": "gift card wallet atau gift game ke akun pembeli"
+    },
+    {
+      "slug": "playstation",
+      "nama": "PlayStation Store (region luar)",
+      "kategori": "Gift Card Region Luar",
+      "mata_uang": "USD",
+      "cara_bayar": "gift_card",
+      "butuh_login": false,
+      "paket": []
+    },
+    {
+      "slug": "spotify",
+      "nama": "Spotify",
+      "kategori": "Music",
+      "mata_uang": "IDR",
+      "cara_bayar": "kartu_di_akun_pembeli",
+      "butuh_login": true,
+      "paket": [],
+      "catatan": "harga Rupiah → harga final dihitung CS",
+      "patungan": "spotify"
+    },
+    {
+      "slug": "netflix",
+      "nama": "Netflix",
+      "kategori": "SVOD",
+      "mata_uang": "IDR",
+      "cara_bayar": "kartu_di_akun_pembeli",
+      "butuh_login": true,
+      "paket": [],
+      "patungan": "netflix"
+    },
+    {
+      "slug": "youtube-premium",
+      "nama": "YouTube Premium",
+      "kategori": "SVOD",
+      "mata_uang": "IDR",
+      "cara_bayar": "kartu_di_akun_pembeli",
+      "butuh_login": true,
+      "paket": [],
+      "patungan": "youtube"
+    },
+    {
+      "slug": "canva",
+      "nama": "Canva Pro",
+      "kategori": "Editing Foto & Video",
+      "mata_uang": "IDR",
+      "cara_bayar": "kartu_di_akun_pembeli",
+      "butuh_login": true,
+      "paket": []
+    },
+    {
+      "slug": "adobe",
+      "nama": "Adobe Creative Cloud",
+      "kategori": "Editing Foto & Video",
+      "mata_uang": "USD",
+      "cara_bayar": "kartu_di_akun_pembeli",
+      "butuh_login": true,
+      "paket": []
+    },
+    {
+      "slug": "microsoft-365",
+      "nama": "Microsoft 365",
+      "kategori": "Software",
+      "mata_uang": "IDR",
+      "cara_bayar": "kartu_di_akun_pembeli",
+      "butuh_login": true,
+      "paket": [],
+      "patungan": "m365"
+    },
+    {
+      "slug": "notion",
+      "nama": "Notion Plus/AI",
+      "kategori": "AI Productivity",
+      "mata_uang": "USD",
+      "cara_bayar": "kartu_di_akun_pembeli",
+      "butuh_login": true,
+      "paket": []
+    },
+    {
+      "slug": "figma",
+      "nama": "Figma Professional",
+      "kategori": "SaaS Bisnis",
+      "mata_uang": "USD",
+      "cara_bayar": "kartu_di_akun_pembeli",
+      "butuh_login": true,
+      "paket": []
+    },
+    {
+      "slug": "coursera",
+      "nama": "Coursera Plus",
+      "kategori": "eLearning",
+      "mata_uang": "USD",
+      "cara_bayar": "kartu_di_akun_pembeli",
+      "butuh_login": true,
+      "paket": []
+    },
+    {
+      "slug": "udemy",
+      "nama": "Udemy",
+      "kategori": "eLearning",
+      "mata_uang": "USD",
+      "cara_bayar": "invoice_sekali",
+      "butuh_login": true,
+      "paket": []
+    },
+    {
+      "slug": "duolingo",
+      "nama": "Duolingo Super",
+      "kategori": "eLearning",
+      "mata_uang": "USD",
+      "cara_bayar": "kartu_di_akun_pembeli",
+      "butuh_login": true,
+      "paket": []
+    },
+    {
+      "slug": "ielts",
+      "nama": "Pendaftaran tes IELTS/TOEFL luar",
+      "kategori": "Studi Luar Negeri & Administrasi",
+      "mata_uang": "USD",
+      "cara_bayar": "invoice_sekali",
+      "butuh_login": false,
+      "paket": []
+    },
+    {
+      "slug": "biaya-aplikasi-kampus",
+      "nama": "Biaya aplikasi kampus luar negeri",
+      "kategori": "Studi Luar Negeri & Administrasi",
+      "mata_uang": "USD",
+      "cara_bayar": "invoice_sekali",
+      "butuh_login": false,
+      "paket": []
+    },
+    {
+      "slug": "airalo",
+      "nama": "eSIM Airalo",
+      "kategori": "eSIM & Nomor Virtual",
+      "mata_uang": "USD",
+      "cara_bayar": "gift_card",
+      "butuh_login": false,
+      "paket": []
+    },
+    {
+      "slug": "patreon",
+      "nama": "Patreon / Ko-fi",
+      "kategori": "Donasi, Crowdfunding & Kreator",
+      "mata_uang": "USD",
+      "cara_bayar": "kartu_di_akun_pembeli",
+      "butuh_login": true,
+      "paket": []
+    }
+  ]
+}

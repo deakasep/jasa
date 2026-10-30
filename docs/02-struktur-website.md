@@ -39,6 +39,7 @@ Ada di setiap pilar (Marketplace, Patungan, Jasa Bayar, Permintaan). **Angka dih
 | Garansi refund | aturan S&K: Marketplace dana escrow kembali penuh bila seller telat/gagal kirim; Patungan batch tidak penuh/belum aktif; Jasa Bayar penyedia menolak; Permintaan ikut escrow marketplace | selalu, **dengan tautan syarat** ("Garansi 100% refund*" → `04` §refund) | — |
 | Kecepatan | median waktu bayar → aktif/terkirim 30 hari terakhir per pilar (Jasa Bayar target 1–5 menit, Patungan sesuai batch, Marketplace batas kirim seller) | ≥ 50 pesanan dalam 30 hari dan median ≤ target | "Target 1–5 menit" (label *target*, bukan klaim) |
 
+Ulasan per transaksi tampil publik di semua pilar (rating + jumlah, daftar ulasan, 3 testimoni asli, ticker): `23-jasa-bayar-katalog.md` §4.
 QC mingguan (`16-qa-qc.md`) mencocokkan angka strip dengan database; selisih = temuan QC.
 
 ## Navigasi

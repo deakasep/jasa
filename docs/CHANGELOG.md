@@ -1,5 +1,9 @@
 # Changelog
 
+- 2026-10-30 (9): katalog Jasa Bayar (39 kategori ala joinbareng, 35 produk benih) + jalur **Layanan lain** (nama + link, cek daftar tolak,
+  usulan katalog otomatis), lima cara bayar termasuk cloud pascabayar (kartu dilepas setelah bayar); ulasan Patungan & Jasa Bayar
+  (`UlasanLayanan`), testimoni & ticker dari data asli, strip kepercayaan otomatis (`domain/ulasan.ts`, `config/kepercayaan.json`). 74 test.
+
 - 2026-10-30 (8): strip kepercayaan per pilar (transaksi sukses, rating, garansi refund, kecepatan) ala joinbareng — angka otomatis
   dari data asli dengan ambang tampil; sebelum ambang tampil label jujur (`docs/02`).
 

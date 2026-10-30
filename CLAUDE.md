@@ -26,6 +26,7 @@ Sumber kebenaran:
 - Template pesan: `templates/pesan-whatsapp.md`
 - **Persen pendapatan (pembeli vs penjual)**: `docs/19-pendapatan.md` · Pusat bantuan (63 artikel ditiru): `docs/20-pusat-bantuan.md`
 - Kategori marketplace, papan penawaran, blog: `docs/22-marketplace-kategori.md` · data: `data/kategori-marketplace.json`
+- Katalog Jasa Bayar, layanan lain, ulasan & ticker semua pilar: `docs/23-jasa-bayar-katalog.md` · data: `data/jasa-bayar-katalog.json` · ambang: `config/kepercayaan.json`
 - **Standar enterprise** (RBAC, audit, keamanan, backup/DR, insiden, kepatuhan): `docs/21-enterprise.md` · keputusan: `docs/adr/`
 - **Platform** (Next.js + Prisma, domain murni + test): `app/` — `app/README.md`
 
