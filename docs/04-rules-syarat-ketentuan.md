@@ -5,7 +5,9 @@ Struktur & isi mengikuti S&K joinbareng (`09-benchmark-joinbareng.md` §9), ditu
 ## Akun
 1. Dengan memakai layanan, pengguna dianggap membaca & menyetujui S&K ini.
 2. Data pendaftaran wajib benar dan terbaru; < 18 tahun wajib izin orang tua/wali.
-3. Satu orang satu akun; menjaga kerahasiaan login adalah tanggung jawab pengguna.
+3. Satu orang satu akun; menjaga kerahasiaan login adalah tanggung jawab pengguna. Email terdaftar tidak bisa diganti sendiri.
+3a. Kode etik joiner & host (`20-pusat-bantuan.md` §C, §D) adalah bagian dari S&K ini.
+3b. Dompet: saldo tidak bisa ditarik, tidak kedaluwarsa, hanya untuk transaksi di JASA. Satu rekening bank per pengguna (host/seller).
 4. JASA berhak menonaktifkan akun yang melanggar.
 
 ## Umum (patungan)
@@ -32,6 +34,9 @@ Struktur & isi mengikuti S&K joinbareng (`09-benchmark-joinbareng.md` §9), ditu
 
 ## Refund & pembatalan
 - Pembayaran bersifat final, kecuali: slot/batch belum aktif, kesalahan sistem JASA, atau garansi di atas.
+- Grup host — refund **boleh**: akses hilang & host diam; penawaran tidak sesuai (negara, jumlah layar, slot tidak ada); dikeluarkan tanpa alasan sah.
+  Refund **tidak boleh**: keluar sendiri sebelum periode habis; tidak sesuai harapan pribadi; grup pribadi. Diproses ≤ 48 jam (kredensial rusak ≤ 72 jam), ke dompet.
+- Hapus akun = semua langganan berhenti, tanpa refund.
 - Batch belum aktif → refund 100%.
 - Berhenti langganan bisa kapan saja; periode yang sudah dibayar tidak direfund.
 - Berubah pikiran setelah aktif → tidak ada refund.

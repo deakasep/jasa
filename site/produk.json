@@ -1,56 +1,55 @@
 {
-  "_catatan": "Harga plan resmi = CONTOH, wajib dicek ke harga resmi terbaru sebelum dipakai. harga_per_slot = ceil(harga_plan_resmi / slot, ribuan). Fee dihitung dari config/fee.json. Hanya plan yang ToS-nya mengizinkan multi-user (docs/06-legal-risiko.md).",
+  "_catatan": "Harga plan resmi Indonesia dicek 2026-10-30 (sumber di docs/CHANGELOG.md). harga_per_slot = ceil(harga_plan_resmi / slot, ribuan). Fee dihitung dari config/fee.json. Hanya plan yang ToS-nya mengizinkan multi-user (docs/06-legal-risiko.md). Cek ulang tiap bulan (QC bulanan).",
+  "harga_dicek": "2026-10-30",
   "produk": [
     {
       "id": "netflix", "nama": "Netflix Premium", "kategori": "SVOD", "akses": "akun bersama, 1 profil + PIN per slot",
-      "aturan": ["1 perangkat per slot", "dilarang ubah email/password/pengaturan", "jangan pakai profil orang lain"],
+      "aturan": ["1 perangkat per slot (Premium = 4 layar)", "dilarang ubah email/password/pengaturan", "jangan pakai profil orang lain"],
       "paket": [
-        { "kode": "NFX-4", "slot": 4, "periode": "bulanan", "harga_plan_resmi": 186000, "harga_per_slot": 47000, "slot_tersedia": 4 },
-        { "kode": "NFX-5", "slot": 5, "periode": "bulanan", "harga_plan_resmi": 186000, "harga_per_slot": 38000, "slot_tersedia": 5 }
+        { "kode": "NFX-4", "slot": 4, "periode": "bulanan", "harga_plan_resmi": 186000, "harga_per_slot": 47000, "slot_tersedia": 4 }
       ]
     },
     {
-      "id": "spotify", "nama": "Spotify Premium Family", "kategori": "Musik", "akses": "undangan family ke akun Spotify sendiri",
-      "aturan": ["pakai akun Spotify milik pembeli", "jangan keluar-masuk family berulang"],
+      "id": "spotify", "nama": "Spotify Premium Platinum", "kategori": "Musik", "akses": "undangan ke akun Spotify sendiri",
+      "aturan": ["maks 3 orang satu alamat (pengganti Premium Family sejak Nov 2025)", "pakai akun Spotify milik pembeli"],
       "paket": [
-        { "kode": "SPT-6", "slot": 6, "periode": "bulanan", "harga_plan_resmi": 86900, "harga_per_slot": 15000, "slot_tersedia": 6 }
+        { "kode": "SPT-3", "slot": 3, "periode": "bulanan", "harga_plan_resmi": 119000, "harga_per_slot": 40000, "slot_tersedia": 3 }
       ]
     },
     {
       "id": "youtube", "nama": "YouTube Premium Family", "kategori": "Musik", "akses": "undangan family ke akun Google sendiri",
-      "aturan": ["pakai akun Google milik pembeli", "1 akun hanya bisa ganti family 1x per 12 bulan (aturan Google)"],
+      "aturan": ["pengelola + 5 anggota", "pakai akun Google milik pembeli", "1 akun hanya bisa pindah family 1x per 12 bulan (aturan Google)"],
       "paket": [
-        { "kode": "YTB-6", "slot": 6, "periode": "bulanan", "harga_plan_resmi": 99000, "harga_per_slot": 17000, "slot_tersedia": 6 }
+        { "kode": "YTB-5", "slot": 5, "periode": "bulanan", "harga_plan_resmi": 139000, "harga_per_slot": 28000, "slot_tersedia": 5 }
       ]
     },
     {
       "id": "m365", "nama": "Microsoft 365 Family", "kategori": "Software", "akses": "undangan family ke akun Microsoft sendiri",
-      "aturan": ["1TB OneDrive per anggota", "jangan ubah pengaturan family"],
+      "aturan": ["hingga 6 pengguna", "penyimpanan per anggota sesuai plan", "jangan ubah pengaturan family"],
       "paket": [
-        { "kode": "M365-6", "slot": 6, "periode": "tahunan", "harga_plan_resmi": 1349000, "harga_per_slot": 225000, "slot_tersedia": 6 }
+        { "kode": "M365-6", "slot": 6, "periode": "bulanan", "harga_plan_resmi": 169000, "harga_per_slot": 29000, "slot_tersedia": 6 }
       ]
     },
     {
       "id": "apple-one", "nama": "Apple One Family", "kategori": "Musik", "akses": "Family Sharing ke Apple ID sendiri",
-      "aturan": ["pakai Apple ID milik pembeli"],
+      "aturan": ["pengelola + 5 anggota", "pakai Apple ID milik pembeli"],
       "paket": [
-        { "kode": "AP1-6", "slot": 6, "periode": "bulanan", "harga_plan_resmi": 149000, "harga_per_slot": 25000, "slot_tersedia": 6 }
+        { "kode": "AP1-6", "slot": 6, "periode": "bulanan", "harga_plan_resmi": 199000, "harga_per_slot": 34000, "slot_tersedia": 6 }
       ]
     },
     {
-      "id": "disney", "nama": "Disney+ Hotstar Premium", "kategori": "SVOD", "akses": "akun bersama, 1 profil per slot",
-      "aturan": ["1 perangkat per slot", "dilarang ubah email/password"],
+      "id": "disney", "nama": "Disney+ Hotstar Super", "kategori": "SVOD", "akses": "akun bersama, 1 profil per slot",
+      "aturan": ["Super = 4 layar 4K", "1 perangkat per slot", "dilarang ubah email/password"],
       "paket": [
-        { "kode": "DSN-4", "slot": 4, "periode": "bulanan", "harga_plan_resmi": 79000, "harga_per_slot": 20000, "slot_tersedia": 4 }
-      ]
-    },
-    {
-      "id": "canva", "nama": "Canva Teams", "kategori": "Software", "akses": "undangan tim ke email sendiri",
-      "aturan": ["pakai email milik pembeli", "jangan hapus anggota lain"],
-      "paket": [
-        { "kode": "CNV-10", "slot": 10, "periode": "bulanan", "harga_plan_resmi": 150000, "harga_per_slot": 15000, "slot_tersedia": 10 }
+        { "kode": "DSN-4", "slot": 4, "periode": "bulanan", "harga_plan_resmi": 99000, "harga_per_slot": 25000, "slot_tersedia": 4 },
+        { "kode": "DSN-4Y", "slot": 4, "periode": "tahunan", "harga_plan_resmi": 559000, "harga_per_slot": 140000, "slot_tersedia": 4 }
       ]
     }
   ],
-  "dialihkan_ke_jasa_bayar": ["claude", "chatgpt", "cursor", "perplexity", "gemini", "midjourney", "github-copilot"]
+  "dialihkan_ke_jasa_bayar": ["claude", "chatgpt", "cursor", "perplexity", "gemini", "midjourney", "github-copilot"],
+  "tidak_dijual": {
+    "canva-teams": "harga resmi kini per orang (Rp95.000/bln/orang) — patungan tidak lebih hemat",
+    "capcut": "akun single-user (login bersama)",
+    "netflix-5-user": "Premium hanya 4 layar; 5 user melanggar aturan 1 perangkat per slot"
+  }
 }

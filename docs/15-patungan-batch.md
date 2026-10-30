@@ -34,11 +34,19 @@ dicabut permanen tanpa refund · hormati privasi anggota lain · keluhan: chat h
 Ajukan lewat dashboard/WA dengan bukti → diproses **1–3 hari kerja** (target internal ≤ 24 jam) → slot pengganti atau refund penuh
 sisa periode. Skill: `komplain-garansi`.
 
-## Grup host komunitas (aktif setelah marketplace jalan)
-1. Host lulus KYC + verifikasi plan (screenshot halaman langganan resmi, jenis plan multi-user, tanggal tagihan).
-2. Host membuat grup: layanan, jumlah slot, harga/slot, periode. QC grup (`16-qa-qc.md` §QC-Host) sebelum tayang.
-3. Dana joiner ditahan sampai akses diterima + masa cek 3 hari; lalu cair ke saldo host dikurangi fee patungan.
-4. Host mengubah password / mengeluarkan joiner tanpa alasan → joiner refund penuh dari saldo host + sanksi.
+## Grup host komunitas (model inti joinbareng — detail pengguna di `20-pusat-bantuan.md` §D)
+1. Host: nomor HP terverifikasi, pemeriksaan profil (KYC ≤ 72 jam), satu rekening bank terverifikasi (≤ 72 jam). Faktur opsional (+skor kepercayaan).
+2. Host membuat penawaran: layanan, jumlah slot yang dibagikan (boleh sisakan slot pribadi), periode tagihan; **harga slot dihitung otomatis**
+   dari tarif resmi Indonesia (host dilarang mengambil untung). Pilih **publik** (marketplace) / **pribadi** (tautan undangan) dan
+   **penerimaan instan** on/off. Layanan belum terdaftar → *custom sharing* (pribadi, ditinjau admin). QC grup (`16-qa-qc.md` §E).
+3. Penerimaan instan off: joiner bayar di muka pakai dompet, host wajib terima/tolak ≤ 48 jam; joiner boleh batal setelah 2 menit selama belum diterima.
+4. Pendapatan host: harga slot penuh; **connection fee** dipotong hanya bulan pertama tiap joiner baru (25% maks Rp5.000 bulanan / 20% maks Rp6.000
+   tahunan; pribadi = 0). Joiner keluar di tengah periode → host tetap dibayar penuh bulan itu.
+5. Kode etik host: pemilik sah, paket identik dengan asli, tarif Indonesia, layanan min 30 hari/joiner, tidak mengganti login berkala.
+   Melanggar / mengeluarkan joiner tanpa alasan → joiner refund dari dana host + sanksi.
+6. **Skor kepercayaan 0–100** menentukan urutan tampil; skor 100 / faktur terverifikasi = "dijamin sesuai iklan".
+7. Harga layanan naik → harga penawaran disesuaikan otomatis untuk periode berikutnya, joiner diberi tahu.
+8. Waiting list per layanan: notifikasi email + WhatsApp saat ada penawaran baru.
 
 ## Kode promo
 Format `NAMA-PERSEN` / `NAMA-NOMINAL`, punya kuota, masa berlaku, minimal transaksi, 1x per pengguna. Diskon memotong **harga slot**,

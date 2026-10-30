@@ -24,8 +24,9 @@ Ulangi riset dengan skill `riset-kompetitor`.
 ## 3. Fee (DISAMAKAN untuk kita)
 | Layanan | Fee joinbareng = fee kita |
 |---|---|
-| Patungan bulanan | 10% harga per orang + Rp8.000 |
-| Patungan tahunan | 20% harga per orang + Rp6.500 |
+| Patungan bulanan (joiner) | 10% harga per orang + Rp8.000 |
+| Patungan tahunan (joiner) | 20% harga per orang per bulan + Rp6.500 per bulan |
+| Connection fee host | bulanan 25% maks Rp5.000 · tahunan 20% maks Rp6.000 · hanya bulan pertama per joiner baru · pribadi 0 |
 | Jasa Bayar < US$70 | Rp50.000 flat |
 | Jasa Bayar US$70–500 | 4% |
 | Jasa Bayar > US$500 | 3,5% |
@@ -91,6 +92,13 @@ bertanggung jawab atas blokir penyedia · kompensasi diskresi untuk error sistem
   Ganti dengan: **Jasa Bayar** ke akun pembeli sendiri (diizinkan) atau seat Team/Business resmi.
 - Jasa bayar layanan konten dewasa (OnlyFans, Fansly), akun keuangan ber-KYC (Airwallex dll.), akun "Gmail old" massal.
 - Testimoni "representatif" yang bukan pembeli nyata → kita hanya pakai ulasan asli.
+
+## 12. Pusat bantuan (63 artikel) — ditiru di `20-pusat-bantuan.md`
+Temuan penting: fee host (connection fee 25% maks Rp5.000 / 20% maks Rp6.000, bulan pertama per joiner), fee joiner tahunan dihitung per bulan,
+penerimaan instan & batas 48 jam host, batal permintaan setelah 2 menit, dompet (top-up min Rp50.000, tidak bisa ditarik, tidak kedaluwarsa),
+referral Rp10.000, kode promo, skor kepercayaan 0–100, faktur opsional, publik vs pribadi (pribadi tanpa connection fee), custom sharing,
+waiting list, KYC ≤ 72 jam (KTP/paspor/izin tinggal/SIM, dasar TPPU/TPPT), satu rekening bank, refund ≤ 48 jam (kredensial rusak ≤ 72 jam),
+kode etik host/joiner, login Google/Facebook/X/email, satu orang satu akun, S&K versi bantuan (usia min 18 th, platform sebagai mediator).
 
 ## 11. Contoh harga pembanding (Okt 2026)
 Lihat `data/harga-pembanding.json`.

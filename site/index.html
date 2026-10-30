@@ -75,7 +75,7 @@ fetch("produk.json").then(r=>r.json()).then(j=>{
   const FEE={bulanan:[0.10,8000],tahunan:[0.20,6500]};
   data=j.produk.flatMap(l=>l.paket.map(k=>({nama:`${l.nama} · ${k.slot} user`,kategori:l.kategori,akses:l.akses,
     kode:k.kode,periode:k.periode,slot_tersedia:k.slot_tersedia,harga_resmi:k.harga_plan_resmi,catatan:(l.aturan||[])[0]||"",
-    harga_bulan:Math.round(k.harga_per_slot*(1+FEE[k.periode][0])+FEE[k.periode][1])})));
+    harga_bulan:Math.round(k.harga_per_slot*(1+FEE[k.periode][0])+FEE[k.periode][1]*(k.periode==="tahunan"?12:1))})));
   const f=document.getElementById("filters");
   ["Semua",...new Set(data.map(p=>p.kategori))].forEach(k=>{
     const b=document.createElement("button");b.textContent=k;if(k===cat)b.className="on";

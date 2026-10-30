@@ -61,8 +61,14 @@ def cek_katalog(katalog):
 
 
 def cek_fee():
+    # Contoh resmi joinbareng (artikel bantuan biaya & S&K)
+    cek(hitung.fee_patungan(46500, "bulanan") == 12650, "fee: contoh Netflix Rp46.500 harus fee joiner Rp12.650")
     cek(hitung.fee_patungan(50000, "bulanan") == 13000, "fee: patungan bulanan Rp50.000 harus fee Rp13.000")
-    cek(hitung.fee_patungan(50000, "tahunan") == 16500, "fee: patungan tahunan Rp50.000 harus fee Rp16.500")
+    cek(hitung.fee_patungan(600000, "tahunan") == 12 * 16500, "fee: tahunan = (20% harga/bulan + Rp6.500) × 12")
+    cek(hitung.fee_host(46500, "bulanan") == 5000, "fee: connection fee host bulanan maks Rp5.000")
+    cek(hitung.fee_host(15000, "bulanan") == 3750, "fee: connection fee host 25% bila < maks")
+    cek(hitung.fee_host(600000, "tahunan") == 6000, "fee: connection fee host tahunan maks Rp6.000")
+    cek(hitung.fee_host(46500, "bulanan", pribadi=True) == 0, "fee: berbagi pribadi tanpa connection fee")
     kurs = 16000
     cek(hitung.jasa_bayar(69, kurs)["fee"] == 50000, "fee: jasa bayar $69 harus Rp50.000 flat")
     for usd, persen in ((70, 0.04), (500, 0.04), (501, 0.035)):

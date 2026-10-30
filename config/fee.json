@@ -1,8 +1,15 @@
 {
-  "_sumber": "Disamakan dengan joinbareng.com (riset 2026-10-30). Ubah di sini saja; catat di docs/CHANGELOG.md.",
+  "_sumber": "Disamakan dengan joinbareng.com: artikel bantuan 'Berapa biaya yang harus saya bayar' (diubah 29/05/2026), S&K, FAQ jasa bayar (dicek 2026-10-30). Ubah di sini saja; catat di docs/CHANGELOG.md.",
   "patungan": {
+    "_catatan": "Fee JOINER (pembeli). Basis = harga slot PER BULAN. Paket tahunan: fee dihitung per bulan lalu dikali 12.",
     "bulanan": { "persen": 0.10, "tetap": 8000 },
     "tahunan": { "persen": 0.20, "tetap": 6500 }
+  },
+  "patungan_host": {
+    "_catatan": "Connection fee HOST (penjual slot): dipotong dari harga slot HANYA bulan pertama tiap joiner baru (berlaku lagi jika joiner pindah grup). Berbagi pribadi (undangan) tanpa connection fee.",
+    "bulanan": { "persen": 0.25, "maks": 5000 },
+    "tahunan": { "persen": 0.20, "maks": 6000 },
+    "pribadi_bebas_connection_fee": true
   },
   "jasa_bayar": {
     "tier": [
@@ -16,20 +23,40 @@
   "marketplace": {
     "fee_seller_persen": 0.05,
     "fee_seller_min": 1000,
-    "_catatan_fee_seller": "Sementara. joinbareng tidak mempublikasikan persen fee seller.",
+    "_catatan_fee_seller": "Sementara. joinbareng tidak mempublikasikan persen fee seller marketplace (hanya 'fee transaksi kecil').",
     "payout_min": 50000,
     "payout_sla_jam_kerja": 24
+  },
+  "dompet": {
+    "topup_min": 50000,
+    "bisa_ditarik": false,
+    "kedaluwarsa": false,
+    "referral_bonus": 10000
+  },
+  "biaya_gateway_estimasi": {
+    "_catatan": "Estimasi biaya payment gateway yang KITA tanggung (cek tarif resmi Xendit/Tripay saat daftar). Tidak dibebankan ke pembeli.",
+    "qris": { "persen": 0.007, "tetap": 750 },
+    "va": { "persen": 0, "tetap": 4250 },
+    "payout": { "persen": 0, "tetap": 4500 }
   },
   "timer": {
     "bayar_qris_menit": 30,
     "bayar_va_jam": 24,
+    "host_terima_permintaan_jam": 48,
+    "batal_permintaan_setelah_menit": 2,
     "seller_respon_jam": 1,
     "batas_kirim_maks_jam": 24,
     "masa_cek_hari": 3,
     "masa_cek_bergaransi_hari": 7,
     "putusan_sengketa_jam": 24,
+    "proses_refund_jam": 48,
+    "refund_kredensial_rusak_jam": 72,
+    "verifikasi_kyc_jam": 72,
+    "verifikasi_rekening_jam": 72,
     "klaim_patungan_hari_kerja": 3,
     "mediasi_hari_kerja": 3,
-    "reminder_renewal_hari": 3
+    "layanan_host_min_hari": 30,
+    "reminder_renewal_hari": 3,
+    "batch_resmi_maks_hari": 7
   }
 }

@@ -11,7 +11,7 @@ garansi + refund jika ada masalah.
 ## 4 sumber pendapatan (meniru struktur joinbareng, lihat `09-benchmark-joinbareng.md`)
 | Pilar | Dokumen | Pendapatan |
 |---|---|---|
-| Patungan (slot langganan) | dokumen ini + `03-workflow-order.md` | margin slot / fee layanan 10% + Rp8.000 (bulanan), 20% + Rp6.500 (tahunan) |
+| Patungan (slot langganan) | dokumen ini + `03-workflow-order.md` + `15-patungan-batch.md` | **joiner**: 10% + Rp8.000/bln (tahunan: 20% + Rp6.500 per bulan); **host**: connection fee 25% maks Rp5.000 (tahunan 20% maks Rp6.000) bulan pertama per joiner |
 | Jasa Bayar | `11-jasa-bayar.md` | < US$70 Rp50.000 flat · US$70–500 4% · > US$500 3,5% + spread kurs 1,5% |
 | Marketplace escrow | `10-marketplace-escrow.md` | fee seller 5% (sementara) per transaksi selesai |
 

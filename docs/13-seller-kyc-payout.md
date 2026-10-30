@@ -2,7 +2,9 @@
 
 ## Daftar
 1. Akun gratis (email + nomor WA terverifikasi OTP).
-2. **KYC**: nama sesuai KTP, foto KTP + selfie dengan KTP, rekening atas nama yang sama.
+2. **KYC / pemeriksaan profil** (dasar: pencegahan TPPU/TPPT): salah satu KTP / paspor / izin tinggal / SIM (+ selfie), diverifikasi ≤ 72 jam;
+   **satu** rekening bank dengan bukti kepemilikan atas nama yang sama, diverifikasi ≤ 72 jam (ganti rekening = verifikasi ulang). Ditolak → alasan
+   ditampilkan, boleh unggah ulang.
    Data KYC disimpan terenkripsi, akses hanya admin, tidak pernah di repo/ClickUp (patuh UU PDP No. 27/2022).
 3. Setujui S&K Seller → toko aktif. Listing langsung tayang, admin moderasi ≤ 24 jam setelahnya.
 
