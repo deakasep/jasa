@@ -1,6 +1,6 @@
 # STATUS — backup progres (baca ini PERTAMA di setiap sesi baru)
 
-Terakhir diperbarui: 2026-10-30 (sesi Claude Code). Perbarui file ini di akhir setiap sesi kerja.
+Terakhir diperbarui: 2026-10-31 (sesi Claude Code). Perbarui file ini di akhir setiap sesi kerja.
 
 ## Keputusan pemilik (jangan diulang/ditanyakan lagi)
 1. Tiru **penuh** joinbareng.com: struktur, mekanisme, rules, skill, QA/QC — **kecuali tampilan web** (dibuat sendiri paling akhir). ADR `docs/adr/0001`.
@@ -48,6 +48,10 @@ Terakhir diperbarui: 2026-10-30 (sesi Claude Code). Perbarui file ini di akhir s
 - **Audit kelengkapan joinbareng** (30 Okt sore): halaman publik dibandingkan dengan repo; celah kategori marketplace, papan penawaran,
   blog ditutup di `docs/22`. Yang tidak bisa ditiru tanpa login (dashboard, form listing, chat, checkout) dirancang sendiri.
   **Menunggu keputusan pemilik:** buka kategori Joki / Top Up Login / Akun atau tidak.
+- **Audit ulang menu footer** (31 Okt, lewat browser): semua menu Belanja/Perusahaan/Bantuan/Akun dicocokkan. Fee **tidak berubah**
+  (artikel fee masih versi 29/05/2026; fee seller marketplace tetap tidak dipublikasi). Celah ditutup di `docs/24`: Siaran Pers,
+  Temukan Kami (akun resmi + tools gratis SEO + schema.org), blok identitas & lowongan di Hubungi Kami, daftar kini Google + email saja,
+  tombol Ingatkan seller/Batalkan & refund/Ada masalah?, tab Rekomendasi, rak beranda, daftar metode bayar, klaim Jasa Bayar 2.370+ produk.
 - ClickUp folder **JASA – Patungan Premium** (ID di `docs/08-clickup.md`): 10 list, pengingat setup, roadmap, QA/QC.
 
 - **Keputusan 30 Okt:** omzet besar → model fee diubah seperti Shopee (pemicu & rincian `docs/19` §Banding Shopee).
