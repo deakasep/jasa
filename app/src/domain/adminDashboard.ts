@@ -1,7 +1,7 @@
 /**
  * Dashboard admin (murni): menyusun tampilan dari data + peran + waktu.
  * Bagian yang terlihat ditentukan RBAC (domain/rbac.ts); refund besar wajib finance/owner + empat mata.
- * Antrian aksi cron = hasil domain/jobs.ts mode rencana (eksekusi `?jalankan=1` belum aktif).
+ * Antrian aksi cron = hasil domain/jobs.ts mode rencana (eksekusi: `/api/cron?jalankan=1` + `CRON_JALANKAN=1`, lihat domain/eksekusiCron.ts).
  */
 import type { FeeConfig } from "./config.ts";
 import { rencanakan, type AksiCron, type DataCron } from "./jobs.ts";

@@ -1,5 +1,12 @@
 # Changelog
 
+- 2026-10-31 (3): **eksekusi aksi cron** `/api/cron?jalankan=1` (aktif hanya bila `CRON_JALANKAN=1`): tiap aksi = satu transaksi — ubah status
+  bersyarat (status sudah berubah → dilewati), jurnal `lepas:<order>` saat pesanan selesai otomatis (sisa escrow setelah refund sebagian),
+  audit `cron.*`. **Notifikasi WA/email mode uji** (`domain/notifikasi.ts`): template ditulis ulang dari `templates/pesan-whatsapp.md`,
+  hanya `userId` (tanpa nomor HP/email), dicatat di audit `notifikasi.uji`, kunci idempoten (pengingat H-3 sekali per periode),
+  `NOTIF_MODE=kirim` ditolak sampai penyedia WA/email dipilih pemilik. Satu aksi gagal tidak menghentikan yang lain; ada gagal → HTTP 500.
+  Test 113 → 124. (Antrian Claude, PR #23)
+
 - 2026-10-31 (2): keputusan pemilik — tanpa kartu kredit (`config/pembayaran.json`, invoice Xendit dibatasi kanal lokal, Tripay tolak kanal kartu);
   Bahasa Indonesia saja; marketplace game dibatasi 7 game paling laku di Indonesia (APJII 2026) + tab Rekomendasi + rak beranda ramping;
   schema.org & piksel iklan setelah persetujuan cookie. Test 108 → 113.
