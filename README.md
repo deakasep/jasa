@@ -28,6 +28,7 @@ dengan kata sendiri. Tampilan web dibuat terakhir. Panduan kerja Claude: `CLAUDE
 | `docs/19-pendapatan.md` | **Berapa persen kita dapat dari pembeli & penjual** |
 | `docs/20-pusat-bantuan.md` | Pusat bantuan (63 artikel joinbareng ditiru) |
 | `docs/21-enterprise.md` | RBAC, audit, keamanan, backup/DR, insiden, kepatuhan |
+| `docs/25-benchmark-gamsgo-shopee.md` | Bedah GamsGo (fee 4 lapis, garansi, head/tail payout, level seller) + pengamatan Shopee |
 | `docs/adr/`, `docs/postmortem/` | Catatan keputusan & template post-mortem |
 | `STATUS.md` | **Backup progres** — baca pertama tiap sesi |
 | `app/` | Platform Next.js + Prisma: domain uang & alur + 42 test, webhook, cron |

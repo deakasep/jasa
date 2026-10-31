@@ -28,6 +28,7 @@ Sumber kebenaran:
 - Kategori marketplace, papan penawaran, blog: `docs/22-marketplace-kategori.md` · data: `data/kategori-marketplace.json`
 - Katalog Jasa Bayar, layanan lain, ulasan & ticker semua pilar: `docs/23-jasa-bayar-katalog.md` · data: `data/jasa-bayar-katalog.json` · ambang: `config/kepercayaan.json`
 - **Metode bayar (tanpa kartu kredit)**: `config/pembayaran.json` · game fokus & Rekomendasi: `data/kategori-marketplace.json` (`docs/22` §6)
+- **Benchmark GamsGo & Shopee** (mekanisme marketplace yang joinbareng tidak punya; usulan ADR 0003): `docs/25-benchmark-gamsgo-shopee.md`
 - Audit menu footer (Siaran Pers, Temukan Kami, Hubungi Kami, akun, cek ulang fee 31 Okt): `docs/24-audit-menu-footer.md`
 - **Standar enterprise** (RBAC, audit, keamanan, backup/DR, insiden, kepatuhan): `docs/21-enterprise.md` · keputusan: `docs/adr/`
 - **Platform** (Next.js + Prisma, domain murni + test): `app/` — `app/README.md`
