@@ -4,10 +4,10 @@ Next.js + Prisma (PostgreSQL). Logika bisnis murni di `src/domain/` (tanpa depen
 
 | Folder | Isi |
 |---|---|
-| `src/domain/` | fee, ledger berpasangan, escrow marketplace, patungan (batch/host/renewal), jasa bayar, promo & referral, RBAC + empat mata, filter chat, skor kepercayaan, audit, perencana cron |
+| `src/domain/` | fee, ledger berpasangan, escrow marketplace, patungan (batch/host/renewal), jasa bayar, promo & referral, RBAC + empat mata, filter chat, skor kepercayaan, audit, perencana & eksekusi cron, notifikasi WA/email (mode uji) |
 | `src/server/` | Prisma client, penyimpan jurnal idempoten, verifikasi webhook, pengolah pembayaran bersama, pembuat invoice Xendit/Tripay |
 | `src/app/checkout`, `src/app/admin` | Checkout minimal patungan (`?paket=NFX-4`, tanpa gateway) · dashboard admin data contoh (`?peran=owner|admin_ops|finance|cs`; RBAC, antrian aksi cron, batch, refund + empat mata). `/admin` di production hanya bila `ADMIN_CONTOH=1` |
-| `src/app/api/` | `quote` (kuotasi publik), `webhooks/tripay`, `webhooks/xendit`, `cron` (dilindungi `CRON_SECRET`), `health` |
+| `src/app/api/` | `quote` (kuotasi publik), `webhooks/tripay`, `webhooks/xendit`, `cron` (dilindungi `CRON_SECRET`; `?jalankan=1` + env `CRON_JALANKAN=1` = eksekusi: ubah status bersyarat, jurnal lepas escrow, notifikasi WA/email mode uji ke audit — tidak ada yang dikirim ke luar), `health` |
 | `prisma/schema.prisma` | Skema lengkap: pengguna & peran, KYC, rekening, layanan/paket/batch, host offer, langganan, marketplace, jasa bayar, pembayaran, ledger, payout, refund, promo, referral, waitlist, permintaan/penawaran, audit |
 
 ## Jalankan
@@ -15,7 +15,7 @@ Next.js + Prisma (PostgreSQL). Logika bisnis murni di `src/domain/` (tanpa depen
 cd app
 cp .env.example .env.local     # isi DATABASE_URL dst.
 npm install
-npm test                       # 104 test domain & server (tanpa database/jaringan)
+npm test                       # 124 test domain & server (tanpa database/jaringan)
 npm run db:migrate             # buat tabel
 npm run db:seed                # isi layanan & paket dari ../site/produk.json
 npm run dev
