@@ -1,6 +1,6 @@
 # STATUS — backup progres (baca ini PERTAMA di setiap sesi baru)
 
-Terakhir diperbarui: 2026-10-31 (sesi Claude Code). Perbarui file ini di akhir setiap sesi kerja.
+Terakhir diperbarui: 2026-11-01 (sesi Claude Code). Perbarui file ini di akhir setiap sesi kerja.
 
 ## Keputusan pemilik (jangan diulang/ditanyakan lagi)
 1. Tiru **penuh** joinbareng.com: struktur, mekanisme, rules, skill, QA/QC — **kecuali tampilan web** (dibuat sendiri paling akhir). ADR `docs/adr/0001`.
@@ -61,6 +61,11 @@ Terakhir diperbarui: 2026-10-31 (sesi Claude Code). Perbarui file ini di akhir s
   (status bersyarat, jurnal lepas escrow, audit); notifikasi WA/email hanya dicatat di audit (`NOTIF_MODE=kirim` ditolak sampai penyedia dipilih). 124 test.
 - **Rekonsiliasi harian** (31 Okt): `domain/rekonsiliasi.ts` cocokkan settlement Xendit/Tripay ↔ `kas:gateway`, kategori selisih, usulan jurnal
   biaya gateway. Sambungan ke unduhan laporan gateway menunggu akun gateway. 131 test.
+- **Riset GamsGo + Shopee** (1 Nov, lewat browser + Help Center GamsGo): `docs/25-benchmark-gamsgo-shopee.md`. GamsGo kini marketplace C2C;
+  untung dari 4 lapis (fee bayar pembeli, komisi seller 4,9–9,9% per kategori, fee tarik dana, float dana ditahan sampai garansi).
+  Bagian A ADR 0003 (filter listing, aturan judul, rentang harga sebagai cek QC, tinjauan kategori berisiko) dipakai saat marketplace dibangun.
+  **Menunggu keputusan pemilik:** ADR 0003 bagian B (garansi min 1/3 masa layanan, dana seller cair setelah garansi, SLA seller 48 jam → refund
+  otomatis + prorata, level seller menentukan fee, fee seller per kategori). Ringkasan tim: dokumen ClickUp "Riset Kompetitor – GamsGo, JoinBareng, Shopee".
 - ClickUp folder **JASA – Patungan Premium** (ID di `docs/08-clickup.md`): 10 list, pengingat setup, roadmap, QA/QC.
 
 - **Keputusan 30 Okt:** omzet besar → model fee diubah seperti Shopee (pemicu & rincian `docs/19` §Banding Shopee).
@@ -79,7 +84,7 @@ Terakhir diperbarui: 2026-10-31 (sesi Claude Code). Perbarui file ini di akhir s
 - [x] Rekonsiliasi harian gateway ↔ ledger (skill `reconciliation`) sebagai fungsi domain + test — PR #24 (`domain/rekonsiliasi.ts`, 131 test)
 Butuh pemilik dulu (bukan antrian, semua sudah jadi task ClickUp tag `keputusan-pemilik`/`butuh-pemilik`): nama brand + domain + email resmi,
 bentuk badan usaha → NIB → PSE → gateway sandbox, DATABASE_URL, kartu virtual, akuntan, penyedia WA API + email, akun iklan (ID piksel),
-keputusan kategori Joki/Top Up Login/Akun, review kuartal 7 game fokus.
+keputusan kategori Joki/Top Up Login/Akun, keputusan ADR 0003 bagian B (mekanisme marketplace ala GamsGo), review kuartal 7 game fokus.
 
 ## Kendala lingkungan yang diketahui
 - Sesi cloud Claude: registry npm diblokir kebijakan jaringan (403) → test domain jalan dengan `node --experimental-strip-types --test`

@@ -1,5 +1,10 @@
 # Changelog
 
+- 2026-11-01: **benchmark GamsGo & Shopee** (`docs/25-benchmark-gamsgo-shopee.md`) + ADR `0003-adopsi-gamsgo-marketplace` (diusulkan):
+  bagian A (filter listing, aturan judul, rentang harga sebagai cek QC, tinjauan kategori berisiko, afiliasi permanen) diadopsi untuk
+  marketplace; bagian B (garansi 1/3 masa layanan, dana cair setelah garansi + kuota head/tail, SLA seller 48 jam, level → fee, fee per kategori)
+  menunggu pemilik. `config/fee.json` tidak diubah.
+
 - 2026-10-31 (4): **rekonsiliasi harian gateway ↔ ledger** (`domain/rekonsiliasi.ts`, skill `reconciliation`): cocokkan laporan settlement
   Xendit/Tripay dengan mutasi `kas:gateway` per kode pesanan; kategori COCOK / BEDA_WAKTU (dekat batas hari, default 60 menit) /
   HANYA_GATEWAY (webhook hilang) / HANYA_LEDGER / NOMINAL_BEDA / DUPLIKAT; status BERES hanya bila selisih tak terjelaskan 0.
