@@ -1,5 +1,11 @@
 # Changelog
 
+- 2026-10-31 (4): **rekonsiliasi harian gateway ↔ ledger** (`domain/rekonsiliasi.ts`, skill `reconciliation`): cocokkan laporan settlement
+  Xendit/Tripay dengan mutasi `kas:gateway` per kode pesanan; kategori COCOK / BEDA_WAKTU (dekat batas hari, default 60 menit) /
+  HANYA_GATEWAY (webhook hilang) / HANYA_LEDGER / NOMINAL_BEDA / DUPLIKAT; status BERES hanya bila selisih tak terjelaskan 0.
+  Usulan jurnal `biaya_gateway:<gateway>:<tanggal>` (D biaya:gateway / K kas:gateway), tidak dobel dengan yang sudah dijurnal;
+  ledger tidak diubah otomatis (disetujui peran `finance`). Test 124 → 131. (Antrian Claude, PR #24)
+
 - 2026-10-31 (3): **eksekusi aksi cron** `/api/cron?jalankan=1` (aktif hanya bila `CRON_JALANKAN=1`): tiap aksi = satu transaksi — ubah status
   bersyarat (status sudah berubah → dilewati), jurnal `lepas:<order>` saat pesanan selesai otomatis (sisa escrow setelah refund sebagian),
   audit `cron.*`. **Notifikasi WA/email mode uji** (`domain/notifikasi.ts`): template ditulis ulang dari `templates/pesan-whatsapp.md`,
