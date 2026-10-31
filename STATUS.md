@@ -59,6 +59,8 @@ Terakhir diperbarui: 2026-10-31 (sesi Claude Code). Perbarui file ini di akhir s
   `domain/rekomendasi.ts` (tab Rekomendasi + tolak listing game di luar 7 game fokus), privasi §9 cookie & piksel. 113 test.
 - **Eksekusi cron + notifikasi mode uji** (31 Okt): `/api/cron?jalankan=1` (butuh `CRON_JALANKAN=1`) menjalankan aksi per transaksi
   (status bersyarat, jurnal lepas escrow, audit); notifikasi WA/email hanya dicatat di audit (`NOTIF_MODE=kirim` ditolak sampai penyedia dipilih). 124 test.
+- **Rekonsiliasi harian** (31 Okt): `domain/rekonsiliasi.ts` cocokkan settlement Xendit/Tripay ↔ `kas:gateway`, kategori selisih, usulan jurnal
+  biaya gateway. Sambungan ke unduhan laporan gateway menunggu akun gateway. 131 test.
 - ClickUp folder **JASA – Patungan Premium** (ID di `docs/08-clickup.md`): 10 list, pengingat setup, roadmap, QA/QC.
 
 - **Keputusan 30 Okt:** omzet besar → model fee diubah seperti Shopee (pemicu & rincian `docs/19` §Banding Shopee).
@@ -74,7 +76,7 @@ Terakhir diperbarui: 2026-10-31 (sesi Claude Code). Perbarui file ini di akhir s
 ## Antrian Claude (dikerjakan AI tanpa menunggu pemilik; urut — `[x]` + nomor PR bila selesai)
 - [x] Siapkan halaman checkout minimal + dashboard admin (RBAC, antrian aksi cron, batch, refund) dengan data contoh, tanpa gateway nyata — PR #19 (`/checkout`, `/admin`, 104 test)
 - [x] Eksekusi aksi cron (`?jalankan=1`) + notifikasi WA/email (mode uji, tanpa kirim ke pihak luar) — PR #23 (`domain/eksekusiCron.ts`, `domain/notifikasi.ts`, `server/cron.ts`, 124 test)
-- [ ] Rekonsiliasi harian gateway ↔ ledger (skill `reconciliation`) sebagai fungsi domain + test
+- [x] Rekonsiliasi harian gateway ↔ ledger (skill `reconciliation`) sebagai fungsi domain + test — PR #PRNUM (`domain/rekonsiliasi.ts`, 131 test)
 Butuh pemilik dulu (bukan antrian, semua sudah jadi task ClickUp tag `keputusan-pemilik`/`butuh-pemilik`): nama brand + domain + email resmi,
 bentuk badan usaha → NIB → PSE → gateway sandbox, DATABASE_URL, kartu virtual, akuntan, penyedia WA API + email, akun iklan (ID piksel),
 keputusan kategori Joki/Top Up Login/Akun, review kuartal 7 game fokus.
